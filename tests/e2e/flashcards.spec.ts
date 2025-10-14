@@ -18,12 +18,20 @@ test.describe("Flashcard journeys", () => {
 
     await expect(page).toHaveURL(/\/flashcards$/);
     await expect(
-      page.getByText("No flashcards yet. Add your first one!"),
+      page.getByText("No categories yet. Create one to start building flashcards."),
     ).toBeVisible();
+
+    await page.getByPlaceholder("New category name").fill("Geometry");
+    await page.getByRole("button", { name: "Add Category" }).click();
+    await expect(page.getByText("Geometry is empty")).toBeVisible();
 
     await page.getByLabel("Front").fill("Triangle");
     await page.getByLabel("Back").fill("Has three sides");
     await page.getByRole("button", { name: "Add Flashcard" }).click();
+
+    await page
+      .getByRole("button", { name: /View Geometry flashcards/i })
+      .click();
 
     const card = page
       .getByRole("heading", { name: "Triangle" })

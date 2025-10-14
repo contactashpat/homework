@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useMemo, useState, type MouseEvent } from "react";
 import { useFlashcardStore } from "../../stores/flashcardStore";
 import type { Flashcard } from "../../types";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
@@ -13,10 +13,14 @@ type SpacedRepetitionMeta = {
 };
 
 export default function StudyPage() {
-  const unlearnedFlashcards = useFlashcardStore((s) =>
-    s.getUnlearnedFlashcards(),
-  );
+  const flashcards = useFlashcardStore((s) => s.flashcards);
+  const isCategoryLocked = useFlashcardStore((s) => s.isCategoryLocked);
+  const categories = useFlashcardStore((s) => s.categories);
   const { speak, supported } = useSpeechSynthesis();
+  const unlearnedFlashcards = useMemo(
+    () => flashcards.filter((card) => card.learned !== true),
+    [flashcards],
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [isStudyMode, setIsStudyMode] = useState(false);
@@ -86,6 +90,10 @@ export default function StudyPage() {
   };
 
   const handleAnswer = (isCorrect: boolean) => {
+    if (currentCard && isCategoryLocked(currentCard.categoryId)) {
+      return;
+    }
+
     if (isCorrect) {
       setStudyStats((prev) => ({ ...prev, correct: prev.correct + 1 }));
     } else {
@@ -158,6 +166,13 @@ export default function StudyPage() {
     setStudyStats({ correct: 0, incorrect: 0 });
     setShowAnswer(false);
   };
+
+  const activeCategory = currentCard
+    ? categories.find((category) => category.id === currentCard.categoryId)
+    : undefined;
+  const currentCategoryLocked = currentCard
+    ? isCategoryLocked(currentCard.categoryId)
+    : false;
 
   if (!isStudyMode) {
     return (
@@ -259,6 +274,11 @@ export default function StudyPage() {
             >
               {/* Front of card */}
               <div className="absolute w-full h-full backface-hidden rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700 flex items-center justify-center transition-colors duration-500 bg-white dark:bg-gray-800">
+                {currentCard ? (
+                  <span className="absolute left-4 top-4 rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-200">
+                    {activeCategory?.name}
+                  </span>
+                ) : null}
                 {supported ? (
                   <button
                     type="button"
@@ -281,6 +301,17 @@ export default function StudyPage() {
               <div
                 className={`absolute w-full h-full backface-hidden rotate-y-180 rounded-lg shadow-lg p-6 border flex items-center justify-center transition-colors duration-500 ${isFlipped ? "bg-indigo-600 border-indigo-600 dark:bg-indigo-500 dark:border-indigo-400" : "bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700"}`}
               >
+                {currentCard ? (
+                  <span
+                    className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
+                      isFlipped
+                        ? "bg-white text-indigo-700"
+                        : "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-200"
+                    }`}
+                  >
+                    {activeCategory?.name}
+                  </span>
+                ) : null}
                 {supported ? (
                   <button
                     type="button"
@@ -336,16 +367,23 @@ export default function StudyPage() {
           <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
             How well did you know this?
           </h3>
+          {currentCard && currentCategoryLocked ? (
+            <p className="mb-4 text-sm text-amber-600 dark:text-amber-300">
+              This card belongs to a locked category. Unlock it to track progress.
+            </p>
+          ) : null}
           <div className="grid grid-cols-2 gap-4">
             <button
               onClick={() => handleAnswer(false)}
-              className="px-4 py-3 bg-red-600 text-white rounded hover:bg-red-700 transition"
+              disabled={!currentCard || currentCategoryLocked}
+              className="px-4 py-3 bg-red-600 text-white rounded transition hover:bg-red-700 disabled:cursor-not-allowed disabled:bg-red-300 disabled:text-red-100"
             >
               Didn&apos;t know
             </button>
             <button
               onClick={() => handleAnswer(true)}
-              className="px-4 py-3 bg-green-600 text-white rounded hover:bg-green-700 transition"
+              disabled={!currentCard || currentCategoryLocked}
+              className="px-4 py-3 bg-green-600 text-white rounded transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-green-300 disabled:text-green-100"
             >
               Knew it
             </button>
