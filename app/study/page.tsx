@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { useFlashcardStore } from "../../stores/flashcardStore";
 import type { Flashcard } from "../../types";
+import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
+import { SpeakerIcon } from "../../components/icons/SpeakerIcon";
 
 type SpacedRepetitionMeta = {
   interval: number;
@@ -14,6 +16,7 @@ export default function StudyPage() {
   const unlearnedFlashcards = useFlashcardStore((s) =>
     s.getUnlearnedFlashcards(),
   );
+  const { speak, supported } = useSpeechSynthesis();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [isStudyMode, setIsStudyMode] = useState(false);
@@ -256,6 +259,19 @@ export default function StudyPage() {
             >
               {/* Front of card */}
               <div className="absolute w-full h-full backface-hidden rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700 flex items-center justify-center transition-colors duration-500 bg-white dark:bg-gray-800">
+                {supported ? (
+                  <button
+                    type="button"
+                    onClick={(event: MouseEvent<HTMLButtonElement>) => {
+                      event.stopPropagation();
+                      speak(currentCard.front);
+                    }}
+                    className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600 text-white shadow transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                    aria-label="Play front text audio"
+                  >
+                    <SpeakerIcon className="h-5 w-5" />
+                  </button>
+                ) : null}
                 <p className="text-xl text-center text-gray-900 dark:text-white">
                   {currentCard.front}
                 </p>
@@ -265,6 +281,19 @@ export default function StudyPage() {
               <div
                 className={`absolute w-full h-full backface-hidden rotate-y-180 rounded-lg shadow-lg p-6 border flex items-center justify-center transition-colors duration-500 ${isFlipped ? "bg-indigo-600 border-indigo-600 dark:bg-indigo-500 dark:border-indigo-400" : "bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700"}`}
               >
+                {supported ? (
+                  <button
+                    type="button"
+                    onClick={(event: MouseEvent<HTMLButtonElement>) => {
+                      event.stopPropagation();
+                      speak(currentCard.back);
+                    }}
+                    className={`absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600 text-white shadow transition focus:outline-none focus:ring-2 focus:ring-indigo-300 ${isFlipped ? "hover:bg-indigo-500" : "hover:bg-indigo-700"}`}
+                    aria-label="Play back text audio"
+                  >
+                    <SpeakerIcon className="h-5 w-5" />
+                  </button>
+                ) : null}
                 <p
                   className={`text-xl text-center transition-colors duration-500 ${isFlipped ? "text-white" : "text-gray-900 dark:text-white"}`}
                 >
