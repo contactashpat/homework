@@ -43,13 +43,9 @@ const persistState = (cards: Flashcard[]): void => {
   }
 };
 
-/**
- * Zustand store for managing flashcards. The store is initialised with any
- * cards that were previously persisted in localStorage. All mutating
- * actions immediately persist the new state.
- */
-export const useFlashcardStore = create<{
+type FlashcardStore = {
   flashcards: Flashcard[];
+  hasHydrated: boolean;
   addFlashcard: (payload: Omit<Flashcard, "id">) => void;
   updateFlashcard: (id: string, payload: Partial<Flashcard>) => void;
   deleteFlashcard: (id: string) => void;
@@ -58,8 +54,17 @@ export const useFlashcardStore = create<{
   getFlashcardById: (id: string) => Flashcard | undefined;
   getLearnedFlashcards: () => Flashcard[];
   getUnlearnedFlashcards: () => Flashcard[];
-}>((set, get) => ({
-  flashcards: loadPersisted(),
+  hydrate: () => void;
+};
+
+/**
+ * Zustand store for managing flashcards. The store starts empty so that it
+ * renders the same markup on the server and client. Local storage data is
+ * pulled in after hydration via the `hydrate` action.
+ */
+export const useFlashcardStore = create<FlashcardStore>((set, get) => ({
+  flashcards: [],
+  hasHydrated: false,
 
   addFlashcard: (payload) => {
     const newCard: Flashcard = {
@@ -70,7 +75,7 @@ export const useFlashcardStore = create<{
     set((state) => {
       const updated = [...state.flashcards, newCard];
       persistState(updated);
-      return { flashcards: updated };
+      return { flashcards: updated, hasHydrated: true };
     });
   },
 
@@ -80,7 +85,7 @@ export const useFlashcardStore = create<{
         c.id === id ? { ...c, ...payload } : c,
       );
       persistState(updated);
-      return { flashcards: updated };
+      return { flashcards: updated, hasHydrated: true };
     });
   },
 
@@ -88,7 +93,7 @@ export const useFlashcardStore = create<{
     set((state) => {
       const updated = state.flashcards.filter((c) => c.id !== id);
       persistState(updated);
-      return { flashcards: updated };
+      return { flashcards: updated, hasHydrated: true };
     });
   },
 
@@ -98,7 +103,7 @@ export const useFlashcardStore = create<{
         c.id === id ? { ...c, learned: true } : c,
       );
       persistState(updated);
-      return { flashcards: updated };
+      return { flashcards: updated, hasHydrated: true };
     });
   },
 
@@ -108,7 +113,7 @@ export const useFlashcardStore = create<{
         c.id === id ? { ...c, learned: false } : c,
       );
       persistState(updated);
-      return { flashcards: updated };
+      return { flashcards: updated, hasHydrated: true };
     });
   },
 
@@ -119,4 +124,15 @@ export const useFlashcardStore = create<{
 
   getUnlearnedFlashcards: () =>
     get().flashcards.filter((c) => c.learned !== true),
+
+  hydrate: () => {
+    if (get().hasHydrated) {
+      return;
+    }
+    const persisted = loadPersisted();
+    set({
+      flashcards: persisted,
+      hasHydrated: true,
+    });
+  },
 }));

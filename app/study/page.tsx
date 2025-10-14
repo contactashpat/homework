@@ -255,15 +255,19 @@ export default function StudyPage() {
               className={`relative w-full h-full preserve-3d transition-transform duration-700 ${isFlipped ? "rotate-y-180" : ""}`}
             >
               {/* Front of card */}
-              <div className="absolute w-full h-full backface-hidden bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
+              <div className="absolute w-full h-full backface-hidden rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700 flex items-center justify-center transition-colors duration-500 bg-white dark:bg-gray-800">
                 <p className="text-xl text-center text-gray-900 dark:text-white">
                   {currentCard.front}
                 </p>
               </div>
 
               {/* Back of card */}
-              <div className="absolute w-full h-full backface-hidden rotate-y-180 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700 flex items-center justify-center">
-                <p className="text-xl text-center text-gray-900 dark:text-white">
+              <div
+                className={`absolute w-full h-full backface-hidden rotate-y-180 rounded-lg shadow-lg p-6 border flex items-center justify-center transition-colors duration-500 ${isFlipped ? "bg-indigo-600 border-indigo-600 dark:bg-indigo-500 dark:border-indigo-400" : "bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700"}`}
+              >
+                <p
+                  className={`text-xl text-center transition-colors duration-500 ${isFlipped ? "text-white" : "text-gray-900 dark:text-white"}`}
+                >
                   {currentCard.back}
                 </p>
               </div>
