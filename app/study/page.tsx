@@ -5,6 +5,7 @@ import { useFlashcardStore } from "../../stores/flashcardStore";
 import type { Flashcard } from "../../types";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
 import { SpeakerIcon } from "../../components/icons/SpeakerIcon";
+import { buildCategoryMetaMap } from "../../lib/category";
 
 type SpacedRepetitionMeta = {
   interval: number;
@@ -14,12 +15,11 @@ type SpacedRepetitionMeta = {
 
 export default function StudyPage() {
   const flashcards = useFlashcardStore((s) => s.flashcards);
-  const isCategoryLocked = useFlashcardStore((s) => s.isCategoryLocked);
   const categories = useFlashcardStore((s) => s.categories);
+  const isCategoryLocked = useFlashcardStore((s) => s.isCategoryLocked);
   const { speak, supported } = useSpeechSynthesis();
-  const unlearnedFlashcards = useMemo(
-    () => flashcards.filter((card) => card.learned !== true),
-    [flashcards],
+  const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(
+    null,
   );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
@@ -30,6 +30,33 @@ export default function StudyPage() {
   const [spacedRepetitionData, setSpacedRepetitionData] = useState<
     Record<string, SpacedRepetitionMeta>
   >({});
+
+  const categoryMeta = useMemo(
+    () => buildCategoryMetaMap(categories),
+    [categories],
+  );
+  const sortedCategories = useMemo(
+    () =>
+      [...categories].sort((a, b) => {
+        const pathA = categoryMeta.get(a.id)?.path ?? a.name;
+        const pathB = categoryMeta.get(b.id)?.path ?? b.name;
+        return pathA.localeCompare(pathB, undefined, { sensitivity: "base" });
+      }),
+    [categories, categoryMeta],
+  );
+  const selectedCategory = selectedCategoryId
+    ? categories.find((category) => category.id === selectedCategoryId)
+    : undefined;
+  const selectedCategoryLocked = selectedCategory?.locked ?? false;
+
+  const unlearnedFlashcards = useMemo(() => {
+    if (!selectedCategoryId) {
+      return [];
+    }
+    return flashcards.filter(
+      (card) => card.learned !== true && card.categoryId === selectedCategoryId,
+    );
+  }, [flashcards, selectedCategoryId]);
 
   // Initialize study mode and load spaced repetition data
   useEffect(() => {
@@ -51,6 +78,34 @@ export default function StudyPage() {
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (categories.length === 0) {
+      if (selectedCategoryId !== null) {
+        setSelectedCategoryId(null);
+      }
+      return;
+    }
+
+    const exists = categories.find((category) => category.id === selectedCategoryId);
+    if (exists) {
+      return;
+    }
+
+    const fallback =
+      categories.find((category) => !category.locked) ?? categories[0];
+    if (fallback && fallback.id !== selectedCategoryId) {
+      setSelectedCategoryId(fallback.id);
+    }
+  }, [categories, selectedCategoryId]);
+
+  useEffect(() => {
+    setIsStudyMode(false);
+    setCurrentIndex(0);
+    setIsFlipped(false);
+    setStudyStats({ correct: 0, incorrect: 0 });
+    setShowAnswer(false);
+  }, [selectedCategoryId]);
 
   // Update current card when index changes
   useEffect(() => {
@@ -160,6 +215,9 @@ export default function StudyPage() {
   };
 
   const handleStartStudy = () => {
+    if (!selectedCategoryId || unlearnedFlashcards.length === 0) {
+      return;
+    }
     setIsStudyMode(true);
     setCurrentIndex(0);
     setIsFlipped(false);
@@ -174,40 +232,114 @@ export default function StudyPage() {
     ? isCategoryLocked(currentCard.categoryId)
     : false;
 
+  const CategoryPicker = ({ className }: { className?: string }) => (
+    <div
+      className={`flex flex-col gap-2 sm:flex-row sm:items-center ${className ?? ""}`}
+    >
+      <label
+        htmlFor="study-category"
+        className="text-sm font-medium text-gray-700 dark:text-gray-300"
+      >
+        Study category
+      </label>
+      <select
+        id="study-category"
+        value={selectedCategoryId ?? ""}
+        onChange={(event) => setSelectedCategoryId(event.target.value)}
+        className="rounded border border-gray-300 px-3 py-2 text-gray-900 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-100"
+      >
+        <option value="" disabled>
+          Select a category
+        </option>
+        {sortedCategories.map((category) => {
+          const meta = categoryMeta.get(category.id);
+          return (
+            <option key={category.id} value={category.id}>
+              {meta?.path ?? category.name}
+              {category.locked ? " (locked)" : ""}
+            </option>
+          );
+        })}
+      </select>
+    </div>
+  );
+
+  if (categories.length === 0) {
+    return (
+      <div className="min-h-screen p-8">
+        <h1 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">
+          Study Mode
+        </h1>
+        <div className="mx-auto max-w-2xl rounded-lg border border-gray-200 bg-white p-8 text-center shadow-lg dark:border-gray-700 dark:bg-gray-800">
+          <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+            No categories yet
+          </h2>
+          <p className="mt-3 text-gray-600 dark:text-gray-300">
+            Create a category and add flashcards before starting a study session.
+          </p>
+          <a
+            href="/flashcards"
+            className="mt-6 inline-flex items-center justify-center rounded bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow transition hover:bg-indigo-700"
+          >
+            Manage flashcards
+          </a>
+        </div>
+      </div>
+    );
+  }
+
   if (!isStudyMode) {
     return (
       <div className="min-h-screen p-8">
-        <h1 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white">
+        <h1 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">
           Study Mode
         </h1>
-        <div className="max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-200 dark:border-gray-700">
-          <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
-            Start Studying
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
-            You have {unlearnedFlashcards.length} flashcards to study.
-          </p>
-          {unlearnedFlashcards.length === 0 ? (
-            <div className="text-center">
-              <p className="text-gray-600 dark:text-gray-300 mb-4">
-                No flashcards to study! Create some flashcards first.
-              </p>
-              <a
-                href="/flashcards"
-                className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
-              >
-                Create Flashcards
-              </a>
-            </div>
-          ) : (
-            <div className="flex justify-center">
-              <button
-                onClick={handleStartStudy}
-                className="px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
-              >
+        <div className="mx-auto max-w-2xl rounded-lg border border-gray-200 bg-white p-8 shadow-lg dark:border-gray-700 dark:bg-gray-800">
+          <CategoryPicker className="mb-4" />
+          {selectedCategory ? (
+            <>
+              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                 Start Studying
-              </button>
-            </div>
+              </h2>
+              <p className="mt-3 text-gray-600 dark:text-gray-300">
+                You have {unlearnedFlashcards.length} flashcards to study in this
+                category.
+              </p>
+              {selectedCategoryLocked ? (
+                <p className="mt-2 text-sm text-amber-600 dark:text-amber-300">
+                  This category is locked. Progress cannot be tracked until it is
+                  unlocked.
+                </p>
+              ) : null}
+              {unlearnedFlashcards.length === 0 ? (
+                <div className="mt-6 text-center">
+                  <p className="text-gray-600 dark:text-gray-300">
+                    No flashcards to study in this category. Add more cards in the
+                    flashcards section.
+                  </p>
+                  <a
+                    href="/flashcards"
+                    className="mt-4 inline-flex items-center justify-center rounded bg-indigo-600 px-4 py-2 text-sm font-semibold text-white shadow transition hover:bg-indigo-700"
+                  >
+                    Manage flashcards
+                  </a>
+                </div>
+              ) : (
+                <div className="mt-6 flex justify-center">
+                  <button
+                    onClick={handleStartStudy}
+                    disabled={unlearnedFlashcards.length === 0}
+                    className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-6 py-3 text-white shadow transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-indigo-300 disabled:text-indigo-100"
+                  >
+                    Start Studying
+                  </button>
+                </div>
+              )}
+            </>
+          ) : (
+            <p className="text-gray-600 dark:text-gray-300">
+              Select a category to begin.
+            </p>
           )}
         </div>
       </div>
@@ -217,23 +349,24 @@ export default function StudyPage() {
   if (!currentCard) {
     return (
       <div className="min-h-screen p-8">
-        <h1 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white">
+        <h1 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">
           Study Mode
         </h1>
-        <div className="max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 border border-gray-200 dark:border-gray-700 text-center">
-          <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+        <div className="mx-auto max-w-2xl rounded-lg border border-gray-200 bg-white p-8 text-center shadow-lg dark:border-gray-700 dark:bg-gray-800">
+          <CategoryPicker className="mb-6 justify-center" />
+          <h2 className="mb-4 text-xl font-semibold text-gray-900 dark:text-white">
             Study Complete!
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-2">
+          <p className="text-gray-600 dark:text-gray-300">
             You&apos;ve reviewed all your flashcards.
           </p>
-          <p className="text-gray-600 dark:text-gray-300 mb-6">
+          <p className="mt-2 text-gray-600 dark:text-gray-300">
             Correct: {studyStats.correct} | Incorrect: {studyStats.incorrect}
           </p>
-          <div className="flex justify-center gap-4">
+          <div className="mt-6 flex justify-center gap-4">
             <button
               onClick={() => setIsStudyMode(false)}
-              className="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-700 transition"
+              className="rounded bg-gray-600 px-4 py-2 text-white transition hover:bg-gray-700"
             >
               Back to Menu
             </button>
@@ -244,7 +377,8 @@ export default function StudyPage() {
                 setStudyStats({ correct: 0, incorrect: 0 });
                 setShowAnswer(false);
               }}
-              className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+              disabled={unlearnedFlashcards.length === 0}
+              className="rounded bg-indigo-600 px-4 py-2 text-white transition hover:bg-indigo-700 disabled:cursor-not-allowed disabled:bg-indigo-300 disabled:text-indigo-100"
             >
               Study Again
             </button>
@@ -256,9 +390,13 @@ export default function StudyPage() {
 
   return (
     <div className="min-h-screen p-8">
-      <h1 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white">
+      <h1 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">
         Study Mode
       </h1>
+
+      <div className="mx-auto mb-6 max-w-3xl rounded-lg border border-gray-200 bg-white p-6 shadow dark:border-gray-700 dark:bg-gray-800">
+        <CategoryPicker />
+      </div>
 
       <div className="max-w-2xl mx-auto">
         <div className="mb-6 text-center">
@@ -276,7 +414,7 @@ export default function StudyPage() {
               <div className="absolute w-full h-full backface-hidden rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700 flex items-center justify-center transition-colors duration-500 bg-white dark:bg-gray-800">
                 {currentCard ? (
                   <span className="absolute left-4 top-4 rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-200">
-                    {activeCategory?.name}
+                    {categoryMeta.get(currentCard.categoryId)?.path ?? activeCategory?.name}
                   </span>
                 ) : null}
                 {supported ? (
@@ -309,7 +447,7 @@ export default function StudyPage() {
                         : "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-200"
                     }`}
                   >
-                    {activeCategory?.name}
+                    {categoryMeta.get(currentCard.categoryId)?.path ?? activeCategory?.name}
                   </span>
                 ) : null}
                 {supported ? (
@@ -333,12 +471,12 @@ export default function StudyPage() {
               </div>
             </div>
           </div>
-          <p className="text-center text-gray-500 dark:text-gray-400 mt-2">
+          <p className="mt-2 text-center text-gray-500 dark:text-gray-400">
             Click card to flip
           </p>
         </div>
 
-        <div className="flex justify-between mb-6">
+        <div className="mb-6 flex justify-between">
           <button
             onClick={handlePrevious}
             disabled={currentIndex === 0}
@@ -349,7 +487,7 @@ export default function StudyPage() {
 
           <button
             onClick={handleFlip}
-            className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
+            className="rounded bg-indigo-600 px-4 py-2 text-white transition hover:bg-indigo-700"
           >
             Flip Card
           </button>
@@ -363,8 +501,8 @@ export default function StudyPage() {
           </button>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700">
-          <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-white">
+        <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-lg dark:border-gray-700 dark:bg-gray-800">
+          <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
             How well did you know this?
           </h3>
           {currentCard && currentCategoryLocked ? (
@@ -376,25 +514,25 @@ export default function StudyPage() {
             <button
               onClick={() => handleAnswer(false)}
               disabled={!currentCard || currentCategoryLocked}
-              className="px-4 py-3 bg-red-600 text-white rounded transition hover:bg-red-700 disabled:cursor-not-allowed disabled:bg-red-300 disabled:text-red-100"
+              className="rounded bg-red-600 px-4 py-3 text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:bg-red-300 disabled:text-red-100"
             >
               Didn&apos;t know
             </button>
             <button
               onClick={() => handleAnswer(true)}
               disabled={!currentCard || currentCategoryLocked}
-              className="px-4 py-3 bg-green-600 text-white rounded transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-green-300 disabled:text-green-100"
+              className="rounded bg-green-600 px-4 py-3 text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-green-300 disabled:text-green-100"
             >
               Knew it
             </button>
           </div>
         </div>
 
-        <div className="mt-6 bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border border-blue-200 dark:border-blue-800">
-          <h4 className="font-medium text-blue-900 dark:text-blue-200 mb-2">
+        <div className="mt-6 rounded-lg border border-blue-200 bg-blue-50 p-4 dark:border-blue-800 dark:bg-blue-900/20">
+          <h4 className="mb-2 font-medium text-blue-900 dark:text-blue-200">
             Study Tips:
           </h4>
-          <ul className="text-sm text-blue-800 dark:text-blue-300 list-disc pl-5 space-y-1">
+          <ul className="list-disc space-y-1 pl-5 text-sm text-blue-800 dark:text-blue-300">
             <li>Use spaced repetition to optimize learning</li>
             <li>Review cards more frequently if you&apos;re unsure</li>
             <li>Mark cards as learned when you&apos;re confident</li>
