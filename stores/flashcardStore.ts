@@ -40,7 +40,7 @@ const ensureCategoryConsistency = (state: PersistedState): PersistedState => {
 
   let defaultCategory = state.categories.find((category) => !category.locked);
 
-  let categories = state.categories.map((category) => {
+  let categories: FlashcardCategory[] = state.categories.map((category) => {
     let parentId = category.parentId ?? null;
     if (parentId && !categoriesById.has(parentId)) {
       parentId = null;
@@ -49,7 +49,7 @@ const ensureCategoryConsistency = (state: PersistedState): PersistedState => {
   });
 
   if (defaultCategory && !categories.find((category) => category.id === defaultCategory!.id)) {
-    categories = [...categories, defaultCategory];
+    categories = [...categories, { ...defaultCategory }];
   } else if (!defaultCategory) {
     defaultCategory = categories.find((category) => !category.locked);
   }
