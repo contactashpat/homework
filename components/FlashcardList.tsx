@@ -56,11 +56,13 @@ function CategorySelect({
 type FlashcardListProps = {
   selectedCategoryId: string | null;
   onSelectCategory: (categoryId: string) => void;
+  showCategorySelector?: boolean;
 };
 
 export const FlashcardList = ({
   selectedCategoryId,
   onSelectCategory,
+  showCategorySelector = true,
 }: FlashcardListProps) => {
   const flashcards = useFlashcardStore((state) => state.flashcards);
   const categories = useFlashcardStore((state) => state.categories);
@@ -133,12 +135,14 @@ export const FlashcardList = ({
             Add your first flashcard using the form above.
           </p>
         </div>
-        <CategorySelect
-          categories={categories}
-          categoryMeta={categoriesMeta}
-          selectedCategoryId={selectedCategoryId}
-          onSelectCategory={onSelectCategory}
-        />
+        {showCategorySelector ? (
+          <CategorySelect
+            categories={categories}
+            categoryMeta={categoriesMeta}
+            selectedCategoryId={selectedCategoryId}
+            onSelectCategory={onSelectCategory}
+          />
+        ) : null}
       </div>
     );
   }
@@ -146,12 +150,14 @@ export const FlashcardList = ({
   if (!isExpanded) {
     return (
       <div className="space-y-4">
-        <CategorySelect
-          categories={categories}
-          categoryMeta={categoriesMeta}
-          selectedCategoryId={selectedCategoryId}
-          onSelectCategory={onSelectCategory}
-        />
+        {showCategorySelector ? (
+          <CategorySelect
+            categories={categories}
+            categoryMeta={categoriesMeta}
+            selectedCategoryId={selectedCategoryId}
+            onSelectCategory={onSelectCategory}
+          />
+        ) : null}
         <div className="text-center">
           <h3 className="text-lg font-medium text-gray-900 dark:text-gray-200">
             {activeCategory?.name ?? "Category"} Stack
@@ -222,12 +228,14 @@ export const FlashcardList = ({
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <CategorySelect
-          categories={categories}
-          categoryMeta={categoriesMeta}
-          selectedCategoryId={selectedCategoryId}
-          onSelectCategory={onSelectCategory}
-        />
+        {showCategorySelector ? (
+          <CategorySelect
+            categories={categories}
+            categoryMeta={categoriesMeta}
+            selectedCategoryId={selectedCategoryId}
+            onSelectCategory={onSelectCategory}
+          />
+        ) : null}
         <button
           type="button"
           onClick={() => setIsExpanded(false)}
