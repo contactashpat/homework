@@ -107,9 +107,7 @@ export const CategoryManager = ({
           {sortedCategories.map((category) => {
             const isSelected = category.id === selectedCategoryId;
             const count = cardsPerCategory.get(category.id) ?? 0;
-            const childCount = childrenPerCategory.get(category.id) ?? 0;
-            const disableDelete =
-              categories.length === 1 || count > 0 || childCount > 0;
+            const disableDelete = categories.length === 1;
             const meta = categoryMeta.get(category.id);
             return (
               <li
