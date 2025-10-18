@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState, type MouseEvent } from "react";
+import { useCallback, useEffect, useMemo, useState, type MouseEvent } from "react";
 import { useFlashcardStore } from "../../stores/flashcardStore";
 import type { Flashcard } from "../../types";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
@@ -41,7 +41,6 @@ export default function StudyPage() {
   const [isStudyMode, setIsStudyMode] = useState(false);
   const [studyStats, setStudyStats] = useState({ correct: 0, incorrect: 0 });
   const [showAnswer, setShowAnswer] = useState(false);
-  const [currentCard, setCurrentCard] = useState<Flashcard | null>(null);
   const [spacedRepetitionData, setSpacedRepetitionData] = useState<
     Record<string, SpacedRepetitionMeta>
   >({});
@@ -140,36 +139,44 @@ export default function StudyPage() {
     setShowFlipHint(true);
   }, [selectedCategoryId]);
 
+  const currentCard = useMemo<Flashcard | null>(
+    () => unlearnedFlashcards[currentIndex] ?? null,
+    [unlearnedFlashcards, currentIndex],
+  );
   useEffect(() => {
-    if (
-      unlearnedFlashcards.length > 0 &&
-      currentIndex < unlearnedFlashcards.length
-    ) {
-      setCurrentCard(unlearnedFlashcards[currentIndex]);
-    } else {
-      setCurrentCard(null);
+    if (!currentCard) {
+      setIsFlipped(false);
+      setShowAnswer(false);
+      setShowFlipHint(true);
+      return;
     }
-  }, [currentIndex, unlearnedFlashcards]);
 
-  const handleNext = () => {
+    setIsFlipped(false);
+    setShowAnswer(false);
+    setShowFlipHint(true);
+  }, [currentCard]);
+
+  const handleNext = useCallback(() => {
     if (currentIndex < unlearnedFlashcards.length - 1) {
       setCurrentIndex(currentIndex + 1);
       setIsFlipped(false);
       setShowAnswer(false);
+      setShowFlipHint(true);
     } else {
       setIsStudyMode(false);
     }
-  };
+  }, [currentIndex, unlearnedFlashcards.length]);
 
-  const handlePrevious = () => {
+  const handlePrevious = useCallback(() => {
     if (currentIndex > 0) {
       setCurrentIndex(currentIndex - 1);
       setIsFlipped(false);
       setShowAnswer(false);
+      setShowFlipHint(true);
     }
-  };
+  }, [currentIndex]);
 
-  const handleFlip = () => {
+  const handleFlip = useCallback(() => {
     setIsFlipped(!isFlipped);
     if (!isFlipped) {
       setShowAnswer(true);
@@ -177,7 +184,26 @@ export default function StudyPage() {
     if (showFlipHint) {
       setShowFlipHint(false);
     }
-  };
+  }, [isFlipped, showFlipHint]);
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!isStudyMode) return;
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        handleNext();
+      } else if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        handlePrevious();
+      } else if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+        event.preventDefault();
+        handleFlip();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [handleNext, handlePrevious, handleFlip, isStudyMode]);
 
   const handleAnswer = (isCorrect: boolean) => {
     if (currentCard && isCategoryLocked(currentCard.categoryId)) {
