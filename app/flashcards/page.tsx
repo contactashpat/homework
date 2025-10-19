@@ -5,7 +5,7 @@
  */
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { FlashcardForm } from "../../components/FlashcardForm";
@@ -17,6 +17,20 @@ import { useFlashcardStore } from "../../stores/flashcardStore";
 import { buildCategoryMetaMap } from "../../lib/category";
 
 export default function FlashcardsPage() {
+  return (
+    <Suspense fallback={<PageFallback />}>
+      <FlashcardsPageContent />
+    </Suspense>
+  );
+}
+
+const PageFallback = () => (
+  <div className="flex min-h-screen items-center justify-center p-8 text-gray-600 dark:text-gray-300">
+    Loading flashcards…
+  </div>
+);
+
+function FlashcardsPageContent() {
   const categories = useFlashcardStore((state) => state.categories);
   const searchParams = useSearchParams();
   const [selectedCategoryId, setSelectedCategoryId] = useState<string | null>(null);

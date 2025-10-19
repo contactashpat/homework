@@ -255,7 +255,13 @@ export default function StudyPage() {
       } else if (event.key === "ArrowLeft") {
         event.preventDefault();
         handlePrevious();
-      } else if (event.key === "ArrowUp" || event.key === "ArrowDown") {
+      } else if (
+        event.key === "ArrowUp" ||
+        event.key === "ArrowDown" ||
+        event.key === " " ||
+        event.key === "Spacebar" ||
+        event.code === "Space"
+      ) {
         event.preventDefault();
         handleFlip();
       }

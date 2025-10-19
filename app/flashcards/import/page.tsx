@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { CategorySelectorPanel } from "../../../components/CategorySelectorPanel";
 import type { CategorySelectorPanelProps } from "../../../components/CategorySelectorPanel";
 import { CollectionImporter } from "../../../components/CollectionImporter";
@@ -12,6 +12,20 @@ import { useFlashcardStore } from "../../../stores/flashcardStore";
 const CATEGORY_VISIBLE_LIMIT = 12;
 
 export default function ImportCollectionsPage() {
+  return (
+    <Suspense fallback={<ImportFallback />}>
+      <ImportCollectionsContent />
+    </Suspense>
+  );
+}
+
+const ImportFallback = () => (
+  <div className="flex min-h-screen items-center justify-center p-8 text-gray-600 dark:text-gray-300">
+    Loading import tools…
+  </div>
+);
+
+function ImportCollectionsContent() {
   const categories = useFlashcardStore((state) => state.categories);
   const router = useRouter();
   const searchParams = useSearchParams();

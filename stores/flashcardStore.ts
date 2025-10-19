@@ -92,9 +92,24 @@ const ensureCategoryConsistency = (state: PersistedState): PersistedState => {
  * browser. If the key does not exist or parsing fails, an empty array
  * is returned.
  */
-const loadPersisted = (): PersistedState => {
+const loadPersisted = async (): Promise<PersistedState> => {
   const empty: PersistedState = { flashcards: [], categories: [] };
   if (typeof window === "undefined") return empty;
+
+  try {
+    const response = await fetch("/api/collections", { cache: "no-store" });
+    if (response.ok) {
+      const parsed = (await response.json()) as Partial<PersistedState>;
+      if (Array.isArray(parsed?.flashcards) && Array.isArray(parsed?.categories)) {
+        return ensureCategoryConsistency({
+          flashcards: parsed.flashcards as Flashcard[],
+          categories: parsed.categories as FlashcardCategory[],
+        });
+      }
+    }
+  } catch {
+    /* ignore failed requests and fall back to client storage */
+  }
 
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -108,7 +123,6 @@ const loadPersisted = (): PersistedState => {
       }
     }
 
-    // Fallback to legacy structure: array of flashcards
     const legacyRaw = localStorage.getItem(LEGACY_KEY);
     if (legacyRaw) {
       const legacyFlashcards = JSON.parse(legacyRaw) as Flashcard[] | Flashcard | null;
@@ -142,6 +156,16 @@ const persistState = (state: PersistedState): void => {
     localStorage.removeItem(LEGACY_KEY);
   } catch {
     /* silently ignore persistence errors */
+  }
+
+  if (typeof fetch === "function") {
+    void fetch("/api/collections", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(state),
+    }).catch(() => {
+      /* ignore network errors so UI remains responsive */
+    });
   }
 };
 
@@ -553,11 +577,13 @@ export const useFlashcardStore = create<FlashcardStore>((set, get) => ({
     if (get().hasHydrated) {
       return;
     }
-    const persisted = loadPersisted();
-    set({
-      flashcards: persisted.flashcards,
-      categories: persisted.categories,
-      hasHydrated: true,
-    });
+    void (async () => {
+      const persisted = await loadPersisted();
+      set({
+        flashcards: persisted.flashcards,
+        categories: persisted.categories,
+        hasHydrated: true,
+      });
+    })();
   },
 }));
