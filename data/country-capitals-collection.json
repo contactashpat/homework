@@ -6,1233 +6,1253 @@
       "cards": [
         {
           "front": "What is the capital of Afghanistan?",
-          "back": "Kabul",
+          "back": "Capital: Kabul\nContinents: Asia\nCurrencies: Afghan afghani (؋)\nBorders: IRN, PAK, TKM, UZB, TJK, CHN",
           "img": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg"
         },
         {
+          "front": "What is the capital of Åland Islands?",
+          "back": "Capital: Mariehamn\nContinents: Europe\nCurrencies: Euro (€)\nBorders: None",
+          "img": "https://flagcdn.com/ax.svg"
+        },
+        {
           "front": "What is the capital of Albania?",
-          "back": "Tirana",
+          "back": "Capital: Tirana\nContinents: Europe\nCurrencies: Albanian lek (L)\nBorders: MNE, GRC, MKD, UNK",
           "img": "https://flagcdn.com/al.svg"
         },
         {
           "front": "What is the capital of Algeria?",
-          "back": "Algiers",
+          "back": "Capital: Algiers\nContinents: Africa\nCurrencies: Algerian dinar (د.ج)\nBorders: TUN, LBY, NER, ESH, MRT, MLI, MAR",
           "img": "https://flagcdn.com/dz.svg"
         },
         {
           "front": "What is the capital of American Samoa?",
-          "back": "Pago Pago",
+          "back": "Capital: Pago Pago\nContinents: Oceania\nCurrencies: United States dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/as.svg"
         },
         {
           "front": "What is the capital of Andorra?",
-          "back": "Andorra la Vella",
+          "back": "Capital: Andorra la Vella\nContinents: Europe\nCurrencies: Euro (€)\nBorders: FRA, ESP",
           "img": "https://flagcdn.com/ad.svg"
         },
         {
           "front": "What is the capital of Angola?",
-          "back": "Luanda",
+          "back": "Capital: Luanda\nContinents: Africa\nCurrencies: Angolan kwanza (Kz)\nBorders: COG, COD, ZMB, NAM",
           "img": "https://flagcdn.com/ao.svg"
         },
         {
           "front": "What is the capital of Anguilla?",
-          "back": "The Valley",
+          "back": "Capital: The Valley\nContinents: North America\nCurrencies: Eastern Caribbean dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/ai.svg"
         },
         {
+          "front": "What are key facts about Antarctica?",
+          "back": "Capital: None\nContinents: Antarctica\nCurrencies: None\nBorders: None",
+          "img": "https://flagcdn.com/aq.svg"
+        },
+        {
           "front": "What is the capital of Antigua and Barbuda?",
-          "back": "Saint John's",
+          "back": "Capital: Saint John's\nContinents: North America\nCurrencies: Eastern Caribbean dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/ag.svg"
         },
         {
           "front": "What is the capital of Argentina?",
-          "back": "Buenos Aires",
+          "back": "Capital: Buenos Aires\nContinents: South America\nCurrencies: Argentine peso ($)\nBorders: BOL, BRA, CHL, PRY, URY",
           "img": "https://flagcdn.com/ar.svg"
         },
         {
           "front": "What is the capital of Armenia?",
-          "back": "Yerevan",
+          "back": "Capital: Yerevan\nContinents: Asia\nCurrencies: Armenian dram (֏)\nBorders: AZE, GEO, IRN, TUR",
           "img": "https://flagcdn.com/am.svg"
         },
         {
           "front": "What is the capital of Aruba?",
-          "back": "Oranjestad",
+          "back": "Capital: Oranjestad\nContinents: North America\nCurrencies: Aruban florin (ƒ)\nBorders: None",
           "img": "https://flagcdn.com/aw.svg"
         },
         {
           "front": "What is the capital of Australia?",
-          "back": "Canberra",
+          "back": "Capital: Canberra\nContinents: Oceania\nCurrencies: Australian dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/au.svg"
         },
         {
           "front": "What is the capital of Austria?",
-          "back": "Vienna",
+          "back": "Capital: Vienna\nContinents: Europe\nCurrencies: Euro (€)\nBorders: CZE, DEU, HUN, ITA, LIE, SVK, SVN, CHE",
           "img": "https://flagcdn.com/at.svg"
         },
         {
           "front": "What is the capital of Azerbaijan?",
-          "back": "Baku",
+          "back": "Capital: Baku\nContinents: Europe, Asia\nCurrencies: Azerbaijani manat (₼)\nBorders: ARM, GEO, IRN, RUS, TUR",
           "img": "https://flagcdn.com/az.svg"
         },
         {
           "front": "What is the capital of Bahamas?",
-          "back": "Nassau",
+          "back": "Capital: Nassau\nContinents: North America\nCurrencies: Bahamian dollar ($), United States dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/bs.svg"
         },
         {
           "front": "What is the capital of Bahrain?",
-          "back": "Manama",
+          "back": "Capital: Manama\nContinents: Asia\nCurrencies: Bahraini dinar (.د.ب)\nBorders: None",
           "img": "https://flagcdn.com/bh.svg"
         },
         {
           "front": "What is the capital of Bangladesh?",
-          "back": "Dhaka",
+          "back": "Capital: Dhaka\nContinents: Asia\nCurrencies: Bangladeshi taka (৳)\nBorders: MMR, IND",
           "img": "https://flagcdn.com/bd.svg"
         },
         {
           "front": "What is the capital of Barbados?",
-          "back": "Bridgetown",
+          "back": "Capital: Bridgetown\nContinents: North America\nCurrencies: Barbadian dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/bb.svg"
         },
         {
           "front": "What is the capital of Belarus?",
-          "back": "Minsk",
+          "back": "Capital: Minsk\nContinents: Europe\nCurrencies: Belarusian ruble (Br)\nBorders: LVA, LTU, POL, RUS, UKR",
           "img": "https://flagcdn.com/by.svg"
         },
         {
           "front": "What is the capital of Belgium?",
-          "back": "Brussels",
+          "back": "Capital: Brussels\nContinents: Europe\nCurrencies: Euro (€)\nBorders: FRA, DEU, LUX, NLD",
           "img": "https://flagcdn.com/be.svg"
         },
         {
           "front": "What is the capital of Belize?",
-          "back": "Belmopan",
+          "back": "Capital: Belmopan\nContinents: North America\nCurrencies: Belize dollar ($)\nBorders: GTM, MEX",
           "img": "https://flagcdn.com/bz.svg"
         },
         {
           "front": "What is the capital of Benin?",
-          "back": "Porto-Novo",
+          "back": "Capital: Porto-Novo\nContinents: Africa\nCurrencies: West African CFA franc (Fr)\nBorders: BFA, NER, NGA, TGO",
           "img": "https://flagcdn.com/bj.svg"
         },
         {
           "front": "What is the capital of Bermuda?",
-          "back": "Hamilton",
+          "back": "Capital: Hamilton\nContinents: North America\nCurrencies: Bermudian dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/bm.svg"
         },
         {
           "front": "What is the capital of Bhutan?",
-          "back": "Thimphu",
+          "back": "Capital: Thimphu\nContinents: Asia\nCurrencies: Bhutanese ngultrum (Nu.), Indian rupee (₹)\nBorders: CHN, IND",
           "img": "https://flagcdn.com/bt.svg"
         },
         {
           "front": "What is the capital of Bolivia?",
-          "back": "Sucre",
+          "back": "Capital: Sucre\nContinents: South America\nCurrencies: Bolivian boliviano (Bs.)\nBorders: ARG, BRA, CHL, PRY, PER",
           "img": "https://flagcdn.com/bo.svg"
         },
         {
           "front": "What is the capital of Bosnia and Herzegovina?",
-          "back": "Sarajevo",
+          "back": "Capital: Sarajevo\nContinents: Europe\nCurrencies: Bosnia and Herzegovina convertible mark (KM)\nBorders: HRV, MNE, SRB",
           "img": "https://flagcdn.com/ba.svg"
         },
         {
           "front": "What is the capital of Botswana?",
-          "back": "Gaborone",
+          "back": "Capital: Gaborone\nContinents: Africa\nCurrencies: Botswana pula (P)\nBorders: NAM, ZAF, ZMB, ZWE",
           "img": "https://flagcdn.com/bw.svg"
         },
         {
+          "front": "What are key facts about Bouvet Island?",
+          "back": "Capital: None\nContinents: Antarctica\nCurrencies: None\nBorders: None",
+          "img": "https://flagcdn.com/bv.svg"
+        },
+        {
           "front": "What is the capital of Brazil?",
-          "back": "Brasília",
+          "back": "Capital: Brasília\nContinents: South America\nCurrencies: Brazilian real (R$)\nBorders: ARG, BOL, COL, GUF, GUY, PRY, PER, SUR, URY, VEN",
           "img": "https://flagcdn.com/br.svg"
         },
         {
           "front": "What is the capital of British Indian Ocean Territory?",
-          "back": "Diego Garcia",
+          "back": "Capital: Diego Garcia\nContinents: Asia\nCurrencies: United States dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/io.svg"
         },
         {
           "front": "What is the capital of British Virgin Islands?",
-          "back": "Road Town",
+          "back": "Capital: Road Town\nContinents: North America\nCurrencies: United States dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/vg.svg"
         },
         {
           "front": "What is the capital of Brunei?",
-          "back": "Bandar Seri Begawan",
+          "back": "Capital: Bandar Seri Begawan\nContinents: Asia\nCurrencies: Brunei dollar ($), Singapore dollar ($)\nBorders: MYS",
           "img": "https://flagcdn.com/bn.svg"
         },
         {
           "front": "What is the capital of Bulgaria?",
-          "back": "Sofia",
+          "back": "Capital: Sofia\nContinents: Europe\nCurrencies: Bulgarian lev (лв)\nBorders: GRC, MKD, ROU, SRB, TUR",
           "img": "https://flagcdn.com/bg.svg"
         },
         {
           "front": "What is the capital of Burkina Faso?",
-          "back": "Ouagadougou",
+          "back": "Capital: Ouagadougou\nContinents: Africa\nCurrencies: West African CFA franc (Fr)\nBorders: BEN, CIV, GHA, MLI, NER, TGO",
           "img": "https://flagcdn.com/bf.svg"
         },
         {
           "front": "What is the capital of Burundi?",
-          "back": "Gitega",
+          "back": "Capital: Gitega\nContinents: Africa\nCurrencies: Burundian franc (Fr)\nBorders: COD, RWA, TZA",
           "img": "https://flagcdn.com/bi.svg"
         },
         {
           "front": "What is the capital of Cambodia?",
-          "back": "Phnom Penh",
+          "back": "Capital: Phnom Penh\nContinents: Asia\nCurrencies: Cambodian riel (៛), United States dollar ($)\nBorders: LAO, THA, VNM",
           "img": "https://flagcdn.com/kh.svg"
         },
         {
           "front": "What is the capital of Cameroon?",
-          "back": "Yaoundé",
+          "back": "Capital: Yaoundé\nContinents: Africa\nCurrencies: Central African CFA franc (Fr)\nBorders: CAF, TCD, COG, GNQ, GAB, NGA",
           "img": "https://flagcdn.com/cm.svg"
         },
         {
           "front": "What is the capital of Canada?",
-          "back": "Ottawa",
+          "back": "Capital: Ottawa\nContinents: North America\nCurrencies: Canadian dollar ($)\nBorders: USA",
           "img": "https://flagcdn.com/ca.svg"
         },
         {
           "front": "What is the capital of Cape Verde?",
-          "back": "Praia",
+          "back": "Capital: Praia\nContinents: Africa\nCurrencies: Cape Verdean escudo (Esc)\nBorders: None",
           "img": "https://flagcdn.com/cv.svg"
         },
         {
           "front": "What is the capital of Caribbean Netherlands?",
-          "back": "Kralendijk",
+          "back": "Capital: Kralendijk\nContinents: North America\nCurrencies: United States dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/bq.svg"
         },
         {
           "front": "What is the capital of Cayman Islands?",
-          "back": "George Town",
+          "back": "Capital: George Town\nContinents: North America\nCurrencies: Cayman Islands dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/ky.svg"
         },
         {
           "front": "What is the capital of Central African Republic?",
-          "back": "Bangui",
+          "back": "Capital: Bangui\nContinents: Africa\nCurrencies: Central African CFA franc (Fr)\nBorders: CMR, TCD, COD, COG, SSD, SDN",
           "img": "https://flagcdn.com/cf.svg"
         },
         {
           "front": "What is the capital of Chad?",
-          "back": "N'Djamena",
+          "back": "Capital: N'Djamena\nContinents: Africa\nCurrencies: Central African CFA franc (Fr)\nBorders: CMR, CAF, LBY, NER, NGA, SDN",
           "img": "https://flagcdn.com/td.svg"
         },
         {
           "front": "What is the capital of Chile?",
-          "back": "Santiago",
+          "back": "Capital: Santiago\nContinents: South America\nCurrencies: Chilean peso ($)\nBorders: ARG, BOL, PER",
           "img": "https://flagcdn.com/cl.svg"
         },
         {
           "front": "What is the capital of China?",
-          "back": "Beijing",
+          "back": "Capital: Beijing\nContinents: Asia\nCurrencies: Chinese yuan (¥)\nBorders: AFG, BTN, MMR, HKG, IND, KAZ, NPL, PRK, KGZ, LAO, MAC, MNG, PAK, RUS, TJK, VNM",
           "img": "https://flagcdn.com/cn.svg"
         },
         {
           "front": "What is the capital of Christmas Island?",
-          "back": "Flying Fish Cove",
+          "back": "Capital: Flying Fish Cove\nContinents: Asia\nCurrencies: Australian dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/cx.svg"
         },
         {
           "front": "What is the capital of Cocos (Keeling) Islands?",
-          "back": "West Island",
+          "back": "Capital: West Island\nContinents: Asia\nCurrencies: Australian dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/cc.svg"
         },
         {
           "front": "What is the capital of Colombia?",
-          "back": "Bogotá",
+          "back": "Capital: Bogotá\nContinents: South America\nCurrencies: Colombian peso ($)\nBorders: BRA, ECU, PAN, PER, VEN",
           "img": "https://flagcdn.com/co.svg"
         },
         {
           "front": "What is the capital of Comoros?",
-          "back": "Moroni",
+          "back": "Capital: Moroni\nContinents: Africa\nCurrencies: Comorian franc (Fr)\nBorders: None",
           "img": "https://flagcdn.com/km.svg"
         },
         {
           "front": "What is the capital of Cook Islands?",
-          "back": "Avarua",
+          "back": "Capital: Avarua\nContinents: Oceania\nCurrencies: Cook Islands dollar ($), New Zealand dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/ck.svg"
         },
         {
           "front": "What is the capital of Costa Rica?",
-          "back": "San José",
+          "back": "Capital: San José\nContinents: North America\nCurrencies: Costa Rican colón (₡)\nBorders: NIC, PAN",
           "img": "https://flagcdn.com/cr.svg"
         },
         {
           "front": "What is the capital of Croatia?",
-          "back": "Zagreb",
+          "back": "Capital: Zagreb\nContinents: Europe\nCurrencies: Euro (€)\nBorders: BIH, HUN, MNE, SRB, SVN",
           "img": "https://flagcdn.com/hr.svg"
         },
         {
           "front": "What is the capital of Cuba?",
-          "back": "Havana",
+          "back": "Capital: Havana\nContinents: North America\nCurrencies: Cuban convertible peso ($), Cuban peso ($)\nBorders: None",
           "img": "https://flagcdn.com/cu.svg"
         },
         {
           "front": "What is the capital of Curaçao?",
-          "back": "Willemstad",
+          "back": "Capital: Willemstad\nContinents: North America\nCurrencies: Netherlands Antillean guilder (ƒ)\nBorders: None",
           "img": "https://flagcdn.com/cw.svg"
         },
         {
           "front": "What is the capital of Cyprus?",
-          "back": "Nicosia",
+          "back": "Capital: Nicosia\nContinents: Europe\nCurrencies: Euro (€)\nBorders: None",
           "img": "https://flagcdn.com/cy.svg"
         },
         {
           "front": "What is the capital of Czechia?",
-          "back": "Prague",
+          "back": "Capital: Prague\nContinents: Europe\nCurrencies: Czech koruna (Kč)\nBorders: AUT, DEU, POL, SVK",
           "img": "https://flagcdn.com/cz.svg"
         },
         {
-          "front": "What is the capital of DR Congo?",
-          "back": "Kinshasa",
-          "img": "https://flagcdn.com/cd.svg"
-        },
-        {
           "front": "What is the capital of Denmark?",
-          "back": "Copenhagen",
+          "back": "Capital: Copenhagen\nContinents: Europe\nCurrencies: Danish krone (kr)\nBorders: DEU",
           "img": "https://flagcdn.com/dk.svg"
         },
         {
           "front": "What is the capital of Djibouti?",
-          "back": "Djibouti",
+          "back": "Capital: Djibouti\nContinents: Africa\nCurrencies: Djiboutian franc (Fr)\nBorders: ERI, ETH, SOM",
           "img": "https://flagcdn.com/dj.svg"
         },
         {
           "front": "What is the capital of Dominica?",
-          "back": "Roseau",
+          "back": "Capital: Roseau\nContinents: North America\nCurrencies: Eastern Caribbean dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/dm.svg"
         },
         {
           "front": "What is the capital of Dominican Republic?",
-          "back": "Santo Domingo",
+          "back": "Capital: Santo Domingo\nContinents: North America\nCurrencies: Dominican peso ($)\nBorders: HTI",
           "img": "https://flagcdn.com/do.svg"
         },
         {
+          "front": "What is the capital of DR Congo?",
+          "back": "Capital: Kinshasa\nContinents: Africa\nCurrencies: Congolese franc (FC)\nBorders: AGO, BDI, CAF, COG, RWA, SSD, TZA, UGA, ZMB",
+          "img": "https://flagcdn.com/cd.svg"
+        },
+        {
           "front": "What is the capital of Ecuador?",
-          "back": "Quito",
+          "back": "Capital: Quito\nContinents: South America\nCurrencies: United States dollar ($)\nBorders: COL, PER",
           "img": "https://flagcdn.com/ec.svg"
         },
         {
           "front": "What is the capital of Egypt?",
-          "back": "Cairo",
+          "back": "Capital: Cairo\nContinents: Africa\nCurrencies: Egyptian pound (£)\nBorders: ISR, LBY, PSE, SDN",
           "img": "https://flagcdn.com/eg.svg"
         },
         {
           "front": "What is the capital of El Salvador?",
-          "back": "San Salvador",
+          "back": "Capital: San Salvador\nContinents: North America\nCurrencies: United States dollar ($)\nBorders: GTM, HND",
           "img": "https://flagcdn.com/sv.svg"
         },
         {
           "front": "What is the capital of Equatorial Guinea?",
-          "back": "Malabo",
+          "back": "Capital: Malabo\nContinents: Africa\nCurrencies: Central African CFA franc (Fr)\nBorders: CMR, GAB",
           "img": "https://flagcdn.com/gq.svg"
         },
         {
           "front": "What is the capital of Eritrea?",
-          "back": "Asmara",
+          "back": "Capital: Asmara\nContinents: Africa\nCurrencies: Eritrean nakfa (Nfk)\nBorders: DJI, ETH, SDN",
           "img": "https://flagcdn.com/er.svg"
         },
         {
           "front": "What is the capital of Estonia?",
-          "back": "Tallinn",
+          "back": "Capital: Tallinn\nContinents: Europe\nCurrencies: Euro (€)\nBorders: LVA, RUS",
           "img": "https://flagcdn.com/ee.svg"
         },
         {
           "front": "What is the capital of Eswatini?",
-          "back": "Mbabane",
+          "back": "Capital: Mbabane\nContinents: Africa\nCurrencies: Swazi lilangeni (L), South African rand (R)\nBorders: MOZ, ZAF",
           "img": "https://flagcdn.com/sz.svg"
         },
         {
           "front": "What is the capital of Ethiopia?",
-          "back": "Addis Ababa",
+          "back": "Capital: Addis Ababa\nContinents: Africa\nCurrencies: Ethiopian birr (Br)\nBorders: DJI, ERI, KEN, SOM, SSD, SDN",
           "img": "https://flagcdn.com/et.svg"
         },
         {
           "front": "What is the capital of Falkland Islands?",
-          "back": "Stanley",
+          "back": "Capital: Stanley\nContinents: South America\nCurrencies: Falkland Islands pound (£)\nBorders: None",
           "img": "https://flagcdn.com/fk.svg"
         },
         {
           "front": "What is the capital of Faroe Islands?",
-          "back": "Tórshavn",
+          "back": "Capital: Tórshavn\nContinents: Europe\nCurrencies: Danish krone (kr), Faroese króna (kr)\nBorders: None",
           "img": "https://flagcdn.com/fo.svg"
         },
         {
           "front": "What is the capital of Fiji?",
-          "back": "Suva",
+          "back": "Capital: Suva\nContinents: Oceania\nCurrencies: Fijian dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/fj.svg"
         },
         {
           "front": "What is the capital of Finland?",
-          "back": "Helsinki",
+          "back": "Capital: Helsinki\nContinents: Europe\nCurrencies: Euro (€)\nBorders: NOR, SWE, RUS",
           "img": "https://flagcdn.com/fi.svg"
         },
         {
           "front": "What is the capital of France?",
-          "back": "Paris",
+          "back": "Capital: Paris\nContinents: Europe\nCurrencies: Euro (€)\nBorders: AND, BEL, DEU, ITA, LUX, MCO, ESP, CHE",
           "img": "https://flagcdn.com/fr.svg"
         },
         {
           "front": "What is the capital of French Guiana?",
-          "back": "Cayenne",
+          "back": "Capital: Cayenne\nContinents: South America\nCurrencies: Euro (€)\nBorders: BRA, SUR",
           "img": "https://flagcdn.com/gf.svg"
         },
         {
           "front": "What is the capital of French Polynesia?",
-          "back": "Papeetē",
+          "back": "Capital: Papeetē\nContinents: Oceania\nCurrencies: CFP franc (₣)\nBorders: None",
           "img": "https://flagcdn.com/pf.svg"
         },
         {
           "front": "What is the capital of French Southern and Antarctic Lands?",
-          "back": "Port-aux-Français",
+          "back": "Capital: Port-aux-Français\nContinents: Antarctica\nCurrencies: Euro (€)\nBorders: None",
           "img": "https://flagcdn.com/tf.svg"
         },
         {
           "front": "What is the capital of Gabon?",
-          "back": "Libreville",
+          "back": "Capital: Libreville\nContinents: Africa\nCurrencies: Central African CFA franc (Fr)\nBorders: CMR, COG, GNQ",
           "img": "https://flagcdn.com/ga.svg"
         },
         {
           "front": "What is the capital of Gambia?",
-          "back": "Banjul",
+          "back": "Capital: Banjul\nContinents: Africa\nCurrencies: dalasi (D)\nBorders: SEN",
           "img": "https://flagcdn.com/gm.svg"
         },
         {
           "front": "What is the capital of Georgia?",
-          "back": "Tbilisi",
+          "back": "Capital: Tbilisi\nContinents: Asia\nCurrencies: lari (₾)\nBorders: ARM, AZE, RUS, TUR",
           "img": "https://flagcdn.com/ge.svg"
         },
         {
           "front": "What is the capital of Germany?",
-          "back": "Berlin",
+          "back": "Capital: Berlin\nContinents: Europe\nCurrencies: Euro (€)\nBorders: AUT, BEL, CZE, DNK, FRA, LUX, NLD, POL, CHE",
           "img": "https://flagcdn.com/de.svg"
         },
         {
           "front": "What is the capital of Ghana?",
-          "back": "Accra",
+          "back": "Capital: Accra\nContinents: Africa\nCurrencies: Ghanaian cedi (₵)\nBorders: BFA, CIV, TGO",
           "img": "https://flagcdn.com/gh.svg"
         },
         {
           "front": "What is the capital of Gibraltar?",
-          "back": "Gibraltar",
+          "back": "Capital: Gibraltar\nContinents: Europe\nCurrencies: Gibraltar pound (£)\nBorders: ESP",
           "img": "https://flagcdn.com/gi.svg"
         },
         {
           "front": "What is the capital of Greece?",
-          "back": "Athens",
+          "back": "Capital: Athens\nContinents: Europe\nCurrencies: Euro (€)\nBorders: ALB, BGR, TUR, MKD",
           "img": "https://flagcdn.com/gr.svg"
         },
         {
           "front": "What is the capital of Greenland?",
-          "back": "Nuuk",
+          "back": "Capital: Nuuk\nContinents: North America\nCurrencies: krone (kr.)\nBorders: None",
           "img": "https://flagcdn.com/gl.svg"
         },
         {
           "front": "What is the capital of Grenada?",
-          "back": "St. George's",
+          "back": "Capital: St. George's\nContinents: North America\nCurrencies: Eastern Caribbean dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/gd.svg"
         },
         {
           "front": "What is the capital of Guadeloupe?",
-          "back": "Basse-Terre",
+          "back": "Capital: Basse-Terre\nContinents: North America\nCurrencies: Euro (€)\nBorders: None",
           "img": "https://flagcdn.com/gp.svg"
         },
         {
           "front": "What is the capital of Guam?",
-          "back": "Hagåtña",
+          "back": "Capital: Hagåtña\nContinents: Oceania\nCurrencies: United States dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/gu.svg"
         },
         {
           "front": "What is the capital of Guatemala?",
-          "back": "Guatemala City",
+          "back": "Capital: Guatemala City\nContinents: North America\nCurrencies: Guatemalan quetzal (Q)\nBorders: BLZ, SLV, HND, MEX",
           "img": "https://flagcdn.com/gt.svg"
         },
         {
           "front": "What is the capital of Guernsey?",
-          "back": "St. Peter Port",
+          "back": "Capital: St. Peter Port\nContinents: Europe\nCurrencies: British pound (£), Guernsey pound (£)\nBorders: None",
           "img": "https://flagcdn.com/gg.svg"
         },
         {
           "front": "What is the capital of Guinea?",
-          "back": "Conakry",
+          "back": "Capital: Conakry\nContinents: Africa\nCurrencies: Guinean franc (Fr)\nBorders: CIV, GNB, LBR, MLI, SEN, SLE",
           "img": "https://flagcdn.com/gn.svg"
         },
         {
           "front": "What is the capital of Guinea-Bissau?",
-          "back": "Bissau",
+          "back": "Capital: Bissau\nContinents: Africa\nCurrencies: West African CFA franc (Fr)\nBorders: GIN, SEN",
           "img": "https://flagcdn.com/gw.svg"
         },
         {
           "front": "What is the capital of Guyana?",
-          "back": "Georgetown",
+          "back": "Capital: Georgetown\nContinents: South America\nCurrencies: Guyanese dollar ($)\nBorders: BRA, SUR, VEN",
           "img": "https://flagcdn.com/gy.svg"
         },
         {
           "front": "What is the capital of Haiti?",
-          "back": "Port-au-Prince",
+          "back": "Capital: Port-au-Prince\nContinents: North America\nCurrencies: Haitian gourde (G)\nBorders: DOM",
           "img": "https://flagcdn.com/ht.svg"
         },
         {
+          "front": "What are key facts about Heard Island and McDonald Islands?",
+          "back": "Capital: None\nContinents: Antarctica\nCurrencies: None\nBorders: None",
+          "img": "https://flagcdn.com/hm.svg"
+        },
+        {
           "front": "What is the capital of Honduras?",
-          "back": "Tegucigalpa",
+          "back": "Capital: Tegucigalpa\nContinents: North America\nCurrencies: Honduran lempira (L)\nBorders: GTM, SLV, NIC",
           "img": "https://flagcdn.com/hn.svg"
         },
         {
           "front": "What is the capital of Hong Kong?",
-          "back": "City of Victoria",
+          "back": "Capital: City of Victoria\nContinents: Asia\nCurrencies: Hong Kong dollar ($)\nBorders: CHN",
           "img": "https://flagcdn.com/hk.svg"
         },
         {
           "front": "What is the capital of Hungary?",
-          "back": "Budapest",
+          "back": "Capital: Budapest\nContinents: Europe\nCurrencies: Hungarian forint (Ft)\nBorders: AUT, HRV, ROU, SRB, SVK, SVN, UKR",
           "img": "https://flagcdn.com/hu.svg"
         },
         {
           "front": "What is the capital of Iceland?",
-          "back": "Reykjavik",
+          "back": "Capital: Reykjavik\nContinents: Europe\nCurrencies: Icelandic króna (kr)\nBorders: None",
           "img": "https://flagcdn.com/is.svg"
         },
         {
           "front": "What is the capital of India?",
-          "back": "New Delhi",
+          "back": "Capital: New Delhi\nContinents: Asia\nCurrencies: Indian rupee (₹)\nBorders: BGD, BTN, MMR, CHN, NPL, PAK",
           "img": "https://flagcdn.com/in.svg"
         },
         {
           "front": "What is the capital of Indonesia?",
-          "back": "Jakarta",
+          "back": "Capital: Jakarta\nContinents: Asia\nCurrencies: Indonesian rupiah (Rp)\nBorders: TLS, MYS, PNG",
           "img": "https://flagcdn.com/id.svg"
         },
         {
           "front": "What is the capital of Iran?",
-          "back": "Tehran",
+          "back": "Capital: Tehran\nContinents: Asia\nCurrencies: Iranian rial (﷼)\nBorders: AFG, ARM, AZE, IRQ, PAK, TUR, TKM",
           "img": "https://flagcdn.com/ir.svg"
         },
         {
           "front": "What is the capital of Iraq?",
-          "back": "Baghdad",
+          "back": "Capital: Baghdad\nContinents: Asia\nCurrencies: Iraqi dinar (ع.د)\nBorders: IRN, JOR, KWT, SAU, SYR, TUR",
           "img": "https://flagcdn.com/iq.svg"
         },
         {
           "front": "What is the capital of Ireland?",
-          "back": "Dublin",
+          "back": "Capital: Dublin\nContinents: Europe\nCurrencies: Euro (€)\nBorders: GBR",
           "img": "https://flagcdn.com/ie.svg"
         },
         {
           "front": "What is the capital of Isle of Man?",
-          "back": "Douglas",
+          "back": "Capital: Douglas\nContinents: Europe\nCurrencies: British pound (£), Manx pound (£)\nBorders: None",
           "img": "https://flagcdn.com/im.svg"
         },
         {
           "front": "What is the capital of Israel?",
-          "back": "Jerusalem",
+          "back": "Capital: Jerusalem\nContinents: Asia\nCurrencies: Israeli new shekel (₪)\nBorders: EGY, JOR, LBN, PSE, SYR",
           "img": "https://flagcdn.com/il.svg"
         },
         {
           "front": "What is the capital of Italy?",
-          "back": "Rome",
+          "back": "Capital: Rome\nContinents: Europe\nCurrencies: Euro (€)\nBorders: AUT, FRA, SMR, SVN, CHE, VAT",
           "img": "https://flagcdn.com/it.svg"
         },
         {
           "front": "What is the capital of Ivory Coast?",
-          "back": "Yamoussoukro",
+          "back": "Capital: Yamoussoukro\nContinents: Africa\nCurrencies: West African CFA franc (Fr)\nBorders: BFA, GHA, GIN, LBR, MLI",
           "img": "https://flagcdn.com/ci.svg"
         },
         {
           "front": "What is the capital of Jamaica?",
-          "back": "Kingston",
+          "back": "Capital: Kingston\nContinents: North America\nCurrencies: Jamaican dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/jm.svg"
         },
         {
           "front": "What is the capital of Japan?",
-          "back": "Tokyo",
+          "back": "Capital: Tokyo\nContinents: Asia\nCurrencies: Japanese yen (¥)\nBorders: None",
           "img": "https://flagcdn.com/jp.svg"
         },
         {
           "front": "What is the capital of Jersey?",
-          "back": "Saint Helier",
+          "back": "Capital: Saint Helier\nContinents: Europe\nCurrencies: British pound (£), Jersey pound (£)\nBorders: None",
           "img": "https://flagcdn.com/je.svg"
         },
         {
           "front": "What is the capital of Jordan?",
-          "back": "Amman",
+          "back": "Capital: Amman\nContinents: Asia\nCurrencies: Jordanian dinar (د.ا)\nBorders: IRQ, ISR, PSE, SAU, SYR",
           "img": "https://flagcdn.com/jo.svg"
         },
         {
           "front": "What is the capital of Kazakhstan?",
-          "back": "Astana",
+          "back": "Capital: Astana\nContinents: Asia\nCurrencies: Kazakhstani tenge (₸)\nBorders: CHN, KGZ, RUS, TKM, UZB",
           "img": "https://flagcdn.com/kz.svg"
         },
         {
           "front": "What is the capital of Kenya?",
-          "back": "Nairobi",
+          "back": "Capital: Nairobi\nContinents: Africa\nCurrencies: Kenyan shilling (Sh)\nBorders: ETH, SOM, SSD, TZA, UGA",
           "img": "https://flagcdn.com/ke.svg"
         },
         {
           "front": "What is the capital of Kiribati?",
-          "back": "South Tarawa",
+          "back": "Capital: South Tarawa\nContinents: Oceania\nCurrencies: Australian dollar ($), Kiribati dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/ki.svg"
         },
         {
           "front": "What is the capital of Kosovo?",
-          "back": "Pristina",
+          "back": "Capital: Pristina\nContinents: Europe\nCurrencies: Euro (€)\nBorders: ALB, MKD, MNE, SRB",
           "img": "https://flagcdn.com/xk.svg"
         },
         {
           "front": "What is the capital of Kuwait?",
-          "back": "Kuwait City",
+          "back": "Capital: Kuwait City\nContinents: Asia\nCurrencies: Kuwaiti dinar (د.ك)\nBorders: IRQ, SAU",
           "img": "https://flagcdn.com/kw.svg"
         },
         {
           "front": "What is the capital of Kyrgyzstan?",
-          "back": "Bishkek",
+          "back": "Capital: Bishkek\nContinents: Asia\nCurrencies: Kyrgyzstani som (с)\nBorders: CHN, KAZ, TJK, UZB",
           "img": "https://flagcdn.com/kg.svg"
         },
         {
           "front": "What is the capital of Laos?",
-          "back": "Vientiane",
+          "back": "Capital: Vientiane\nContinents: Asia\nCurrencies: Lao kip (₭)\nBorders: MMR, KHM, CHN, THA, VNM",
           "img": "https://flagcdn.com/la.svg"
         },
         {
           "front": "What is the capital of Latvia?",
-          "back": "Riga",
+          "back": "Capital: Riga\nContinents: Europe\nCurrencies: Euro (€)\nBorders: BLR, EST, LTU, RUS",
           "img": "https://flagcdn.com/lv.svg"
         },
         {
           "front": "What is the capital of Lebanon?",
-          "back": "Beirut",
+          "back": "Capital: Beirut\nContinents: Asia\nCurrencies: Lebanese pound (ل.ل)\nBorders: ISR, SYR",
           "img": "https://flagcdn.com/lb.svg"
         },
         {
           "front": "What is the capital of Lesotho?",
-          "back": "Maseru",
+          "back": "Capital: Maseru\nContinents: Africa\nCurrencies: Lesotho loti (L), South African rand (R)\nBorders: ZAF",
           "img": "https://flagcdn.com/ls.svg"
         },
         {
           "front": "What is the capital of Liberia?",
-          "back": "Monrovia",
+          "back": "Capital: Monrovia\nContinents: Africa\nCurrencies: Liberian dollar ($)\nBorders: GIN, CIV, SLE",
           "img": "https://flagcdn.com/lr.svg"
         },
         {
           "front": "What is the capital of Libya?",
-          "back": "Tripoli",
+          "back": "Capital: Tripoli\nContinents: Africa\nCurrencies: Libyan dinar (ل.د)\nBorders: DZA, TCD, EGY, NER, SDN, TUN",
           "img": "https://flagcdn.com/ly.svg"
         },
         {
           "front": "What is the capital of Liechtenstein?",
-          "back": "Vaduz",
+          "back": "Capital: Vaduz\nContinents: Europe\nCurrencies: Swiss franc (Fr)\nBorders: AUT, CHE",
           "img": "https://flagcdn.com/li.svg"
         },
         {
           "front": "What is the capital of Lithuania?",
-          "back": "Vilnius",
+          "back": "Capital: Vilnius\nContinents: Europe\nCurrencies: Euro (€)\nBorders: BLR, LVA, POL, RUS",
           "img": "https://flagcdn.com/lt.svg"
         },
         {
           "front": "What is the capital of Luxembourg?",
-          "back": "Luxembourg",
+          "back": "Capital: Luxembourg\nContinents: Europe\nCurrencies: Euro (€)\nBorders: BEL, FRA, DEU",
           "img": "https://flagcdn.com/lu.svg"
         },
         {
+          "front": "What are key facts about Macau?",
+          "back": "Capital: None\nContinents: Asia\nCurrencies: Macanese pataca (P)\nBorders: CHN",
+          "img": "https://flagcdn.com/mo.svg"
+        },
+        {
           "front": "What is the capital of Madagascar?",
-          "back": "Antananarivo",
+          "back": "Capital: Antananarivo\nContinents: Africa\nCurrencies: Malagasy ariary (Ar)\nBorders: None",
           "img": "https://flagcdn.com/mg.svg"
         },
         {
           "front": "What is the capital of Malawi?",
-          "back": "Lilongwe",
+          "back": "Capital: Lilongwe\nContinents: Africa\nCurrencies: Malawian kwacha (MK)\nBorders: MOZ, TZA, ZMB",
           "img": "https://flagcdn.com/mw.svg"
         },
         {
           "front": "What is the capital of Malaysia?",
-          "back": "Kuala Lumpur",
+          "back": "Capital: Kuala Lumpur\nContinents: Asia\nCurrencies: Malaysian ringgit (RM)\nBorders: BRN, IDN, THA",
           "img": "https://flagcdn.com/my.svg"
         },
         {
           "front": "What is the capital of Maldives?",
-          "back": "Malé",
+          "back": "Capital: Malé\nContinents: Asia\nCurrencies: Maldivian rufiyaa (.ރ)\nBorders: None",
           "img": "https://flagcdn.com/mv.svg"
         },
         {
           "front": "What is the capital of Mali?",
-          "back": "Bamako",
+          "back": "Capital: Bamako\nContinents: Africa\nCurrencies: West African CFA franc (Fr)\nBorders: DZA, BFA, GIN, CIV, MRT, NER, SEN",
           "img": "https://flagcdn.com/ml.svg"
         },
         {
           "front": "What is the capital of Malta?",
-          "back": "Valletta",
+          "back": "Capital: Valletta\nContinents: Europe\nCurrencies: Euro (€)\nBorders: None",
           "img": "https://flagcdn.com/mt.svg"
         },
         {
           "front": "What is the capital of Marshall Islands?",
-          "back": "Majuro",
+          "back": "Capital: Majuro\nContinents: Oceania\nCurrencies: United States dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/mh.svg"
         },
         {
           "front": "What is the capital of Martinique?",
-          "back": "Fort-de-France",
+          "back": "Capital: Fort-de-France\nContinents: North America\nCurrencies: Euro (€)\nBorders: None",
           "img": "https://flagcdn.com/mq.svg"
         },
         {
           "front": "What is the capital of Mauritania?",
-          "back": "Nouakchott",
+          "back": "Capital: Nouakchott\nContinents: Africa\nCurrencies: Mauritanian ouguiya (UM)\nBorders: DZA, MLI, SEN, ESH",
           "img": "https://flagcdn.com/mr.svg"
         },
         {
           "front": "What is the capital of Mauritius?",
-          "back": "Port Louis",
+          "back": "Capital: Port Louis\nContinents: Africa\nCurrencies: Mauritian rupee (₨)\nBorders: None",
           "img": "https://flagcdn.com/mu.svg"
         },
         {
           "front": "What is the capital of Mayotte?",
-          "back": "Mamoudzou",
+          "back": "Capital: Mamoudzou\nContinents: Africa\nCurrencies: Euro (€)\nBorders: None",
           "img": "https://flagcdn.com/yt.svg"
         },
         {
           "front": "What is the capital of Mexico?",
-          "back": "Mexico City",
+          "back": "Capital: Mexico City\nContinents: North America\nCurrencies: Mexican peso ($)\nBorders: BLZ, GTM, USA",
           "img": "https://flagcdn.com/mx.svg"
         },
         {
           "front": "What is the capital of Micronesia?",
-          "back": "Palikir",
+          "back": "Capital: Palikir\nContinents: Oceania\nCurrencies: United States dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/fm.svg"
         },
         {
           "front": "What is the capital of Moldova?",
-          "back": "Chișinău",
+          "back": "Capital: Chișinău\nContinents: Europe\nCurrencies: Moldovan leu (L)\nBorders: ROU, UKR",
           "img": "https://flagcdn.com/md.svg"
         },
         {
           "front": "What is the capital of Monaco?",
-          "back": "Monaco",
+          "back": "Capital: Monaco\nContinents: Europe\nCurrencies: Euro (€)\nBorders: FRA",
           "img": "https://flagcdn.com/mc.svg"
         },
         {
           "front": "What is the capital of Mongolia?",
-          "back": "Ulan Bator",
+          "back": "Capital: Ulan Bator\nContinents: Asia\nCurrencies: Mongolian tögrög (₮)\nBorders: CHN, RUS",
           "img": "https://flagcdn.com/mn.svg"
         },
         {
           "front": "What is the capital of Montenegro?",
-          "back": "Podgorica",
+          "back": "Capital: Podgorica\nContinents: Europe\nCurrencies: Euro (€)\nBorders: ALB, BIH, HRV, UNK, SRB",
           "img": "https://flagcdn.com/me.svg"
         },
         {
           "front": "What is the capital of Montserrat?",
-          "back": "Plymouth",
+          "back": "Capital: Plymouth\nContinents: North America\nCurrencies: Eastern Caribbean dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/ms.svg"
         },
         {
           "front": "What is the capital of Morocco?",
-          "back": "Rabat",
+          "back": "Capital: Rabat\nContinents: Africa\nCurrencies: Moroccan dirham (د.م.)\nBorders: DZA, ESH, ESP",
           "img": "https://flagcdn.com/ma.svg"
         },
         {
           "front": "What is the capital of Mozambique?",
-          "back": "Maputo",
+          "back": "Capital: Maputo\nContinents: Africa\nCurrencies: Mozambican metical (MT)\nBorders: MWI, ZAF, SWZ, TZA, ZMB, ZWE",
           "img": "https://flagcdn.com/mz.svg"
         },
         {
           "front": "What is the capital of Myanmar?",
-          "back": "Naypyidaw",
+          "back": "Capital: Naypyidaw\nContinents: Asia\nCurrencies: Burmese kyat (Ks)\nBorders: BGD, CHN, IND, LAO, THA",
           "img": "https://flagcdn.com/mm.svg"
         },
         {
           "front": "What is the capital of Namibia?",
-          "back": "Windhoek",
+          "back": "Capital: Windhoek\nContinents: Africa\nCurrencies: Namibian dollar ($), South African rand (R)\nBorders: AGO, BWA, ZAF, ZMB",
           "img": "https://flagcdn.com/na.svg"
         },
         {
           "front": "What is the capital of Nauru?",
-          "back": "Yaren",
+          "back": "Capital: Yaren\nContinents: Oceania\nCurrencies: Australian dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/nr.svg"
         },
         {
           "front": "What is the capital of Nepal?",
-          "back": "Kathmandu",
+          "back": "Capital: Kathmandu\nContinents: Asia\nCurrencies: Nepalese rupee (₨)\nBorders: CHN, IND",
           "img": "https://flagcdn.com/np.svg"
         },
         {
           "front": "What is the capital of Netherlands?",
-          "back": "Amsterdam",
+          "back": "Capital: Amsterdam\nContinents: Europe\nCurrencies: Euro (€)\nBorders: BEL, DEU",
           "img": "https://flagcdn.com/nl.svg"
         },
         {
           "front": "What is the capital of New Caledonia?",
-          "back": "Nouméa",
+          "back": "Capital: Nouméa\nContinents: Oceania\nCurrencies: CFP franc (₣)\nBorders: None",
           "img": "https://flagcdn.com/nc.svg"
         },
         {
           "front": "What is the capital of New Zealand?",
-          "back": "Wellington",
+          "back": "Capital: Wellington\nContinents: Oceania\nCurrencies: New Zealand dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/nz.svg"
         },
         {
           "front": "What is the capital of Nicaragua?",
-          "back": "Managua",
+          "back": "Capital: Managua\nContinents: North America\nCurrencies: Nicaraguan córdoba (C$)\nBorders: CRI, HND",
           "img": "https://flagcdn.com/ni.svg"
         },
         {
           "front": "What is the capital of Niger?",
-          "back": "Niamey",
+          "back": "Capital: Niamey\nContinents: Africa\nCurrencies: West African CFA franc (Fr)\nBorders: DZA, BEN, BFA, TCD, LBY, MLI, NGA",
           "img": "https://flagcdn.com/ne.svg"
         },
         {
           "front": "What is the capital of Nigeria?",
-          "back": "Abuja",
+          "back": "Capital: Abuja\nContinents: Africa\nCurrencies: Nigerian naira (₦)\nBorders: BEN, CMR, TCD, NER",
           "img": "https://flagcdn.com/ng.svg"
         },
         {
           "front": "What is the capital of Niue?",
-          "back": "Alofi",
+          "back": "Capital: Alofi\nContinents: Oceania\nCurrencies: New Zealand dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/nu.svg"
         },
         {
           "front": "What is the capital of Norfolk Island?",
-          "back": "Kingston",
+          "back": "Capital: Kingston\nContinents: Oceania\nCurrencies: Australian dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/nf.svg"
         },
         {
           "front": "What is the capital of North Korea?",
-          "back": "Pyongyang",
+          "back": "Capital: Pyongyang\nContinents: Asia\nCurrencies: North Korean won (₩)\nBorders: CHN, KOR, RUS",
           "img": "https://flagcdn.com/kp.svg"
         },
         {
           "front": "What is the capital of North Macedonia?",
-          "back": "Skopje",
+          "back": "Capital: Skopje\nContinents: Europe\nCurrencies: denar (den)\nBorders: ALB, BGR, GRC, UNK, SRB",
           "img": "https://flagcdn.com/mk.svg"
         },
         {
           "front": "What is the capital of Northern Mariana Islands?",
-          "back": "Saipan",
+          "back": "Capital: Saipan\nContinents: Oceania\nCurrencies: United States dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/mp.svg"
         },
         {
           "front": "What is the capital of Norway?",
-          "back": "Oslo",
+          "back": "Capital: Oslo\nContinents: Europe\nCurrencies: Norwegian krone (kr)\nBorders: FIN, SWE, RUS",
           "img": "https://flagcdn.com/no.svg"
         },
         {
           "front": "What is the capital of Oman?",
-          "back": "Muscat",
+          "back": "Capital: Muscat\nContinents: Asia\nCurrencies: Omani rial (ر.ع.)\nBorders: SAU, ARE, YEM",
           "img": "https://flagcdn.com/om.svg"
         },
         {
           "front": "What is the capital of Pakistan?",
-          "back": "Islamabad",
+          "back": "Capital: Islamabad\nContinents: Asia\nCurrencies: Pakistani rupee (₨)\nBorders: AFG, CHN, IND, IRN",
           "img": "https://flagcdn.com/pk.svg"
         },
         {
           "front": "What is the capital of Palau?",
-          "back": "Ngerulmud",
+          "back": "Capital: Ngerulmud\nContinents: Oceania\nCurrencies: United States dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/pw.svg"
         },
         {
           "front": "What is the capital of Palestine?",
-          "back": "Ramallah",
+          "back": "Capital: Ramallah, Jerusalem\nContinents: Asia\nCurrencies: Egyptian pound (E£), Israeli new shekel (₪), Jordanian dinar (JD)\nBorders: ISR, EGY, JOR",
           "img": "https://flagcdn.com/ps.svg"
         },
         {
           "front": "What is the capital of Panama?",
-          "back": "Panama City",
+          "back": "Capital: Panama City\nContinents: North America\nCurrencies: Panamanian balboa (B/.), United States dollar ($)\nBorders: COL, CRI",
           "img": "https://flagcdn.com/pa.svg"
         },
         {
           "front": "What is the capital of Papua New Guinea?",
-          "back": "Port Moresby",
+          "back": "Capital: Port Moresby\nContinents: Oceania\nCurrencies: Papua New Guinean kina (K)\nBorders: IDN",
           "img": "https://flagcdn.com/pg.svg"
         },
         {
           "front": "What is the capital of Paraguay?",
-          "back": "Asunción",
+          "back": "Capital: Asunción\nContinents: South America\nCurrencies: Paraguayan guaraní (₲)\nBorders: ARG, BOL, BRA",
           "img": "https://flagcdn.com/py.svg"
         },
         {
           "front": "What is the capital of Peru?",
-          "back": "Lima",
+          "back": "Capital: Lima\nContinents: South America\nCurrencies: Peruvian sol (S/ )\nBorders: BOL, BRA, CHL, COL, ECU",
           "img": "https://flagcdn.com/pe.svg"
         },
         {
           "front": "What is the capital of Philippines?",
-          "back": "Manila",
+          "back": "Capital: Manila\nContinents: Asia\nCurrencies: Philippine peso (₱)\nBorders: None",
           "img": "https://flagcdn.com/ph.svg"
         },
         {
           "front": "What is the capital of Pitcairn Islands?",
-          "back": "Adamstown",
+          "back": "Capital: Adamstown\nContinents: Oceania\nCurrencies: New Zealand dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/pn.svg"
         },
         {
           "front": "What is the capital of Poland?",
-          "back": "Warsaw",
+          "back": "Capital: Warsaw\nContinents: Europe\nCurrencies: Polish złoty (zł)\nBorders: BLR, CZE, DEU, LTU, RUS, SVK, UKR",
           "img": "https://flagcdn.com/pl.svg"
         },
         {
           "front": "What is the capital of Portugal?",
-          "back": "Lisbon",
+          "back": "Capital: Lisbon\nContinents: Europe\nCurrencies: Euro (€)\nBorders: ESP",
           "img": "https://flagcdn.com/pt.svg"
         },
         {
           "front": "What is the capital of Puerto Rico?",
-          "back": "San Juan",
+          "back": "Capital: San Juan\nContinents: North America\nCurrencies: United States dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/pr.svg"
         },
         {
           "front": "What is the capital of Qatar?",
-          "back": "Doha",
+          "back": "Capital: Doha\nContinents: Asia\nCurrencies: Qatari riyal (ر.ق)\nBorders: SAU",
           "img": "https://flagcdn.com/qa.svg"
         },
         {
           "front": "What is the capital of Republic of the Congo?",
-          "back": "Brazzaville",
+          "back": "Capital: Brazzaville\nContinents: Africa\nCurrencies: Central African CFA franc (Fr)\nBorders: AGO, CMR, CAF, COD, GAB",
           "img": "https://flagcdn.com/cg.svg"
         },
         {
+          "front": "What is the capital of Réunion?",
+          "back": "Capital: Saint-Denis\nContinents: Africa\nCurrencies: Euro (€)\nBorders: None",
+          "img": "https://flagcdn.com/re.svg"
+        },
+        {
           "front": "What is the capital of Romania?",
-          "back": "Bucharest",
+          "back": "Capital: Bucharest\nContinents: Europe\nCurrencies: Romanian leu (lei)\nBorders: BGR, HUN, MDA, SRB, UKR",
           "img": "https://flagcdn.com/ro.svg"
         },
         {
           "front": "What is the capital of Russia?",
-          "back": "Moscow",
+          "back": "Capital: Moscow\nContinents: Europe, Asia\nCurrencies: Russian ruble (₽)\nBorders: AZE, BLR, CHN, EST, FIN, GEO, KAZ, PRK, LVA, LTU, MNG, NOR, POL, UKR",
           "img": "https://flagcdn.com/ru.svg"
         },
         {
           "front": "What is the capital of Rwanda?",
-          "back": "Kigali",
+          "back": "Capital: Kigali\nContinents: Africa\nCurrencies: Rwandan franc (Fr)\nBorders: BDI, COD, TZA, UGA",
           "img": "https://flagcdn.com/rw.svg"
         },
         {
-          "front": "What is the capital of Réunion?",
-          "back": "Saint-Denis",
-          "img": "https://flagcdn.com/re.svg"
-        },
-        {
           "front": "What is the capital of Saint Barthélemy?",
-          "back": "Gustavia",
+          "back": "Capital: Gustavia\nContinents: North America\nCurrencies: Euro (€)\nBorders: None",
           "img": "https://flagcdn.com/bl.svg"
         },
         {
           "front": "What is the capital of Saint Helena, Ascension and Tristan da Cunha?",
-          "back": "Jamestown",
+          "back": "Capital: Jamestown\nContinents: Africa\nCurrencies: Pound sterling (£), Saint Helena pound (£)\nBorders: None",
           "img": "https://flagcdn.com/sh.svg"
         },
         {
           "front": "What is the capital of Saint Kitts and Nevis?",
-          "back": "Basseterre",
+          "back": "Capital: Basseterre\nContinents: North America\nCurrencies: Eastern Caribbean dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/kn.svg"
         },
         {
           "front": "What is the capital of Saint Lucia?",
-          "back": "Castries",
+          "back": "Capital: Castries\nContinents: North America\nCurrencies: Eastern Caribbean dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/lc.svg"
         },
         {
           "front": "What is the capital of Saint Martin?",
-          "back": "Marigot",
+          "back": "Capital: Marigot\nContinents: North America\nCurrencies: Euro (€)\nBorders: SXM",
           "img": "https://flagcdn.com/mf.svg"
         },
         {
           "front": "What is the capital of Saint Pierre and Miquelon?",
-          "back": "Saint-Pierre",
+          "back": "Capital: Saint-Pierre\nContinents: North America\nCurrencies: Euro (€)\nBorders: None",
           "img": "https://flagcdn.com/pm.svg"
         },
         {
           "front": "What is the capital of Saint Vincent and the Grenadines?",
-          "back": "Kingstown",
+          "back": "Capital: Kingstown\nContinents: North America\nCurrencies: Eastern Caribbean dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/vc.svg"
         },
         {
           "front": "What is the capital of Samoa?",
-          "back": "Apia",
+          "back": "Capital: Apia\nContinents: Oceania\nCurrencies: Samoan tālā (T)\nBorders: None",
           "img": "https://flagcdn.com/ws.svg"
         },
         {
           "front": "What is the capital of San Marino?",
-          "back": "City of San Marino",
+          "back": "Capital: City of San Marino\nContinents: Europe\nCurrencies: Euro (€)\nBorders: ITA",
           "img": "https://flagcdn.com/sm.svg"
         },
         {
+          "front": "What is the capital of São Tomé and Príncipe?",
+          "back": "Capital: São Tomé\nContinents: Africa\nCurrencies: São Tomé and Príncipe dobra (Db)\nBorders: None",
+          "img": "https://flagcdn.com/st.svg"
+        },
+        {
           "front": "What is the capital of Saudi Arabia?",
-          "back": "Riyadh",
+          "back": "Capital: Riyadh\nContinents: Asia\nCurrencies: Saudi riyal (ر.س)\nBorders: IRQ, JOR, KWT, OMN, QAT, ARE, YEM",
           "img": "https://flagcdn.com/sa.svg"
         },
         {
           "front": "What is the capital of Senegal?",
-          "back": "Dakar",
+          "back": "Capital: Dakar\nContinents: Africa\nCurrencies: West African CFA franc (Fr)\nBorders: GMB, GIN, GNB, MLI, MRT",
           "img": "https://flagcdn.com/sn.svg"
         },
         {
           "front": "What is the capital of Serbia?",
-          "back": "Belgrade",
+          "back": "Capital: Belgrade\nContinents: Europe\nCurrencies: Serbian dinar (дин.)\nBorders: BIH, BGR, HRV, HUN, UNK, MKD, MNE, ROU",
           "img": "https://flagcdn.com/rs.svg"
         },
         {
           "front": "What is the capital of Seychelles?",
-          "back": "Victoria",
+          "back": "Capital: Victoria\nContinents: Africa\nCurrencies: Seychellois rupee (₨)\nBorders: None",
           "img": "https://flagcdn.com/sc.svg"
         },
         {
           "front": "What is the capital of Sierra Leone?",
-          "back": "Freetown",
+          "back": "Capital: Freetown\nContinents: Africa\nCurrencies: Leone (Le)\nBorders: GIN, LBR",
           "img": "https://flagcdn.com/sl.svg"
         },
         {
           "front": "What is the capital of Singapore?",
-          "back": "Singapore",
+          "back": "Capital: Singapore\nContinents: Asia\nCurrencies: Singapore dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/sg.svg"
         },
         {
           "front": "What is the capital of Sint Maarten?",
-          "back": "Philipsburg",
+          "back": "Capital: Philipsburg\nContinents: North America\nCurrencies: Netherlands Antillean guilder (ƒ)\nBorders: MAF",
           "img": "https://flagcdn.com/sx.svg"
         },
         {
           "front": "What is the capital of Slovakia?",
-          "back": "Bratislava",
+          "back": "Capital: Bratislava\nContinents: Europe\nCurrencies: Euro (€)\nBorders: AUT, CZE, HUN, POL, UKR",
           "img": "https://flagcdn.com/sk.svg"
         },
         {
           "front": "What is the capital of Slovenia?",
-          "back": "Ljubljana",
+          "back": "Capital: Ljubljana\nContinents: Europe\nCurrencies: Euro (€)\nBorders: AUT, HRV, ITA, HUN",
           "img": "https://flagcdn.com/si.svg"
         },
         {
           "front": "What is the capital of Solomon Islands?",
-          "back": "Honiara",
+          "back": "Capital: Honiara\nContinents: Oceania\nCurrencies: Solomon Islands dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/sb.svg"
         },
         {
           "front": "What is the capital of Somalia?",
-          "back": "Mogadishu",
+          "back": "Capital: Mogadishu\nContinents: Africa\nCurrencies: Somali shilling (Sh)\nBorders: DJI, ETH, KEN",
           "img": "https://flagcdn.com/so.svg"
         },
         {
           "front": "What is the capital of South Africa?",
-          "back": "Pretoria",
+          "back": "Capital: Pretoria, Bloemfontein, Cape Town\nContinents: Africa\nCurrencies: South African rand (R)\nBorders: BWA, LSO, MOZ, NAM, SWZ, ZWE",
           "img": "https://flagcdn.com/za.svg"
         },
         {
           "front": "What is the capital of South Georgia?",
-          "back": "King Edward Point",
+          "back": "Capital: King Edward Point\nContinents: Antarctica\nCurrencies: British pound (£)\nBorders: None",
           "img": "https://flagcdn.com/gs.svg"
         },
         {
           "front": "What is the capital of South Korea?",
-          "back": "Seoul",
+          "back": "Capital: Seoul\nContinents: Asia\nCurrencies: South Korean won (₩)\nBorders: PRK",
           "img": "https://flagcdn.com/kr.svg"
         },
         {
           "front": "What is the capital of South Sudan?",
-          "back": "Juba",
+          "back": "Capital: Juba\nContinents: Africa\nCurrencies: South Sudanese pound (£)\nBorders: CAF, COD, ETH, KEN, SDN, UGA",
           "img": "https://flagcdn.com/ss.svg"
         },
         {
           "front": "What is the capital of Spain?",
-          "back": "Madrid",
+          "back": "Capital: Madrid\nContinents: Europe\nCurrencies: Euro (€)\nBorders: AND, FRA, GIB, PRT, MAR",
           "img": "https://flagcdn.com/es.svg"
         },
         {
           "front": "What is the capital of Sri Lanka?",
-          "back": "Sri Jayawardenepura Kotte",
+          "back": "Capital: Sri Jayawardenepura Kotte\nContinents: Asia\nCurrencies: Sri Lankan rupee (Rs  රු)\nBorders: None",
           "img": "https://flagcdn.com/lk.svg"
         },
         {
           "front": "What is the capital of Sudan?",
-          "back": "Khartoum",
+          "back": "Capital: Khartoum\nContinents: Africa\nCurrencies: Sudanese pound (ج.س)\nBorders: CAF, TCD, EGY, ERI, ETH, LBY, SSD",
           "img": "https://flagcdn.com/sd.svg"
         },
         {
           "front": "What is the capital of Suriname?",
-          "back": "Paramaribo",
+          "back": "Capital: Paramaribo\nContinents: South America\nCurrencies: Surinamese dollar ($)\nBorders: BRA, GUF, GUY",
           "img": "https://flagcdn.com/sr.svg"
         },
         {
           "front": "What is the capital of Svalbard and Jan Mayen?",
-          "back": "Longyearbyen",
+          "back": "Capital: Longyearbyen\nContinents: Europe\nCurrencies: krone (kr)\nBorders: None",
           "img": "https://flagcdn.com/sj.svg"
         },
         {
           "front": "What is the capital of Sweden?",
-          "back": "Stockholm",
+          "back": "Capital: Stockholm\nContinents: Europe\nCurrencies: Swedish krona (kr)\nBorders: FIN, NOR",
           "img": "https://flagcdn.com/se.svg"
         },
         {
           "front": "What is the capital of Switzerland?",
-          "back": "Bern",
+          "back": "Capital: Bern\nContinents: Europe\nCurrencies: Swiss franc (Fr.)\nBorders: AUT, FRA, ITA, LIE, DEU",
           "img": "https://flagcdn.com/ch.svg"
         },
         {
           "front": "What is the capital of Syria?",
-          "back": "Damascus",
+          "back": "Capital: Damascus\nContinents: Asia\nCurrencies: Syrian pound (£)\nBorders: IRQ, ISR, JOR, LBN, TUR",
           "img": "https://flagcdn.com/sy.svg"
         },
         {
-          "front": "What is the capital of São Tomé and Príncipe?",
-          "back": "São Tomé",
-          "img": "https://flagcdn.com/st.svg"
-        },
-        {
           "front": "What is the capital of Taiwan?",
-          "back": "Taipei",
+          "back": "Capital: Taipei\nContinents: Asia\nCurrencies: New Taiwan dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/tw.svg"
         },
         {
           "front": "What is the capital of Tajikistan?",
-          "back": "Dushanbe",
+          "back": "Capital: Dushanbe\nContinents: Asia\nCurrencies: Tajikistani somoni (ЅМ)\nBorders: AFG, CHN, KGZ, UZB",
           "img": "https://flagcdn.com/tj.svg"
         },
         {
           "front": "What is the capital of Tanzania?",
-          "back": "Dodoma",
+          "back": "Capital: Dodoma\nContinents: Africa\nCurrencies: Tanzanian shilling (Sh)\nBorders: BDI, COD, KEN, MWI, MOZ, RWA, UGA, ZMB",
           "img": "https://flagcdn.com/tz.svg"
         },
         {
           "front": "What is the capital of Thailand?",
-          "back": "Bangkok",
+          "back": "Capital: Bangkok\nContinents: Asia\nCurrencies: Thai baht (฿)\nBorders: MMR, KHM, LAO, MYS",
           "img": "https://flagcdn.com/th.svg"
         },
         {
           "front": "What is the capital of Timor-Leste?",
-          "back": "Dili",
+          "back": "Capital: Dili\nContinents: Oceania\nCurrencies: United States dollar ($)\nBorders: IDN",
           "img": "https://flagcdn.com/tl.svg"
         },
         {
           "front": "What is the capital of Togo?",
-          "back": "Lomé",
+          "back": "Capital: Lomé\nContinents: Africa\nCurrencies: West African CFA franc (Fr)\nBorders: BEN, BFA, GHA",
           "img": "https://flagcdn.com/tg.svg"
         },
         {
           "front": "What is the capital of Tokelau?",
-          "back": "Fakaofo",
+          "back": "Capital: Fakaofo\nContinents: Oceania\nCurrencies: New Zealand dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/tk.svg"
         },
         {
           "front": "What is the capital of Tonga?",
-          "back": "Nuku'alofa",
+          "back": "Capital: Nuku'alofa\nContinents: Oceania\nCurrencies: Tongan paʻanga (T$)\nBorders: None",
           "img": "https://flagcdn.com/to.svg"
         },
         {
           "front": "What is the capital of Trinidad and Tobago?",
-          "back": "Port of Spain",
+          "back": "Capital: Port of Spain\nContinents: North America\nCurrencies: Trinidad and Tobago dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/tt.svg"
         },
         {
           "front": "What is the capital of Tunisia?",
-          "back": "Tunis",
+          "back": "Capital: Tunis\nContinents: Africa\nCurrencies: Tunisian dinar (د.ت)\nBorders: DZA, LBY",
           "img": "https://flagcdn.com/tn.svg"
         },
         {
           "front": "What is the capital of Turkey?",
-          "back": "Ankara",
+          "back": "Capital: Ankara\nContinents: Europe, Asia\nCurrencies: Turkish lira (₺)\nBorders: ARM, AZE, BGR, GEO, GRC, IRN, IRQ, SYR",
           "img": "https://flagcdn.com/tr.svg"
         },
         {
           "front": "What is the capital of Turkmenistan?",
-          "back": "Ashgabat",
+          "back": "Capital: Ashgabat\nContinents: Asia\nCurrencies: Turkmenistan manat (m)\nBorders: AFG, IRN, KAZ, UZB",
           "img": "https://flagcdn.com/tm.svg"
         },
         {
           "front": "What is the capital of Turks and Caicos Islands?",
-          "back": "Cockburn Town",
+          "back": "Capital: Cockburn Town\nContinents: North America\nCurrencies: United States dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/tc.svg"
         },
         {
           "front": "What is the capital of Tuvalu?",
-          "back": "Funafuti",
+          "back": "Capital: Funafuti\nContinents: Oceania\nCurrencies: Australian dollar ($), Tuvaluan dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/tv.svg"
         },
         {
           "front": "What is the capital of Uganda?",
-          "back": "Kampala",
+          "back": "Capital: Kampala\nContinents: Africa\nCurrencies: Ugandan shilling (Sh)\nBorders: COD, KEN, RWA, SSD, TZA",
           "img": "https://flagcdn.com/ug.svg"
         },
         {
           "front": "What is the capital of Ukraine?",
-          "back": "Kyiv",
+          "back": "Capital: Kyiv\nContinents: Europe\nCurrencies: Ukrainian hryvnia (₴)\nBorders: BLR, HUN, MDA, POL, ROU, RUS, SVK",
           "img": "https://flagcdn.com/ua.svg"
         },
         {
           "front": "What is the capital of United Arab Emirates?",
-          "back": "Abu Dhabi",
+          "back": "Capital: Abu Dhabi\nContinents: Asia\nCurrencies: United Arab Emirates dirham (د.إ)\nBorders: OMN, SAU",
           "img": "https://flagcdn.com/ae.svg"
         },
         {
           "front": "What is the capital of United Kingdom?",
-          "back": "London",
+          "back": "Capital: London\nContinents: Europe\nCurrencies: British pound (£)\nBorders: IRL",
           "img": "https://flagcdn.com/gb.svg"
         },
         {
           "front": "What is the capital of United States?",
-          "back": "Washington, D.C.",
+          "back": "Capital: Washington, D.C.\nContinents: North America\nCurrencies: United States dollar ($)\nBorders: CAN, MEX",
           "img": "https://flagcdn.com/us.svg"
         },
         {
           "front": "What is the capital of United States Minor Outlying Islands?",
-          "back": "Washington DC",
+          "back": "Capital: Washington DC\nContinents: Oceania\nCurrencies: United States dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/um.svg"
         },
         {
           "front": "What is the capital of United States Virgin Islands?",
-          "back": "Charlotte Amalie",
+          "back": "Capital: Charlotte Amalie\nContinents: North America\nCurrencies: United States dollar ($)\nBorders: None",
           "img": "https://flagcdn.com/vi.svg"
         },
         {
           "front": "What is the capital of Uruguay?",
-          "back": "Montevideo",
+          "back": "Capital: Montevideo\nContinents: South America\nCurrencies: Uruguayan peso ($)\nBorders: ARG, BRA",
           "img": "https://flagcdn.com/uy.svg"
         },
         {
           "front": "What is the capital of Uzbekistan?",
-          "back": "Tashkent",
+          "back": "Capital: Tashkent\nContinents: Asia\nCurrencies: Uzbekistani soʻm (so'm)\nBorders: AFG, KAZ, KGZ, TJK, TKM",
           "img": "https://flagcdn.com/uz.svg"
         },
         {
           "front": "What is the capital of Vanuatu?",
-          "back": "Port Vila",
+          "back": "Capital: Port Vila\nContinents: Oceania\nCurrencies: Vanuatu vatu (Vt)\nBorders: None",
           "img": "https://flagcdn.com/vu.svg"
         },
         {
           "front": "What is the capital of Vatican City?",
-          "back": "Vatican City",
+          "back": "Capital: Vatican City\nContinents: Europe\nCurrencies: Euro (€)\nBorders: ITA",
           "img": "https://flagcdn.com/va.svg"
         },
         {
           "front": "What is the capital of Venezuela?",
-          "back": "Caracas",
+          "back": "Capital: Caracas\nContinents: South America\nCurrencies: Venezuelan bolívar soberano (Bs.S.)\nBorders: BRA, COL, GUY",
           "img": "https://flagcdn.com/ve.svg"
         },
         {
           "front": "What is the capital of Vietnam?",
-          "back": "Hanoi",
+          "back": "Capital: Hanoi\nContinents: Asia\nCurrencies: Vietnamese đồng (₫)\nBorders: KHM, CHN, LAO",
           "img": "https://flagcdn.com/vn.svg"
         },
         {
           "front": "What is the capital of Wallis and Futuna?",
-          "back": "Mata-Utu",
+          "back": "Capital: Mata-Utu\nContinents: Oceania\nCurrencies: CFP franc (₣)\nBorders: None",
           "img": "https://flagcdn.com/wf.svg"
         },
         {
           "front": "What is the capital of Western Sahara?",
-          "back": "El Aaiún",
+          "back": "Capital: El Aaiún\nContinents: Africa\nCurrencies: Algerian dinar (دج), Moroccan dirham (DH), Mauritanian ouguiya (UM)\nBorders: DZA, MRT, MAR",
           "img": "https://flagcdn.com/eh.svg"
         },
         {
           "front": "What is the capital of Yemen?",
-          "back": "Sana'a",
+          "back": "Capital: Sana'a\nContinents: Asia\nCurrencies: Yemeni rial (﷼)\nBorders: OMN, SAU",
           "img": "https://flagcdn.com/ye.svg"
         },
         {
           "front": "What is the capital of Zambia?",
-          "back": "Lusaka",
+          "back": "Capital: Lusaka\nContinents: Africa\nCurrencies: Zambian kwacha (ZK)\nBorders: AGO, BWA, COD, MWI, MOZ, NAM, TZA, ZWE",
           "img": "https://flagcdn.com/zm.svg"
         },
         {
           "front": "What is the capital of Zimbabwe?",
-          "back": "Harare",
+          "back": "Capital: Harare\nContinents: Africa\nCurrencies: Zimbabwean dollar ($)\nBorders: BWA, MOZ, ZAF, ZMB",
           "img": "https://flagcdn.com/zw.svg"
-        },
-        {
-          "front": "What is the capital of Åland Islands?",
-          "back": "Mariehamn",
-          "img": "https://flagcdn.com/ax.svg"
         }
       ]
     }

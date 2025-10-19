@@ -236,19 +236,57 @@ export default function ProgressPage() {
             </h3>
             {learnedFlashcards.length > 0 ? (
               <div className="space-y-3 max-h-96 overflow-y-auto">
-                {learnedFlashcards.map((card) => (
-                  <div
-                    key={card.id}
-                    className="p-3 bg-green-50 dark:bg-green-900/20 rounded border border-green-200 dark:border-green-800"
-                  >
-                    <p className="font-medium text-gray-900 dark:text-white">
-                      {card.front}
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mt-1">
-                      {card.back}
-                    </p>
-                  </div>
-                ))}
+                {learnedFlashcards.map((card) => {
+                  const hasImage = Boolean(card.img);
+                  return (
+                    <div
+                      key={card.id}
+                      className={`relative overflow-hidden rounded border ${
+                        hasImage
+                          ? "border-transparent"
+                          : "border-green-200 dark:border-green-800 bg-green-50 dark:bg-green-900/20"
+                      }`}
+                    >
+                      {hasImage ? (
+                        <>
+                          <div
+                            aria-hidden
+                            className="pointer-events-none absolute inset-0 bg-cover bg-center"
+                            style={{ backgroundImage: `url(${card.img})` }}
+                          />
+                          <div
+                            aria-hidden
+                            className="pointer-events-none absolute inset-0 bg-black/55"
+                          />
+                        </>
+                      ) : null}
+                      <div className="relative p-3">
+                        <div
+                          className={`${
+                            hasImage ? "rounded-md bg-black/60 p-3 backdrop-blur-sm" : ""
+                          }`}
+                        >
+                          <p
+                            className={`font-medium ${
+                              hasImage ? "text-white" : "text-gray-900 dark:text-white"
+                            }`}
+                          >
+                            {card.front}
+                          </p>
+                          <p
+                            className={`mt-1 whitespace-pre-line text-sm ${
+                              hasImage
+                                ? "text-gray-100"
+                                : "text-gray-600 dark:text-gray-300"
+                            }`}
+                          >
+                            {card.back}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             ) : (
               <p className="text-gray-600 dark:text-gray-300 text-center py-4">
@@ -263,19 +301,57 @@ export default function ProgressPage() {
             </h3>
             {unlearnedFlashcards.length > 0 ? (
               <div className="space-y-3 max-h-96 overflow-y-auto">
-                {unlearnedFlashcards.map((card) => (
-                  <div
-                    key={card.id}
-                    className="p-3 bg-red-50 dark:bg-red-900/20 rounded border border-red-200 dark:border-red-800"
-                  >
-                    <p className="font-medium text-gray-900 dark:text-white">
-                      {card.front}
-                    </p>
-                    <p className="text-gray-600 dark:text-gray-300 text-sm mt-1">
-                      {card.back}
-                    </p>
-                  </div>
-                ))}
+                {unlearnedFlashcards.map((card) => {
+                  const hasImage = Boolean(card.img);
+                  return (
+                    <div
+                      key={card.id}
+                      className={`relative overflow-hidden rounded border ${
+                        hasImage
+                          ? "border-transparent"
+                          : "border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/20"
+                      }`}
+                    >
+                      {hasImage ? (
+                        <>
+                          <div
+                            aria-hidden
+                            className="pointer-events-none absolute inset-0 bg-cover bg-center"
+                            style={{ backgroundImage: `url(${card.img})` }}
+                          />
+                          <div
+                            aria-hidden
+                            className="pointer-events-none absolute inset-0 bg-black/55"
+                          />
+                        </>
+                      ) : null}
+                      <div className="relative p-3">
+                        <div
+                          className={`${
+                            hasImage ? "rounded-md bg-black/60 p-3 backdrop-blur-sm" : ""
+                          }`}
+                        >
+                          <p
+                            className={`font-medium ${
+                              hasImage ? "text-white" : "text-gray-900 dark:text-white"
+                            }`}
+                          >
+                            {card.front}
+                          </p>
+                          <p
+                            className={`mt-1 whitespace-pre-line text-sm ${
+                              hasImage
+                                ? "text-gray-100"
+                                : "text-gray-600 dark:text-gray-300"
+                            }`}
+                          >
+                            {card.back}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             ) : (
               <p className="text-gray-600 dark:text-gray-300 text-center py-4">

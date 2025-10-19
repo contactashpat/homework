@@ -255,56 +255,93 @@ export const FlashcardList = ({
         {categoryCards.map((card) => {
           const category = categoriesMeta.get(card.categoryId);
           const categoryLocked = category?.locked ?? false;
+          const hasImage = Boolean(card.img);
           return (
             <div
               key={card.id}
-              className="relative rounded border border-gray-200 bg-white p-4 pb-16 shadow dark:border-gray-700 dark:bg-gray-800"
+              className={`relative overflow-hidden rounded border border-gray-200 shadow dark:border-gray-700 ${
+                hasImage ? "text-white" : "bg-white dark:bg-gray-800"
+              }`}
             >
-              {supported ? (
-                <button
-                  type="button"
-                  onClick={(event: MouseEvent<HTMLButtonElement>) => {
-                    event.stopPropagation();
-                    speak(`${card.front}. ${card.back}`);
-                  }}
-                  className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-indigo-600 text-white shadow transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400"
-                  aria-label={`Play audio for ${card.front}`}
-                >
-                  <SpeakerIcon className="h-5 w-5" />
-                </button>
+              {hasImage ? (
+                <>
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url(${card.img})` }}
+                  />
+                  <div aria-hidden className="absolute inset-0 bg-black/55" />
+                </>
               ) : null}
-              <span className="text-xs font-semibold uppercase tracking-wide text-indigo-600 dark:text-indigo-300">
-                {category?.path ?? "Category"}
-              </span>
-              <h3 className="mt-1 mb-2 text-lg font-semibold text-gray-900 dark:text-white">
-                {card.front}
-              </h3>
-              <p className="mb-4 text-gray-600 dark:text-gray-300">{card.back}</p>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => deleteFlashcard(card.id)}
-                  disabled={categoryLocked}
-                  className="rounded bg-red-600 px-3 py-1 text-sm text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:bg-red-300 disabled:text-red-100"
+              <div className="relative flex h-full flex-col p-4 pb-16">
+                {supported ? (
+                  <button
+                    type="button"
+                    onClick={(event: MouseEvent<HTMLButtonElement>) => {
+                      event.stopPropagation();
+                      speak(`${card.front}. ${card.back}`);
+                    }}
+                    className="absolute right-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-indigo-600 text-white shadow transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                    aria-label={`Play audio for ${card.front}`}
+                  >
+                    <SpeakerIcon className="h-5 w-5" />
+                  </button>
+                ) : null}
+                <span
+                  className={`text-xs font-semibold uppercase tracking-wide ${
+                    hasImage
+                      ? "inline-flex w-fit rounded-full bg-black/60 px-3 py-1 text-indigo-100 backdrop-blur-sm"
+                      : "text-indigo-600 dark:text-indigo-300"
+                  }`}
                 >
-                  Delete
-                </button>
-                {card.learned ? (
-                  <button
-                    onClick={() => markAsUnlearned(card.id)}
-                    disabled={categoryLocked}
-                    className="rounded bg-yellow-600 px-3 py-1 text-sm text-white transition hover:bg-yellow-700 disabled:cursor-not-allowed disabled:bg-yellow-300 disabled:text-yellow-100"
+                  {category?.path ?? "Category"}
+                </span>
+                <div
+                  className={`mt-3 rounded-md ${
+                    hasImage ? "bg-black/60 p-3 backdrop-blur-sm" : ""
+                  }`}
+                >
+                  <h3
+                    className={`text-lg font-semibold ${
+                      hasImage ? "text-white" : "text-gray-900 dark:text-white"
+                    }`}
                   >
-                    Unlearn
-                  </button>
-                ) : (
+                    {card.front}
+                  </h3>
+                <p
+                  className={`mt-2 whitespace-pre-line ${
+                    hasImage ? "text-gray-100" : "text-gray-600 dark:text-gray-300"
+                  }`}
+                >
+                  {card.back}
+                </p>
+              </div>
+                <div className="mt-4 flex gap-2">
                   <button
-                    onClick={() => markAsLearned(card.id)}
+                    onClick={() => deleteFlashcard(card.id)}
                     disabled={categoryLocked}
-                    className="rounded bg-green-600 px-3 py-1 text-sm text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-green-300 disabled:text-green-100"
+                    className="rounded bg-red-600 px-3 py-1 text-sm text-white transition hover:bg-red-700 disabled:cursor-not-allowed disabled:bg-red-300 disabled:text-red-100"
                   >
-                    Learn
+                    Delete
                   </button>
-                )}
+                  {card.learned ? (
+                    <button
+                      onClick={() => markAsUnlearned(card.id)}
+                      disabled={categoryLocked}
+                      className="rounded bg-yellow-600 px-3 py-1 text-sm text-white transition hover:bg-yellow-700 disabled:cursor-not-allowed disabled:bg-yellow-300 disabled:text-yellow-100"
+                    >
+                      Unlearn
+                    </button>
+                  ) : (
+                    <button
+                      onClick={() => markAsLearned(card.id)}
+                      disabled={categoryLocked}
+                      className="rounded bg-green-600 px-3 py-1 text-sm text-white transition hover:bg-green-700 disabled:cursor-not-allowed disabled:bg-green-300 disabled:text-green-100"
+                    >
+                      Learn
+                    </button>
+                  )}
+                </div>
               </div>
             </div>
           );

@@ -4,6 +4,7 @@ export interface Flashcard {
   back: string;
   learned?: boolean;
   categoryId: string;
+  img?: string;
 }
 
 export interface FlashcardCategory {

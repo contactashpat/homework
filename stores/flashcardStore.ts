@@ -145,6 +145,40 @@ const persistState = (state: PersistedState): void => {
   }
 };
 
+const clearSpacedRepetitionData = (cardIds: string[]): void => {
+  if (typeof window === "undefined" || cardIds.length === 0) {
+    return;
+  }
+  try {
+    const raw = localStorage.getItem("spacedRepetitionData");
+    if (!raw) {
+      return;
+    }
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== "object") {
+      return;
+    }
+    const data = parsed as Record<string, unknown>;
+    let changed = false;
+    cardIds.forEach((cardId) => {
+      if (cardId && Object.prototype.hasOwnProperty.call(data, cardId)) {
+        delete data[cardId];
+        changed = true;
+      }
+    });
+    if (!changed) {
+      return;
+    }
+    if (Object.keys(data).length === 0) {
+      localStorage.removeItem("spacedRepetitionData");
+    } else {
+      localStorage.setItem("spacedRepetitionData", JSON.stringify(data));
+    }
+  } catch {
+    /* ignore malformed spaced repetition data */
+  }
+};
+
 type ImportedCollection = {
   name: string;
   locked?: boolean;
@@ -152,6 +186,7 @@ type ImportedCollection = {
     front: string;
     back: string;
     learned?: boolean;
+    img?: string;
   }>;
   subcollections?: ImportedCollection[];
 };
@@ -270,6 +305,9 @@ export const useFlashcardStore = create<FlashcardStore>((set, get) => ({
       }
 
       const fallbackCategory = remainingCategories.find((c) => !c.locked) ?? remainingCategories[0];
+      const affectedCardIds = state.flashcards
+        .filter((card) => card.categoryId === id)
+        .map((card) => card.id);
       const flashcards = state.flashcards.map((card) =>
         card.categoryId === id ? { ...card, categoryId: fallbackCategory.id } : card,
       );
@@ -285,6 +323,7 @@ export const useFlashcardStore = create<FlashcardStore>((set, get) => ({
         hasHydrated: true,
       };
       persistState(buildPersistedState(nextState));
+      clearSpacedRepetitionData(affectedCardIds);
       return nextState;
     });
   },
@@ -372,6 +411,7 @@ export const useFlashcardStore = create<FlashcardStore>((set, get) => ({
         hasHydrated: true,
       };
       persistState(buildPersistedState(nextState));
+      clearSpacedRepetitionData([id]);
       return nextState;
     });
   },
@@ -482,6 +522,7 @@ export const useFlashcardStore = create<FlashcardStore>((set, get) => ({
               back: card.back,
               learned: card.learned ?? false,
               categoryId: category.id,
+              img: card.img?.trim() ? card.img : undefined,
             });
           });
         }

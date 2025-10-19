@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useState, type MouseEvent } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type MouseEvent } from "react";
 import { useFlashcardStore } from "../../stores/flashcardStore";
 import type { Flashcard } from "../../types";
 import { useSpeechSynthesis } from "../../hooks/useSpeechSynthesis";
@@ -46,6 +46,10 @@ export default function StudyPage() {
   >({});
   const [showSearchInput, setShowSearchInput] = useState(false);
   const [showFlipHint, setShowFlipHint] = useState(true);
+  const [isCardTransitioning, setIsCardTransitioning] = useState(false);
+  const transitionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [isShuffled, setIsShuffled] = useState(false);
+  const [shuffleKey, setShuffleKey] = useState(0);
 
   useEffect(() => {
     if (isStudyMode) {
@@ -139,15 +143,33 @@ export default function StudyPage() {
     setShowFlipHint(true);
   }, [selectedCategoryId]);
 
+  const studyFlashcards = useMemo(() => {
+    if (!isShuffled) {
+      return unlearnedFlashcards;
+    }
+    const shuffled = [...unlearnedFlashcards];
+    let seed = shuffleKey === 0 ? 1 : shuffleKey;
+    const random = () => {
+      seed = (seed * 1664525 + 1013904223) % 4294967296;
+      return seed / 4294967296;
+    };
+    for (let i = shuffled.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }, [unlearnedFlashcards, isShuffled, shuffleKey]);
+
   const currentCard = useMemo<Flashcard | null>(
-    () => unlearnedFlashcards[currentIndex] ?? null,
-    [unlearnedFlashcards, currentIndex],
+    () => studyFlashcards[currentIndex] ?? null,
+    [studyFlashcards, currentIndex],
   );
   useEffect(() => {
     if (!currentCard) {
       setIsFlipped(false);
       setShowAnswer(false);
       setShowFlipHint(true);
+      setIsCardTransitioning(false);
       return;
     }
 
@@ -156,8 +178,39 @@ export default function StudyPage() {
     setShowFlipHint(true);
   }, [currentCard]);
 
+  const currentCardHasImage = Boolean(currentCard?.img);
+  const cardHasVisibleImage = currentCardHasImage && !isCardTransitioning;
+  const showCardContent = Boolean(currentCard) && !isCardTransitioning;
+  const canReshuffle = isShuffled && studyFlashcards.length > 1;
+
+  const endTransition = useCallback(() => {
+    transitionTimeoutRef.current = null;
+    setIsCardTransitioning(false);
+  }, []);
+
+  const triggerCardTransition = useCallback(() => {
+    if (transitionTimeoutRef.current) {
+      clearTimeout(transitionTimeoutRef.current);
+    }
+    setIsCardTransitioning(true);
+    transitionTimeoutRef.current = setTimeout(endTransition, 500);
+  }, [endTransition]);
+
+  useEffect(
+    () => () => {
+      if (transitionTimeoutRef.current) {
+        clearTimeout(transitionTimeoutRef.current);
+      }
+    },
+    [],
+  );
+
   const handleNext = useCallback(() => {
-    if (currentIndex < unlearnedFlashcards.length - 1) {
+    if (isCardTransitioning) {
+      return;
+    }
+    if (currentIndex < studyFlashcards.length - 1) {
+      triggerCardTransition();
       setCurrentIndex(currentIndex + 1);
       setIsFlipped(false);
       setShowAnswer(false);
@@ -165,18 +218,25 @@ export default function StudyPage() {
     } else {
       setIsStudyMode(false);
     }
-  }, [currentIndex, unlearnedFlashcards.length]);
+  }, [currentIndex, isCardTransitioning, studyFlashcards.length, triggerCardTransition]);
 
   const handlePrevious = useCallback(() => {
+    if (isCardTransitioning) {
+      return;
+    }
     if (currentIndex > 0) {
+      triggerCardTransition();
       setCurrentIndex(currentIndex - 1);
       setIsFlipped(false);
       setShowAnswer(false);
       setShowFlipHint(true);
     }
-  }, [currentIndex]);
+  }, [currentIndex, isCardTransitioning, triggerCardTransition]);
 
   const handleFlip = useCallback(() => {
+    if (isCardTransitioning || !currentCard) {
+      return;
+    }
     setIsFlipped(!isFlipped);
     if (!isFlipped) {
       setShowAnswer(true);
@@ -184,7 +244,7 @@ export default function StudyPage() {
     if (showFlipHint) {
       setShowFlipHint(false);
     }
-  }, [isFlipped, showFlipHint]);
+  }, [currentCard, isCardTransitioning, isFlipped, showFlipHint]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -206,7 +266,11 @@ export default function StudyPage() {
   }, [handleNext, handlePrevious, handleFlip, isStudyMode]);
 
   const handleAnswer = (isCorrect: boolean) => {
-    if (currentCard && isCategoryLocked(currentCard.categoryId)) {
+    if (!currentCard || isCardTransitioning) {
+      return;
+    }
+
+    if (isCategoryLocked(currentCard.categoryId)) {
       return;
     }
 
@@ -270,6 +334,52 @@ export default function StudyPage() {
     handleNext();
   };
 
+  useEffect(() => {
+    if (currentIndex >= studyFlashcards.length && studyFlashcards.length > 0) {
+      setCurrentIndex(studyFlashcards.length - 1);
+    } else if (studyFlashcards.length === 0 && currentIndex !== 0) {
+      setCurrentIndex(0);
+    }
+  }, [currentIndex, studyFlashcards.length]);
+
+  useEffect(() => {
+    if (!isShuffled) {
+      return;
+    }
+    setShuffleKey((prev) => prev + 1);
+  }, [isShuffled, unlearnedFlashcards.length]);
+
+  const previousShuffleRef = useRef(isShuffled);
+  useEffect(() => {
+    if (previousShuffleRef.current === isShuffled) {
+      return;
+    }
+    previousShuffleRef.current = isShuffled;
+    setCurrentIndex(0);
+    setIsFlipped(false);
+    setShowAnswer(false);
+    setShowFlipHint(true);
+    if (studyFlashcards.length > 0) {
+      triggerCardTransition();
+    }
+  }, [isShuffled, studyFlashcards.length, triggerCardTransition]);
+
+  const handleShuffleToggle = useCallback(() => {
+    setIsShuffled((prev) => !prev);
+  }, []);
+
+  const handleReshuffle = useCallback(() => {
+    if (!isShuffled || studyFlashcards.length <= 1) {
+      return;
+    }
+    setShuffleKey((prev) => prev + 1);
+    setCurrentIndex(0);
+    setIsFlipped(false);
+    setShowAnswer(false);
+    setShowFlipHint(true);
+    triggerCardTransition();
+  }, [isShuffled, studyFlashcards.length, triggerCardTransition]);
+
   const handleStartStudy = () => {
     if (
       !selectedCategoryId ||
@@ -314,7 +424,6 @@ export default function StudyPage() {
     showSearch: showSearchInput,
     visibleLimit: CATEGORY_VISIBLE_LIMIT,
   };
-
   const menuOverlay = showMenu ? (
     <div
       className="fixed inset-0 z-40 flex items-center justify-end bg-black/60 px-4"
@@ -594,7 +703,7 @@ export default function StudyPage() {
           <div className="mx-auto w-full max-w-3xl lg:max-w-4xl xl:max-w-5xl">
             <div className="mb-6 text-center">
               <p className="text-gray-600 dark:text-gray-300">
-                Card {currentIndex + 1} of {unlearnedFlashcards.length}
+                Card {studyFlashcards.length === 0 ? 0 : currentIndex + 1} of {studyFlashcards.length}
               </p>
             </div>
 
@@ -603,65 +712,137 @@ export default function StudyPage() {
                 <div
                   className={`relative w-full h-full preserve-3d transition-transform duration-700 ${isFlipped ? "rotate-y-180" : ""}`}
                 >
-                  <div className="group absolute w-full h-full backface-hidden rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700 flex items-center justify-center transition-colors duration-500 bg-white dark:bg-gray-800">
-                    <span className="absolute left-4 top-4 rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-200">
-                      {currentCard
-                        ? categoryMeta.get(currentCard.categoryId)?.path ?? activeCategory?.name
-                        : ""}
-                    </span>
-                    {supported ? (
-                      <button
-                        type="button"
-                        onClick={(event: MouseEvent<HTMLButtonElement>) => {
-                          event.stopPropagation();
-                          speak(currentCard.front);
-                        }}
-                        className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600 text-white shadow transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400"
-                        aria-label="Play front text audio"
-                      >
-                        <SpeakerIcon className="h-5 w-5" />
-                      </button>
+                  <div
+                    className={`group absolute h-full w-full backface-hidden overflow-hidden rounded-lg border shadow-lg transition-colors duration-500 ${
+                      cardHasVisibleImage
+                        ? "border-transparent"
+                        : "border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800"
+                    } ${
+                      isCardTransitioning
+                        ? "bg-gray-100/80 dark:bg-gray-800/60"
+                        : ""
+                    }`}
+                  >
+                    {cardHasVisibleImage ? (
+                      <>
+                        <div
+                          aria-hidden
+                          className="pointer-events-none absolute inset-0 bg-cover bg-center"
+                          style={{ backgroundImage: `url(${currentCard.img})` }}
+                        />
+                        <div
+                          aria-hidden
+                          className="pointer-events-none absolute inset-0 bg-black/55"
+                        />
+                      </>
                     ) : null}
-                    <p className="text-xl text-center text-gray-900 dark:text-white">
-                      {currentCard.front}
-                    </p>
+                    <div className="relative flex h-full w-full items-center justify-center p-6">
+                      {showCardContent ? (
+                        <span
+                          className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-semibold ${
+                            currentCardHasImage
+                              ? "bg-black/60 text-indigo-100 backdrop-blur-sm"
+                              : "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-200"
+                          }`}
+                        >
+                          {categoryMeta.get(currentCard.categoryId)?.path ?? activeCategory?.name}
+                        </span>
+                      ) : null}
+                      {showCardContent && supported ? (
+                        <button
+                          type="button"
+                          onClick={(event: MouseEvent<HTMLButtonElement>) => {
+                            event.stopPropagation();
+                            speak(currentCard.front);
+                          }}
+                          className="absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600 text-white shadow transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                          aria-label="Play front text audio"
+                        >
+                          <SpeakerIcon className="h-5 w-5" />
+                        </button>
+                      ) : null}
+                      {showCardContent ? (
+                        <p
+                          className={`relative whitespace-pre-line text-xl text-center ${
+                            currentCardHasImage
+                              ? "max-w-[80%] rounded-md bg-black/60 px-6 py-4 text-white backdrop-blur-sm"
+                              : "text-gray-900 dark:text-white"
+                          }`}
+                        >
+                          {currentCard.front}
+                        </p>
+                      ) : null}
+                    </div>
                   </div>
 
                   <div
-                    className={`group absolute w-full h-full backface-hidden rotate-y-180 rounded-lg shadow-lg p-6 border flex items-center justify-center transition-colors duration-500 ${isFlipped ? "bg-indigo-600 border-indigo-600 dark:bg-indigo-500 dark:border-indigo-400" : "bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700"}`}
+                    className={`group absolute h-full w-full backface-hidden rotate-y-180 overflow-hidden rounded-lg border shadow-lg transition-colors duration-500 ${
+                      cardHasVisibleImage
+                        ? "border-transparent"
+                        : isFlipped
+                          ? "bg-indigo-600 border-indigo-600 dark:bg-indigo-500 dark:border-indigo-400"
+                          : "bg-white border-gray-200 dark:bg-gray-800 dark:border-gray-700"
+                    } ${
+                      isCardTransitioning
+                        ? "bg-gray-100/80 dark:bg-gray-800/60"
+                        : ""
+                    }`}
                   >
-                    <span
-                      className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
-                        isFlipped
-                          ? "bg-white text-indigo-700"
-                          : "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-200"
-                      }`}
-                    >
-                      {currentCard
-                        ? categoryMeta.get(currentCard.categoryId)?.path ??
-                          activeCategory?.name
-                        : ""}
-                    </span>
-                    {supported ? (
-                      <button
-                        type="button"
-                        onClick={(event: MouseEvent<HTMLButtonElement>) => {
-                          event.stopPropagation();
-                          speak(currentCard.back);
-                        }}
-                        className={`absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600 text-white shadow transition focus:outline-none focus:ring-2 focus:ring-indigo-300 ${isFlipped ? "hover:bg-indigo-500" : "hover:bg-indigo-700"}`}
-                        aria-label="Play back text audio"
-                      >
-                        <SpeakerIcon className="h-5 w-5" />
-                      </button>
+                    {cardHasVisibleImage ? (
+                      <>
+                        <div
+                          aria-hidden
+                          className="pointer-events-none absolute inset-0 bg-cover bg-center"
+                          style={{ backgroundImage: `url(${currentCard.img})` }}
+                        />
+                        <div
+                          aria-hidden
+                          className="pointer-events-none absolute inset-0 bg-black/55"
+                        />
+                      </>
                     ) : null}
-                    <p
-                      className={`text-xl text-center transition-colors duration-500 ${
-                        isFlipped ? "text-white" : "text-gray-900 dark:text-white"
-                      }`}
-                    >
-                      {currentCard.back}
-                    </p>
+                    <div className="relative flex h-full w-full items-center justify-center p-6">
+                      {showCardContent ? (
+                        <span
+                          className={`absolute left-4 top-4 rounded-full px-3 py-1 text-xs font-semibold transition-colors ${
+                            currentCardHasImage
+                              ? "bg-black/60 text-indigo-100 backdrop-blur-sm"
+                              : isFlipped
+                                ? "bg-white text-indigo-700"
+                                : "bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-200"
+                          }`}
+                        >
+                          {categoryMeta.get(currentCard.categoryId)?.path ??
+                            activeCategory?.name}
+                        </span>
+                      ) : null}
+                      {showCardContent && supported ? (
+                        <button
+                          type="button"
+                          onClick={(event: MouseEvent<HTMLButtonElement>) => {
+                            event.stopPropagation();
+                            speak(currentCard.back);
+                          }}
+                          className={`absolute right-4 top-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-indigo-600 text-white shadow transition focus:outline-none focus:ring-2 focus:ring-indigo-300 ${isFlipped ? "hover:bg-indigo-500" : "hover:bg-indigo-700"}`}
+                          aria-label="Play back text audio"
+                        >
+                          <SpeakerIcon className="h-5 w-5" />
+                        </button>
+                      ) : null}
+                      {showCardContent ? (
+                        <p
+                          className={`relative whitespace-pre-line text-xl text-center transition-colors duration-500 ${
+                            currentCardHasImage
+                              ? "max-w-[80%] rounded-md bg-black/60 px-6 py-4 text-white backdrop-blur-sm"
+                              : isFlipped
+                                ? "text-white"
+                                : "text-gray-900 dark:text-white"
+                          }`}
+                        >
+                          {currentCard.back}
+                        </p>
+                      ) : null}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -672,27 +853,74 @@ export default function StudyPage() {
               ) : null}
             </div>
 
-            <div className="mb-6 flex justify-between">
+            <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
               <button
                 onClick={handlePrevious}
-                disabled={currentIndex === 0}
-                className={`rounded px-4 py-2 ${currentIndex === 0 ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-gray-600 text-white hover:bg-gray-700"}`}
+                disabled={isCardTransitioning || currentIndex === 0}
+                className={`rounded px-4 py-2 ${
+                  isCardTransitioning || currentIndex === 0
+                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    : "bg-gray-600 text-white hover:bg-gray-700"
+                }`}
               >
                 <span aria-hidden="true">&lt;</span>
                 <span className="sr-only">Previous card</span>
               </button>
 
-              <button
-                onClick={handleFlip}
-                className="rounded bg-indigo-600 px-4 py-2 text-white transition hover:bg-indigo-700"
-              >
-                Flip Card
-              </button>
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                <button
+                  onClick={handleFlip}
+                  disabled={isCardTransitioning || !currentCard}
+                  className={`rounded px-4 py-2 text-white transition ${
+                    isCardTransitioning || !currentCard
+                      ? "bg-indigo-300 cursor-not-allowed"
+                      : "bg-indigo-600 hover:bg-indigo-700"
+                  }`}
+                >
+                  Flip Card
+                </button>
+                <button
+                  type="button"
+                  onClick={handleShuffleToggle}
+                  aria-pressed={isShuffled}
+                  className={`rounded px-4 py-2 text-sm font-medium transition ${
+                    isShuffled
+                      ? "bg-indigo-100 text-indigo-700 hover:bg-indigo-200 dark:bg-indigo-900/40 dark:text-indigo-200"
+                      : "bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+                  }`}
+                >
+                  {isShuffled ? "Shuffled" : "Shuffle"}
+                </button>
+                {canReshuffle ? (
+                  <button
+                    type="button"
+                    onClick={handleReshuffle}
+                    disabled={isCardTransitioning}
+                    className={`rounded px-4 py-2 text-sm font-medium transition ${
+                      isCardTransitioning
+                        ? "bg-indigo-200 text-indigo-500 cursor-not-allowed"
+                        : "bg-indigo-50 text-indigo-700 hover:bg-indigo-100 dark:bg-indigo-900/40 dark:text-indigo-200 dark:hover:bg-indigo-800/60"
+                    }`}
+                  >
+                    Reshuffle
+                  </button>
+                ) : null}
+              </div>
 
               <button
                 onClick={handleNext}
-                disabled={currentIndex === unlearnedFlashcards.length - 1}
-                className={`rounded px-4 py-2 ${currentIndex === unlearnedFlashcards.length - 1 ? "bg-gray-300 text-gray-500 cursor-not-allowed" : "bg-gray-600 text-white hover:bg-gray-700"}`}
+                disabled={
+                  isCardTransitioning ||
+                  studyFlashcards.length === 0 ||
+                  currentIndex === studyFlashcards.length - 1
+                }
+                className={`rounded px-4 py-2 ${
+                  isCardTransitioning ||
+                  studyFlashcards.length === 0 ||
+                  currentIndex === studyFlashcards.length - 1
+                    ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                    : "bg-gray-600 text-white hover:bg-gray-700"
+                }`}
               >
                 <span aria-hidden="true">&gt;</span>
                 <span className="sr-only">Next card</span>
