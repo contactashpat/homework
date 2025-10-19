@@ -1,0 +1,1240 @@
+{
+  "collections": [
+    {
+      "name": "World Capitals",
+      "locked": false,
+      "cards": [
+        {
+          "front": "What is the capital of Afghanistan?",
+          "back": "Kabul",
+          "img": "https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg"
+        },
+        {
+          "front": "What is the capital of Albania?",
+          "back": "Tirana",
+          "img": "https://flagcdn.com/al.svg"
+        },
+        {
+          "front": "What is the capital of Algeria?",
+          "back": "Algiers",
+          "img": "https://flagcdn.com/dz.svg"
+        },
+        {
+          "front": "What is the capital of American Samoa?",
+          "back": "Pago Pago",
+          "img": "https://flagcdn.com/as.svg"
+        },
+        {
+          "front": "What is the capital of Andorra?",
+          "back": "Andorra la Vella",
+          "img": "https://flagcdn.com/ad.svg"
+        },
+        {
+          "front": "What is the capital of Angola?",
+          "back": "Luanda",
+          "img": "https://flagcdn.com/ao.svg"
+        },
+        {
+          "front": "What is the capital of Anguilla?",
+          "back": "The Valley",
+          "img": "https://flagcdn.com/ai.svg"
+        },
+        {
+          "front": "What is the capital of Antigua and Barbuda?",
+          "back": "Saint John's",
+          "img": "https://flagcdn.com/ag.svg"
+        },
+        {
+          "front": "What is the capital of Argentina?",
+          "back": "Buenos Aires",
+          "img": "https://flagcdn.com/ar.svg"
+        },
+        {
+          "front": "What is the capital of Armenia?",
+          "back": "Yerevan",
+          "img": "https://flagcdn.com/am.svg"
+        },
+        {
+          "front": "What is the capital of Aruba?",
+          "back": "Oranjestad",
+          "img": "https://flagcdn.com/aw.svg"
+        },
+        {
+          "front": "What is the capital of Australia?",
+          "back": "Canberra",
+          "img": "https://flagcdn.com/au.svg"
+        },
+        {
+          "front": "What is the capital of Austria?",
+          "back": "Vienna",
+          "img": "https://flagcdn.com/at.svg"
+        },
+        {
+          "front": "What is the capital of Azerbaijan?",
+          "back": "Baku",
+          "img": "https://flagcdn.com/az.svg"
+        },
+        {
+          "front": "What is the capital of Bahamas?",
+          "back": "Nassau",
+          "img": "https://flagcdn.com/bs.svg"
+        },
+        {
+          "front": "What is the capital of Bahrain?",
+          "back": "Manama",
+          "img": "https://flagcdn.com/bh.svg"
+        },
+        {
+          "front": "What is the capital of Bangladesh?",
+          "back": "Dhaka",
+          "img": "https://flagcdn.com/bd.svg"
+        },
+        {
+          "front": "What is the capital of Barbados?",
+          "back": "Bridgetown",
+          "img": "https://flagcdn.com/bb.svg"
+        },
+        {
+          "front": "What is the capital of Belarus?",
+          "back": "Minsk",
+          "img": "https://flagcdn.com/by.svg"
+        },
+        {
+          "front": "What is the capital of Belgium?",
+          "back": "Brussels",
+          "img": "https://flagcdn.com/be.svg"
+        },
+        {
+          "front": "What is the capital of Belize?",
+          "back": "Belmopan",
+          "img": "https://flagcdn.com/bz.svg"
+        },
+        {
+          "front": "What is the capital of Benin?",
+          "back": "Porto-Novo",
+          "img": "https://flagcdn.com/bj.svg"
+        },
+        {
+          "front": "What is the capital of Bermuda?",
+          "back": "Hamilton",
+          "img": "https://flagcdn.com/bm.svg"
+        },
+        {
+          "front": "What is the capital of Bhutan?",
+          "back": "Thimphu",
+          "img": "https://flagcdn.com/bt.svg"
+        },
+        {
+          "front": "What is the capital of Bolivia?",
+          "back": "Sucre",
+          "img": "https://flagcdn.com/bo.svg"
+        },
+        {
+          "front": "What is the capital of Bosnia and Herzegovina?",
+          "back": "Sarajevo",
+          "img": "https://flagcdn.com/ba.svg"
+        },
+        {
+          "front": "What is the capital of Botswana?",
+          "back": "Gaborone",
+          "img": "https://flagcdn.com/bw.svg"
+        },
+        {
+          "front": "What is the capital of Brazil?",
+          "back": "Brasília",
+          "img": "https://flagcdn.com/br.svg"
+        },
+        {
+          "front": "What is the capital of British Indian Ocean Territory?",
+          "back": "Diego Garcia",
+          "img": "https://flagcdn.com/io.svg"
+        },
+        {
+          "front": "What is the capital of British Virgin Islands?",
+          "back": "Road Town",
+          "img": "https://flagcdn.com/vg.svg"
+        },
+        {
+          "front": "What is the capital of Brunei?",
+          "back": "Bandar Seri Begawan",
+          "img": "https://flagcdn.com/bn.svg"
+        },
+        {
+          "front": "What is the capital of Bulgaria?",
+          "back": "Sofia",
+          "img": "https://flagcdn.com/bg.svg"
+        },
+        {
+          "front": "What is the capital of Burkina Faso?",
+          "back": "Ouagadougou",
+          "img": "https://flagcdn.com/bf.svg"
+        },
+        {
+          "front": "What is the capital of Burundi?",
+          "back": "Gitega",
+          "img": "https://flagcdn.com/bi.svg"
+        },
+        {
+          "front": "What is the capital of Cambodia?",
+          "back": "Phnom Penh",
+          "img": "https://flagcdn.com/kh.svg"
+        },
+        {
+          "front": "What is the capital of Cameroon?",
+          "back": "Yaoundé",
+          "img": "https://flagcdn.com/cm.svg"
+        },
+        {
+          "front": "What is the capital of Canada?",
+          "back": "Ottawa",
+          "img": "https://flagcdn.com/ca.svg"
+        },
+        {
+          "front": "What is the capital of Cape Verde?",
+          "back": "Praia",
+          "img": "https://flagcdn.com/cv.svg"
+        },
+        {
+          "front": "What is the capital of Caribbean Netherlands?",
+          "back": "Kralendijk",
+          "img": "https://flagcdn.com/bq.svg"
+        },
+        {
+          "front": "What is the capital of Cayman Islands?",
+          "back": "George Town",
+          "img": "https://flagcdn.com/ky.svg"
+        },
+        {
+          "front": "What is the capital of Central African Republic?",
+          "back": "Bangui",
+          "img": "https://flagcdn.com/cf.svg"
+        },
+        {
+          "front": "What is the capital of Chad?",
+          "back": "N'Djamena",
+          "img": "https://flagcdn.com/td.svg"
+        },
+        {
+          "front": "What is the capital of Chile?",
+          "back": "Santiago",
+          "img": "https://flagcdn.com/cl.svg"
+        },
+        {
+          "front": "What is the capital of China?",
+          "back": "Beijing",
+          "img": "https://flagcdn.com/cn.svg"
+        },
+        {
+          "front": "What is the capital of Christmas Island?",
+          "back": "Flying Fish Cove",
+          "img": "https://flagcdn.com/cx.svg"
+        },
+        {
+          "front": "What is the capital of Cocos (Keeling) Islands?",
+          "back": "West Island",
+          "img": "https://flagcdn.com/cc.svg"
+        },
+        {
+          "front": "What is the capital of Colombia?",
+          "back": "Bogotá",
+          "img": "https://flagcdn.com/co.svg"
+        },
+        {
+          "front": "What is the capital of Comoros?",
+          "back": "Moroni",
+          "img": "https://flagcdn.com/km.svg"
+        },
+        {
+          "front": "What is the capital of Cook Islands?",
+          "back": "Avarua",
+          "img": "https://flagcdn.com/ck.svg"
+        },
+        {
+          "front": "What is the capital of Costa Rica?",
+          "back": "San José",
+          "img": "https://flagcdn.com/cr.svg"
+        },
+        {
+          "front": "What is the capital of Croatia?",
+          "back": "Zagreb",
+          "img": "https://flagcdn.com/hr.svg"
+        },
+        {
+          "front": "What is the capital of Cuba?",
+          "back": "Havana",
+          "img": "https://flagcdn.com/cu.svg"
+        },
+        {
+          "front": "What is the capital of Curaçao?",
+          "back": "Willemstad",
+          "img": "https://flagcdn.com/cw.svg"
+        },
+        {
+          "front": "What is the capital of Cyprus?",
+          "back": "Nicosia",
+          "img": "https://flagcdn.com/cy.svg"
+        },
+        {
+          "front": "What is the capital of Czechia?",
+          "back": "Prague",
+          "img": "https://flagcdn.com/cz.svg"
+        },
+        {
+          "front": "What is the capital of DR Congo?",
+          "back": "Kinshasa",
+          "img": "https://flagcdn.com/cd.svg"
+        },
+        {
+          "front": "What is the capital of Denmark?",
+          "back": "Copenhagen",
+          "img": "https://flagcdn.com/dk.svg"
+        },
+        {
+          "front": "What is the capital of Djibouti?",
+          "back": "Djibouti",
+          "img": "https://flagcdn.com/dj.svg"
+        },
+        {
+          "front": "What is the capital of Dominica?",
+          "back": "Roseau",
+          "img": "https://flagcdn.com/dm.svg"
+        },
+        {
+          "front": "What is the capital of Dominican Republic?",
+          "back": "Santo Domingo",
+          "img": "https://flagcdn.com/do.svg"
+        },
+        {
+          "front": "What is the capital of Ecuador?",
+          "back": "Quito",
+          "img": "https://flagcdn.com/ec.svg"
+        },
+        {
+          "front": "What is the capital of Egypt?",
+          "back": "Cairo",
+          "img": "https://flagcdn.com/eg.svg"
+        },
+        {
+          "front": "What is the capital of El Salvador?",
+          "back": "San Salvador",
+          "img": "https://flagcdn.com/sv.svg"
+        },
+        {
+          "front": "What is the capital of Equatorial Guinea?",
+          "back": "Malabo",
+          "img": "https://flagcdn.com/gq.svg"
+        },
+        {
+          "front": "What is the capital of Eritrea?",
+          "back": "Asmara",
+          "img": "https://flagcdn.com/er.svg"
+        },
+        {
+          "front": "What is the capital of Estonia?",
+          "back": "Tallinn",
+          "img": "https://flagcdn.com/ee.svg"
+        },
+        {
+          "front": "What is the capital of Eswatini?",
+          "back": "Mbabane",
+          "img": "https://flagcdn.com/sz.svg"
+        },
+        {
+          "front": "What is the capital of Ethiopia?",
+          "back": "Addis Ababa",
+          "img": "https://flagcdn.com/et.svg"
+        },
+        {
+          "front": "What is the capital of Falkland Islands?",
+          "back": "Stanley",
+          "img": "https://flagcdn.com/fk.svg"
+        },
+        {
+          "front": "What is the capital of Faroe Islands?",
+          "back": "Tórshavn",
+          "img": "https://flagcdn.com/fo.svg"
+        },
+        {
+          "front": "What is the capital of Fiji?",
+          "back": "Suva",
+          "img": "https://flagcdn.com/fj.svg"
+        },
+        {
+          "front": "What is the capital of Finland?",
+          "back": "Helsinki",
+          "img": "https://flagcdn.com/fi.svg"
+        },
+        {
+          "front": "What is the capital of France?",
+          "back": "Paris",
+          "img": "https://flagcdn.com/fr.svg"
+        },
+        {
+          "front": "What is the capital of French Guiana?",
+          "back": "Cayenne",
+          "img": "https://flagcdn.com/gf.svg"
+        },
+        {
+          "front": "What is the capital of French Polynesia?",
+          "back": "Papeetē",
+          "img": "https://flagcdn.com/pf.svg"
+        },
+        {
+          "front": "What is the capital of French Southern and Antarctic Lands?",
+          "back": "Port-aux-Français",
+          "img": "https://flagcdn.com/tf.svg"
+        },
+        {
+          "front": "What is the capital of Gabon?",
+          "back": "Libreville",
+          "img": "https://flagcdn.com/ga.svg"
+        },
+        {
+          "front": "What is the capital of Gambia?",
+          "back": "Banjul",
+          "img": "https://flagcdn.com/gm.svg"
+        },
+        {
+          "front": "What is the capital of Georgia?",
+          "back": "Tbilisi",
+          "img": "https://flagcdn.com/ge.svg"
+        },
+        {
+          "front": "What is the capital of Germany?",
+          "back": "Berlin",
+          "img": "https://flagcdn.com/de.svg"
+        },
+        {
+          "front": "What is the capital of Ghana?",
+          "back": "Accra",
+          "img": "https://flagcdn.com/gh.svg"
+        },
+        {
+          "front": "What is the capital of Gibraltar?",
+          "back": "Gibraltar",
+          "img": "https://flagcdn.com/gi.svg"
+        },
+        {
+          "front": "What is the capital of Greece?",
+          "back": "Athens",
+          "img": "https://flagcdn.com/gr.svg"
+        },
+        {
+          "front": "What is the capital of Greenland?",
+          "back": "Nuuk",
+          "img": "https://flagcdn.com/gl.svg"
+        },
+        {
+          "front": "What is the capital of Grenada?",
+          "back": "St. George's",
+          "img": "https://flagcdn.com/gd.svg"
+        },
+        {
+          "front": "What is the capital of Guadeloupe?",
+          "back": "Basse-Terre",
+          "img": "https://flagcdn.com/gp.svg"
+        },
+        {
+          "front": "What is the capital of Guam?",
+          "back": "Hagåtña",
+          "img": "https://flagcdn.com/gu.svg"
+        },
+        {
+          "front": "What is the capital of Guatemala?",
+          "back": "Guatemala City",
+          "img": "https://flagcdn.com/gt.svg"
+        },
+        {
+          "front": "What is the capital of Guernsey?",
+          "back": "St. Peter Port",
+          "img": "https://flagcdn.com/gg.svg"
+        },
+        {
+          "front": "What is the capital of Guinea?",
+          "back": "Conakry",
+          "img": "https://flagcdn.com/gn.svg"
+        },
+        {
+          "front": "What is the capital of Guinea-Bissau?",
+          "back": "Bissau",
+          "img": "https://flagcdn.com/gw.svg"
+        },
+        {
+          "front": "What is the capital of Guyana?",
+          "back": "Georgetown",
+          "img": "https://flagcdn.com/gy.svg"
+        },
+        {
+          "front": "What is the capital of Haiti?",
+          "back": "Port-au-Prince",
+          "img": "https://flagcdn.com/ht.svg"
+        },
+        {
+          "front": "What is the capital of Honduras?",
+          "back": "Tegucigalpa",
+          "img": "https://flagcdn.com/hn.svg"
+        },
+        {
+          "front": "What is the capital of Hong Kong?",
+          "back": "City of Victoria",
+          "img": "https://flagcdn.com/hk.svg"
+        },
+        {
+          "front": "What is the capital of Hungary?",
+          "back": "Budapest",
+          "img": "https://flagcdn.com/hu.svg"
+        },
+        {
+          "front": "What is the capital of Iceland?",
+          "back": "Reykjavik",
+          "img": "https://flagcdn.com/is.svg"
+        },
+        {
+          "front": "What is the capital of India?",
+          "back": "New Delhi",
+          "img": "https://flagcdn.com/in.svg"
+        },
+        {
+          "front": "What is the capital of Indonesia?",
+          "back": "Jakarta",
+          "img": "https://flagcdn.com/id.svg"
+        },
+        {
+          "front": "What is the capital of Iran?",
+          "back": "Tehran",
+          "img": "https://flagcdn.com/ir.svg"
+        },
+        {
+          "front": "What is the capital of Iraq?",
+          "back": "Baghdad",
+          "img": "https://flagcdn.com/iq.svg"
+        },
+        {
+          "front": "What is the capital of Ireland?",
+          "back": "Dublin",
+          "img": "https://flagcdn.com/ie.svg"
+        },
+        {
+          "front": "What is the capital of Isle of Man?",
+          "back": "Douglas",
+          "img": "https://flagcdn.com/im.svg"
+        },
+        {
+          "front": "What is the capital of Israel?",
+          "back": "Jerusalem",
+          "img": "https://flagcdn.com/il.svg"
+        },
+        {
+          "front": "What is the capital of Italy?",
+          "back": "Rome",
+          "img": "https://flagcdn.com/it.svg"
+        },
+        {
+          "front": "What is the capital of Ivory Coast?",
+          "back": "Yamoussoukro",
+          "img": "https://flagcdn.com/ci.svg"
+        },
+        {
+          "front": "What is the capital of Jamaica?",
+          "back": "Kingston",
+          "img": "https://flagcdn.com/jm.svg"
+        },
+        {
+          "front": "What is the capital of Japan?",
+          "back": "Tokyo",
+          "img": "https://flagcdn.com/jp.svg"
+        },
+        {
+          "front": "What is the capital of Jersey?",
+          "back": "Saint Helier",
+          "img": "https://flagcdn.com/je.svg"
+        },
+        {
+          "front": "What is the capital of Jordan?",
+          "back": "Amman",
+          "img": "https://flagcdn.com/jo.svg"
+        },
+        {
+          "front": "What is the capital of Kazakhstan?",
+          "back": "Astana",
+          "img": "https://flagcdn.com/kz.svg"
+        },
+        {
+          "front": "What is the capital of Kenya?",
+          "back": "Nairobi",
+          "img": "https://flagcdn.com/ke.svg"
+        },
+        {
+          "front": "What is the capital of Kiribati?",
+          "back": "South Tarawa",
+          "img": "https://flagcdn.com/ki.svg"
+        },
+        {
+          "front": "What is the capital of Kosovo?",
+          "back": "Pristina",
+          "img": "https://flagcdn.com/xk.svg"
+        },
+        {
+          "front": "What is the capital of Kuwait?",
+          "back": "Kuwait City",
+          "img": "https://flagcdn.com/kw.svg"
+        },
+        {
+          "front": "What is the capital of Kyrgyzstan?",
+          "back": "Bishkek",
+          "img": "https://flagcdn.com/kg.svg"
+        },
+        {
+          "front": "What is the capital of Laos?",
+          "back": "Vientiane",
+          "img": "https://flagcdn.com/la.svg"
+        },
+        {
+          "front": "What is the capital of Latvia?",
+          "back": "Riga",
+          "img": "https://flagcdn.com/lv.svg"
+        },
+        {
+          "front": "What is the capital of Lebanon?",
+          "back": "Beirut",
+          "img": "https://flagcdn.com/lb.svg"
+        },
+        {
+          "front": "What is the capital of Lesotho?",
+          "back": "Maseru",
+          "img": "https://flagcdn.com/ls.svg"
+        },
+        {
+          "front": "What is the capital of Liberia?",
+          "back": "Monrovia",
+          "img": "https://flagcdn.com/lr.svg"
+        },
+        {
+          "front": "What is the capital of Libya?",
+          "back": "Tripoli",
+          "img": "https://flagcdn.com/ly.svg"
+        },
+        {
+          "front": "What is the capital of Liechtenstein?",
+          "back": "Vaduz",
+          "img": "https://flagcdn.com/li.svg"
+        },
+        {
+          "front": "What is the capital of Lithuania?",
+          "back": "Vilnius",
+          "img": "https://flagcdn.com/lt.svg"
+        },
+        {
+          "front": "What is the capital of Luxembourg?",
+          "back": "Luxembourg",
+          "img": "https://flagcdn.com/lu.svg"
+        },
+        {
+          "front": "What is the capital of Madagascar?",
+          "back": "Antananarivo",
+          "img": "https://flagcdn.com/mg.svg"
+        },
+        {
+          "front": "What is the capital of Malawi?",
+          "back": "Lilongwe",
+          "img": "https://flagcdn.com/mw.svg"
+        },
+        {
+          "front": "What is the capital of Malaysia?",
+          "back": "Kuala Lumpur",
+          "img": "https://flagcdn.com/my.svg"
+        },
+        {
+          "front": "What is the capital of Maldives?",
+          "back": "Malé",
+          "img": "https://flagcdn.com/mv.svg"
+        },
+        {
+          "front": "What is the capital of Mali?",
+          "back": "Bamako",
+          "img": "https://flagcdn.com/ml.svg"
+        },
+        {
+          "front": "What is the capital of Malta?",
+          "back": "Valletta",
+          "img": "https://flagcdn.com/mt.svg"
+        },
+        {
+          "front": "What is the capital of Marshall Islands?",
+          "back": "Majuro",
+          "img": "https://flagcdn.com/mh.svg"
+        },
+        {
+          "front": "What is the capital of Martinique?",
+          "back": "Fort-de-France",
+          "img": "https://flagcdn.com/mq.svg"
+        },
+        {
+          "front": "What is the capital of Mauritania?",
+          "back": "Nouakchott",
+          "img": "https://flagcdn.com/mr.svg"
+        },
+        {
+          "front": "What is the capital of Mauritius?",
+          "back": "Port Louis",
+          "img": "https://flagcdn.com/mu.svg"
+        },
+        {
+          "front": "What is the capital of Mayotte?",
+          "back": "Mamoudzou",
+          "img": "https://flagcdn.com/yt.svg"
+        },
+        {
+          "front": "What is the capital of Mexico?",
+          "back": "Mexico City",
+          "img": "https://flagcdn.com/mx.svg"
+        },
+        {
+          "front": "What is the capital of Micronesia?",
+          "back": "Palikir",
+          "img": "https://flagcdn.com/fm.svg"
+        },
+        {
+          "front": "What is the capital of Moldova?",
+          "back": "Chișinău",
+          "img": "https://flagcdn.com/md.svg"
+        },
+        {
+          "front": "What is the capital of Monaco?",
+          "back": "Monaco",
+          "img": "https://flagcdn.com/mc.svg"
+        },
+        {
+          "front": "What is the capital of Mongolia?",
+          "back": "Ulan Bator",
+          "img": "https://flagcdn.com/mn.svg"
+        },
+        {
+          "front": "What is the capital of Montenegro?",
+          "back": "Podgorica",
+          "img": "https://flagcdn.com/me.svg"
+        },
+        {
+          "front": "What is the capital of Montserrat?",
+          "back": "Plymouth",
+          "img": "https://flagcdn.com/ms.svg"
+        },
+        {
+          "front": "What is the capital of Morocco?",
+          "back": "Rabat",
+          "img": "https://flagcdn.com/ma.svg"
+        },
+        {
+          "front": "What is the capital of Mozambique?",
+          "back": "Maputo",
+          "img": "https://flagcdn.com/mz.svg"
+        },
+        {
+          "front": "What is the capital of Myanmar?",
+          "back": "Naypyidaw",
+          "img": "https://flagcdn.com/mm.svg"
+        },
+        {
+          "front": "What is the capital of Namibia?",
+          "back": "Windhoek",
+          "img": "https://flagcdn.com/na.svg"
+        },
+        {
+          "front": "What is the capital of Nauru?",
+          "back": "Yaren",
+          "img": "https://flagcdn.com/nr.svg"
+        },
+        {
+          "front": "What is the capital of Nepal?",
+          "back": "Kathmandu",
+          "img": "https://flagcdn.com/np.svg"
+        },
+        {
+          "front": "What is the capital of Netherlands?",
+          "back": "Amsterdam",
+          "img": "https://flagcdn.com/nl.svg"
+        },
+        {
+          "front": "What is the capital of New Caledonia?",
+          "back": "Nouméa",
+          "img": "https://flagcdn.com/nc.svg"
+        },
+        {
+          "front": "What is the capital of New Zealand?",
+          "back": "Wellington",
+          "img": "https://flagcdn.com/nz.svg"
+        },
+        {
+          "front": "What is the capital of Nicaragua?",
+          "back": "Managua",
+          "img": "https://flagcdn.com/ni.svg"
+        },
+        {
+          "front": "What is the capital of Niger?",
+          "back": "Niamey",
+          "img": "https://flagcdn.com/ne.svg"
+        },
+        {
+          "front": "What is the capital of Nigeria?",
+          "back": "Abuja",
+          "img": "https://flagcdn.com/ng.svg"
+        },
+        {
+          "front": "What is the capital of Niue?",
+          "back": "Alofi",
+          "img": "https://flagcdn.com/nu.svg"
+        },
+        {
+          "front": "What is the capital of Norfolk Island?",
+          "back": "Kingston",
+          "img": "https://flagcdn.com/nf.svg"
+        },
+        {
+          "front": "What is the capital of North Korea?",
+          "back": "Pyongyang",
+          "img": "https://flagcdn.com/kp.svg"
+        },
+        {
+          "front": "What is the capital of North Macedonia?",
+          "back": "Skopje",
+          "img": "https://flagcdn.com/mk.svg"
+        },
+        {
+          "front": "What is the capital of Northern Mariana Islands?",
+          "back": "Saipan",
+          "img": "https://flagcdn.com/mp.svg"
+        },
+        {
+          "front": "What is the capital of Norway?",
+          "back": "Oslo",
+          "img": "https://flagcdn.com/no.svg"
+        },
+        {
+          "front": "What is the capital of Oman?",
+          "back": "Muscat",
+          "img": "https://flagcdn.com/om.svg"
+        },
+        {
+          "front": "What is the capital of Pakistan?",
+          "back": "Islamabad",
+          "img": "https://flagcdn.com/pk.svg"
+        },
+        {
+          "front": "What is the capital of Palau?",
+          "back": "Ngerulmud",
+          "img": "https://flagcdn.com/pw.svg"
+        },
+        {
+          "front": "What is the capital of Palestine?",
+          "back": "Ramallah",
+          "img": "https://flagcdn.com/ps.svg"
+        },
+        {
+          "front": "What is the capital of Panama?",
+          "back": "Panama City",
+          "img": "https://flagcdn.com/pa.svg"
+        },
+        {
+          "front": "What is the capital of Papua New Guinea?",
+          "back": "Port Moresby",
+          "img": "https://flagcdn.com/pg.svg"
+        },
+        {
+          "front": "What is the capital of Paraguay?",
+          "back": "Asunción",
+          "img": "https://flagcdn.com/py.svg"
+        },
+        {
+          "front": "What is the capital of Peru?",
+          "back": "Lima",
+          "img": "https://flagcdn.com/pe.svg"
+        },
+        {
+          "front": "What is the capital of Philippines?",
+          "back": "Manila",
+          "img": "https://flagcdn.com/ph.svg"
+        },
+        {
+          "front": "What is the capital of Pitcairn Islands?",
+          "back": "Adamstown",
+          "img": "https://flagcdn.com/pn.svg"
+        },
+        {
+          "front": "What is the capital of Poland?",
+          "back": "Warsaw",
+          "img": "https://flagcdn.com/pl.svg"
+        },
+        {
+          "front": "What is the capital of Portugal?",
+          "back": "Lisbon",
+          "img": "https://flagcdn.com/pt.svg"
+        },
+        {
+          "front": "What is the capital of Puerto Rico?",
+          "back": "San Juan",
+          "img": "https://flagcdn.com/pr.svg"
+        },
+        {
+          "front": "What is the capital of Qatar?",
+          "back": "Doha",
+          "img": "https://flagcdn.com/qa.svg"
+        },
+        {
+          "front": "What is the capital of Republic of the Congo?",
+          "back": "Brazzaville",
+          "img": "https://flagcdn.com/cg.svg"
+        },
+        {
+          "front": "What is the capital of Romania?",
+          "back": "Bucharest",
+          "img": "https://flagcdn.com/ro.svg"
+        },
+        {
+          "front": "What is the capital of Russia?",
+          "back": "Moscow",
+          "img": "https://flagcdn.com/ru.svg"
+        },
+        {
+          "front": "What is the capital of Rwanda?",
+          "back": "Kigali",
+          "img": "https://flagcdn.com/rw.svg"
+        },
+        {
+          "front": "What is the capital of Réunion?",
+          "back": "Saint-Denis",
+          "img": "https://flagcdn.com/re.svg"
+        },
+        {
+          "front": "What is the capital of Saint Barthélemy?",
+          "back": "Gustavia",
+          "img": "https://flagcdn.com/bl.svg"
+        },
+        {
+          "front": "What is the capital of Saint Helena, Ascension and Tristan da Cunha?",
+          "back": "Jamestown",
+          "img": "https://flagcdn.com/sh.svg"
+        },
+        {
+          "front": "What is the capital of Saint Kitts and Nevis?",
+          "back": "Basseterre",
+          "img": "https://flagcdn.com/kn.svg"
+        },
+        {
+          "front": "What is the capital of Saint Lucia?",
+          "back": "Castries",
+          "img": "https://flagcdn.com/lc.svg"
+        },
+        {
+          "front": "What is the capital of Saint Martin?",
+          "back": "Marigot",
+          "img": "https://flagcdn.com/mf.svg"
+        },
+        {
+          "front": "What is the capital of Saint Pierre and Miquelon?",
+          "back": "Saint-Pierre",
+          "img": "https://flagcdn.com/pm.svg"
+        },
+        {
+          "front": "What is the capital of Saint Vincent and the Grenadines?",
+          "back": "Kingstown",
+          "img": "https://flagcdn.com/vc.svg"
+        },
+        {
+          "front": "What is the capital of Samoa?",
+          "back": "Apia",
+          "img": "https://flagcdn.com/ws.svg"
+        },
+        {
+          "front": "What is the capital of San Marino?",
+          "back": "City of San Marino",
+          "img": "https://flagcdn.com/sm.svg"
+        },
+        {
+          "front": "What is the capital of Saudi Arabia?",
+          "back": "Riyadh",
+          "img": "https://flagcdn.com/sa.svg"
+        },
+        {
+          "front": "What is the capital of Senegal?",
+          "back": "Dakar",
+          "img": "https://flagcdn.com/sn.svg"
+        },
+        {
+          "front": "What is the capital of Serbia?",
+          "back": "Belgrade",
+          "img": "https://flagcdn.com/rs.svg"
+        },
+        {
+          "front": "What is the capital of Seychelles?",
+          "back": "Victoria",
+          "img": "https://flagcdn.com/sc.svg"
+        },
+        {
+          "front": "What is the capital of Sierra Leone?",
+          "back": "Freetown",
+          "img": "https://flagcdn.com/sl.svg"
+        },
+        {
+          "front": "What is the capital of Singapore?",
+          "back": "Singapore",
+          "img": "https://flagcdn.com/sg.svg"
+        },
+        {
+          "front": "What is the capital of Sint Maarten?",
+          "back": "Philipsburg",
+          "img": "https://flagcdn.com/sx.svg"
+        },
+        {
+          "front": "What is the capital of Slovakia?",
+          "back": "Bratislava",
+          "img": "https://flagcdn.com/sk.svg"
+        },
+        {
+          "front": "What is the capital of Slovenia?",
+          "back": "Ljubljana",
+          "img": "https://flagcdn.com/si.svg"
+        },
+        {
+          "front": "What is the capital of Solomon Islands?",
+          "back": "Honiara",
+          "img": "https://flagcdn.com/sb.svg"
+        },
+        {
+          "front": "What is the capital of Somalia?",
+          "back": "Mogadishu",
+          "img": "https://flagcdn.com/so.svg"
+        },
+        {
+          "front": "What is the capital of South Africa?",
+          "back": "Pretoria",
+          "img": "https://flagcdn.com/za.svg"
+        },
+        {
+          "front": "What is the capital of South Georgia?",
+          "back": "King Edward Point",
+          "img": "https://flagcdn.com/gs.svg"
+        },
+        {
+          "front": "What is the capital of South Korea?",
+          "back": "Seoul",
+          "img": "https://flagcdn.com/kr.svg"
+        },
+        {
+          "front": "What is the capital of South Sudan?",
+          "back": "Juba",
+          "img": "https://flagcdn.com/ss.svg"
+        },
+        {
+          "front": "What is the capital of Spain?",
+          "back": "Madrid",
+          "img": "https://flagcdn.com/es.svg"
+        },
+        {
+          "front": "What is the capital of Sri Lanka?",
+          "back": "Sri Jayawardenepura Kotte",
+          "img": "https://flagcdn.com/lk.svg"
+        },
+        {
+          "front": "What is the capital of Sudan?",
+          "back": "Khartoum",
+          "img": "https://flagcdn.com/sd.svg"
+        },
+        {
+          "front": "What is the capital of Suriname?",
+          "back": "Paramaribo",
+          "img": "https://flagcdn.com/sr.svg"
+        },
+        {
+          "front": "What is the capital of Svalbard and Jan Mayen?",
+          "back": "Longyearbyen",
+          "img": "https://flagcdn.com/sj.svg"
+        },
+        {
+          "front": "What is the capital of Sweden?",
+          "back": "Stockholm",
+          "img": "https://flagcdn.com/se.svg"
+        },
+        {
+          "front": "What is the capital of Switzerland?",
+          "back": "Bern",
+          "img": "https://flagcdn.com/ch.svg"
+        },
+        {
+          "front": "What is the capital of Syria?",
+          "back": "Damascus",
+          "img": "https://flagcdn.com/sy.svg"
+        },
+        {
+          "front": "What is the capital of São Tomé and Príncipe?",
+          "back": "São Tomé",
+          "img": "https://flagcdn.com/st.svg"
+        },
+        {
+          "front": "What is the capital of Taiwan?",
+          "back": "Taipei",
+          "img": "https://flagcdn.com/tw.svg"
+        },
+        {
+          "front": "What is the capital of Tajikistan?",
+          "back": "Dushanbe",
+          "img": "https://flagcdn.com/tj.svg"
+        },
+        {
+          "front": "What is the capital of Tanzania?",
+          "back": "Dodoma",
+          "img": "https://flagcdn.com/tz.svg"
+        },
+        {
+          "front": "What is the capital of Thailand?",
+          "back": "Bangkok",
+          "img": "https://flagcdn.com/th.svg"
+        },
+        {
+          "front": "What is the capital of Timor-Leste?",
+          "back": "Dili",
+          "img": "https://flagcdn.com/tl.svg"
+        },
+        {
+          "front": "What is the capital of Togo?",
+          "back": "Lomé",
+          "img": "https://flagcdn.com/tg.svg"
+        },
+        {
+          "front": "What is the capital of Tokelau?",
+          "back": "Fakaofo",
+          "img": "https://flagcdn.com/tk.svg"
+        },
+        {
+          "front": "What is the capital of Tonga?",
+          "back": "Nuku'alofa",
+          "img": "https://flagcdn.com/to.svg"
+        },
+        {
+          "front": "What is the capital of Trinidad and Tobago?",
+          "back": "Port of Spain",
+          "img": "https://flagcdn.com/tt.svg"
+        },
+        {
+          "front": "What is the capital of Tunisia?",
+          "back": "Tunis",
+          "img": "https://flagcdn.com/tn.svg"
+        },
+        {
+          "front": "What is the capital of Turkey?",
+          "back": "Ankara",
+          "img": "https://flagcdn.com/tr.svg"
+        },
+        {
+          "front": "What is the capital of Turkmenistan?",
+          "back": "Ashgabat",
+          "img": "https://flagcdn.com/tm.svg"
+        },
+        {
+          "front": "What is the capital of Turks and Caicos Islands?",
+          "back": "Cockburn Town",
+          "img": "https://flagcdn.com/tc.svg"
+        },
+        {
+          "front": "What is the capital of Tuvalu?",
+          "back": "Funafuti",
+          "img": "https://flagcdn.com/tv.svg"
+        },
+        {
+          "front": "What is the capital of Uganda?",
+          "back": "Kampala",
+          "img": "https://flagcdn.com/ug.svg"
+        },
+        {
+          "front": "What is the capital of Ukraine?",
+          "back": "Kyiv",
+          "img": "https://flagcdn.com/ua.svg"
+        },
+        {
+          "front": "What is the capital of United Arab Emirates?",
+          "back": "Abu Dhabi",
+          "img": "https://flagcdn.com/ae.svg"
+        },
+        {
+          "front": "What is the capital of United Kingdom?",
+          "back": "London",
+          "img": "https://flagcdn.com/gb.svg"
+        },
+        {
+          "front": "What is the capital of United States?",
+          "back": "Washington, D.C.",
+          "img": "https://flagcdn.com/us.svg"
+        },
+        {
+          "front": "What is the capital of United States Minor Outlying Islands?",
+          "back": "Washington DC",
+          "img": "https://flagcdn.com/um.svg"
+        },
+        {
+          "front": "What is the capital of United States Virgin Islands?",
+          "back": "Charlotte Amalie",
+          "img": "https://flagcdn.com/vi.svg"
+        },
+        {
+          "front": "What is the capital of Uruguay?",
+          "back": "Montevideo",
+          "img": "https://flagcdn.com/uy.svg"
+        },
+        {
+          "front": "What is the capital of Uzbekistan?",
+          "back": "Tashkent",
+          "img": "https://flagcdn.com/uz.svg"
+        },
+        {
+          "front": "What is the capital of Vanuatu?",
+          "back": "Port Vila",
+          "img": "https://flagcdn.com/vu.svg"
+        },
+        {
+          "front": "What is the capital of Vatican City?",
+          "back": "Vatican City",
+          "img": "https://flagcdn.com/va.svg"
+        },
+        {
+          "front": "What is the capital of Venezuela?",
+          "back": "Caracas",
+          "img": "https://flagcdn.com/ve.svg"
+        },
+        {
+          "front": "What is the capital of Vietnam?",
+          "back": "Hanoi",
+          "img": "https://flagcdn.com/vn.svg"
+        },
+        {
+          "front": "What is the capital of Wallis and Futuna?",
+          "back": "Mata-Utu",
+          "img": "https://flagcdn.com/wf.svg"
+        },
+        {
+          "front": "What is the capital of Western Sahara?",
+          "back": "El Aaiún",
+          "img": "https://flagcdn.com/eh.svg"
+        },
+        {
+          "front": "What is the capital of Yemen?",
+          "back": "Sana'a",
+          "img": "https://flagcdn.com/ye.svg"
+        },
+        {
+          "front": "What is the capital of Zambia?",
+          "back": "Lusaka",
+          "img": "https://flagcdn.com/zm.svg"
+        },
+        {
+          "front": "What is the capital of Zimbabwe?",
+          "back": "Harare",
+          "img": "https://flagcdn.com/zw.svg"
+        },
+        {
+          "front": "What is the capital of Åland Islands?",
+          "back": "Mariehamn",
+          "img": "https://flagcdn.com/ax.svg"
+        }
+      ]
+    }
+  ]
+}
