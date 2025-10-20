@@ -738,7 +738,7 @@ export default function StudyPage() {
                         />
                         <div
                           aria-hidden
-                          className="pointer-events-none absolute inset-0 bg-black/55"
+                          className="pointer-events-none absolute inset-0"
                         />
                       </>
                     ) : null}
@@ -803,7 +803,7 @@ export default function StudyPage() {
                         />
                         <div
                           aria-hidden
-                          className="pointer-events-none absolute inset-0 bg-black/55"
+                          className="pointer-events-none absolute inset-0"
                         />
                       </>
                     ) : null}
