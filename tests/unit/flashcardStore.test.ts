@@ -135,31 +135,28 @@ describe("flashcard store", () => {
   });
 
   it("imports nested collections", () => {
-    const payload : any= {
-      collections: [
+    const payload = {
+      name: "Languages",
+      locked: false,
+      cards: [{ front: "Hola", back: "Hello" }],
+      subcollections: [
         {
-          name: "Languages",
-          locked: false,
-          cards: [{ front: "Hola", back: "Hello" }],
-          subcollections: [
-            {
-              name: "Spanish",
-              cards: [{ front: "Adiós", back: "Goodbye", learned: true }],
-            },
-          ],
+          name: "Spanish",
+          cards: [{ front: "Adiós", back: "Goodbye", learned: true }],
         },
       ],
     };
 
-    const created = useFlashcardStore.getState().importCollections(payload);
+    const createdIds = useFlashcardStore.getState().importCollections(payload);
 
-    expect(created).toHaveLength(1);
+    expect(createdIds).toHaveLength(1);
 
     const { categories, flashcards } = useFlashcardStore.getState();
     expect(categories).toHaveLength(2);
 
     const languages = categories.find((category) => category.parentId === null);
     expect(languages?.name).toBe("Languages");
+    expect(createdIds[0]).toBe(languages?.id);
 
     const spanish = categories.find((category) => category.parentId === languages?.id);
     expect(spanish?.name).toBe("Spanish");
