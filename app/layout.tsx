@@ -46,6 +46,12 @@ export default function RootLayout({
                   Study
                 </a>
                 <a
+                  href="/quiz"
+                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  Quiz
+                </a>
+                <a
                   href="/progress"
                   className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >

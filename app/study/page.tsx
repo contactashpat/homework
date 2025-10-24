@@ -24,6 +24,7 @@ const STUDY_MENU_LINKS = [
   { href: "/flashcards", label: "Flashcards" },
   { href: "/study", label: "Study" },
   { href: "/progress", label: "Progress" },
+  { href: "/quiz", label: "Quiz" },
 ];
 
 export default function StudyPage() {

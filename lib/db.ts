@@ -99,6 +99,15 @@ const getOrCreateDatabase = (): DatabaseInstance => {
       img TEXT,
       FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
     );
+
+    CREATE TABLE IF NOT EXISTS quiz_attempts (
+      id TEXT PRIMARY KEY,
+      total_questions INTEGER NOT NULL,
+      correct_answers INTEGER NOT NULL,
+      created_at TEXT NOT NULL
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_quiz_attempts_created_at ON quiz_attempts (created_at);
   `);
 
   seedDatabaseFromDefaultJson(db);

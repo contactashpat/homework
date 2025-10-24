@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it } from "vitest";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { generateQuizQuestions } from "../../lib/quiz";
 import { useFlashcardStore } from "../../stores/flashcardStore";
 import { useQuizStore } from "../../stores/quizStore";
@@ -36,7 +36,18 @@ describe("quiz generation", () => {
 });
 
 describe("quiz store", () => {
+  let fetchMock: ReturnType<typeof vi.fn>;
+  let originalFetch: typeof fetch | undefined;
+
   beforeEach(() => {
+    fetchMock = vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({}),
+    });
+    originalFetch = global.fetch;
+    (global as typeof globalThis & { fetch: typeof fetch }).fetch =
+      fetchMock as typeof fetch;
+
     const flashcards = createSampleFlashcards(6);
     useFlashcardStore.setState((state) => ({
       ...state,
@@ -54,6 +65,10 @@ describe("quiz store", () => {
   });
 
   afterEach(() => {
+    if (originalFetch) {
+      (global as typeof globalThis & { fetch: typeof fetch }).fetch =
+        originalFetch;
+    }
     useQuizStore.setState((state) => ({
       ...state,
       questions: [],
@@ -119,6 +134,15 @@ describe("quiz store", () => {
     expect(score.correct).toBeGreaterThanOrEqual(0);
     expect(score.correct).toBeLessThanOrEqual(score.total);
     expect(useQuizStore.getState().status).toBe("completed");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    const [, requestInit] = fetchMock.mock.calls[0] ?? [];
+    expect(requestInit?.method).toBe("POST");
+    const parsedBody = requestInit?.body
+      ? JSON.parse(requestInit.body as string)
+      : null;
+    expect(parsedBody).toMatchObject({
+      totalQuestions: score.total,
+    });
   });
 
   it("sets an error when there are too few flashcards", () => {

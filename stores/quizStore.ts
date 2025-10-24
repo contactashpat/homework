@@ -24,6 +24,26 @@ export type QuizState = {
   getScore: () => { correct: number; total: number };
 };
 
+type QuizAttemptPayload = {
+  totalQuestions: number;
+  correctAnswers: number;
+  submittedAt?: string;
+};
+
+const submitQuizAttempt = (payload: QuizAttemptPayload) => {
+  if (typeof fetch !== "function") {
+    return;
+  }
+
+  void fetch("/api/quiz-attempts", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  }).catch(() => {
+    /* swallow network errors so the UI flow continues */
+  });
+};
+
 export const useQuizStore = create<QuizState>((set, get) => ({
   questions: [],
   currentIndex: 0,
@@ -102,6 +122,8 @@ export const useQuizStore = create<QuizState>((set, get) => ({
   },
 
   goToNextQuestion: () => {
+    let attemptPayload: QuizAttemptPayload | null = null;
+
     set((state) => {
       if (state.status !== "in-progress") {
         return state;
@@ -116,6 +138,14 @@ export const useQuizStore = create<QuizState>((set, get) => ({
 
       const isLastQuestion = state.currentIndex >= state.questions.length - 1;
       if (isLastQuestion) {
+        const totalQuestions = state.questions.length;
+        const correctAnswers = countCorrectAnswers(state.questions, state.answers);
+        attemptPayload = {
+          totalQuestions,
+          correctAnswers,
+          submittedAt: new Date().toISOString(),
+        };
+
         return {
           ...state,
           status: "completed",
@@ -127,6 +157,10 @@ export const useQuizStore = create<QuizState>((set, get) => ({
         currentIndex: state.currentIndex + 1,
       };
     });
+
+    if (attemptPayload) {
+      submitQuizAttempt(attemptPayload);
+    }
   },
 
   resetQuiz: () => {
