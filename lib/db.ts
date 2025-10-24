@@ -2,8 +2,10 @@ import DatabaseConstructor from "better-sqlite3";
 import { randomUUID } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { tmpdir } from "node:os";
 
-const DATABASE_FILENAME = process.env.SQLITE_FILE ?? join(process.cwd(), "data", "collections.db");
+const DEFAULT_DATABASE_FILENAME = join(process.cwd(), "data", "collections.db");
+const FALLBACK_DATABASE_FILENAME = join(tmpdir(), "flashcard-app", "collections.db");
 const DEFAULT_SEED_FILE = join(process.cwd(), "data", "country-capitals-collection.json");
 
 type DatabaseInstance = InstanceType<typeof DatabaseConstructor>;
@@ -19,14 +21,64 @@ const ensureDirectory = (filePath: string) => {
   }
 };
 
+const isReadOnlyFsError = (error: unknown): error is NodeJS.ErrnoException =>
+  Boolean(
+    error &&
+      typeof error === "object" &&
+      "code" in error &&
+      typeof (error as NodeJS.ErrnoException).code === "string" &&
+      ["EROFS", "EACCES", "EPERM"].includes((error as NodeJS.ErrnoException).code!),
+  );
+
+const isSqliteCantOpenError = (error: unknown): boolean =>
+  error instanceof Error &&
+  /(SQLITE_CANTOPEN|unable to open database file)/i.test(error.message ?? "");
+
 const getOrCreateDatabase = (): DatabaseInstance => {
   const globalWithDb = globalThis as GlobalWithDb;
   if (globalWithDb.__flashcardDb__) {
     return globalWithDb.__flashcardDb__;
   }
 
-  ensureDirectory(DATABASE_FILENAME);
-  const db = new DatabaseConstructor(DATABASE_FILENAME);
+  const candidates: string[] = process.env.SQLITE_FILE
+    ? [process.env.SQLITE_FILE]
+    : [DEFAULT_DATABASE_FILENAME, FALLBACK_DATABASE_FILENAME];
+
+  let db: DatabaseInstance | undefined;
+  let lastError: unknown;
+
+  for (const filename of candidates) {
+    try {
+      ensureDirectory(filename);
+      db = new DatabaseConstructor(filename);
+      if (!process.env.SQLITE_FILE && filename === FALLBACK_DATABASE_FILENAME) {
+        console.warn(`Using temporary SQLite database at '${filename}'.`);
+      }
+      break;
+    } catch (error) {
+      lastError = error;
+      if (
+        filename === DEFAULT_DATABASE_FILENAME &&
+        !process.env.SQLITE_FILE &&
+        (isReadOnlyFsError(error) || isSqliteCantOpenError(error))
+      ) {
+        console.warn(
+          `SQLite database '${filename}' is not writable. Falling back to '${FALLBACK_DATABASE_FILENAME}'.`,
+        );
+        continue;
+      }
+
+      throw error;
+    }
+  }
+
+  if (!db) {
+    if (lastError instanceof Error) {
+      throw lastError;
+    }
+    throw new Error("Failed to initialize SQLite database.");
+  }
+
   db.pragma("journal_mode = WAL");
   db.exec("PRAGMA foreign_keys = ON;");
   db.exec(`

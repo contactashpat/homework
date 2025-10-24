@@ -34,5 +34,6 @@ test-results/
 # Misc
 *.tsbuildinfo
 .DS_Store
+.idea/
 data/*.db
 data/*.db-*
