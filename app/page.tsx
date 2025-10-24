@@ -68,7 +68,7 @@ export default function Home() {
         </div>
 
         {/* Navigation */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           <a
             href="/flashcards"
             className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300"
@@ -102,6 +102,18 @@ export default function Home() {
             </h2>
             <p className="text-gray-600 dark:text-gray-300">
               View your learning progress and statistics.
+            </p>
+          </a>
+
+          <a
+            href="/quiz"
+            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-shadow duration-300"
+          >
+            <h2 className="text-xl font-semibold mb-3 text-gray-900 dark:text-white">
+              Quiz Mode
+            </h2>
+            <p className="text-gray-600 dark:text-gray-300">
+              Take a timed-style test with multiple choice questions.
             </p>
           </a>
         </div>
