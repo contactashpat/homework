@@ -323,22 +323,27 @@ export const useFlashcardStore = create<FlashcardStore>((set, get) => ({
 
       const remainingCategories = state.categories.filter((c) => c.id !== id);
 
-      if (remainingCategories.length === 0) {
-        // Prevent deleting the last category to ensure cards always have a category.
-        return state;
-      }
-
-      const fallbackCategory = remainingCategories.find((c) => !c.locked) ?? remainingCategories[0];
       const affectedCardIds = state.flashcards
         .filter((card) => card.categoryId === id)
         .map((card) => card.id);
-      const flashcards = state.flashcards.map((card) =>
-        card.categoryId === id ? { ...card, categoryId: fallbackCategory.id } : card,
-      );
 
-      const categories = remainingCategories.map((cat) =>
-        cat.parentId === id ? { ...cat, parentId: fallbackCategory.id } : cat,
-      );
+      let flashcards = state.flashcards;
+      let categories = remainingCategories;
+
+      if (remainingCategories.length === 0) {
+        // No categories left, remove all flashcards that belonged to the deleted category.
+        flashcards = state.flashcards.filter((card) => card.categoryId !== id);
+        categories = [];
+      } else {
+        const fallbackCategory = remainingCategories.find((c) => !c.locked) ?? remainingCategories[0];
+        flashcards = state.flashcards.map((card) =>
+          card.categoryId === id ? { ...card, categoryId: fallbackCategory.id } : card,
+        );
+
+        categories = remainingCategories.map((cat) =>
+          cat.parentId === id ? { ...cat, parentId: fallbackCategory.id } : cat,
+        );
+      }
 
       const nextState = {
         ...state,

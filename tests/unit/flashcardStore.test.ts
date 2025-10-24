@@ -135,7 +135,7 @@ describe("flashcard store", () => {
   });
 
   it("imports nested collections", () => {
-    const payload = {
+    const payload : any= {
       collections: [
         {
           name: "Languages",
@@ -170,5 +170,33 @@ describe("flashcard store", () => {
     expect(hola?.categoryId).toBe(languages?.id);
     expect(adios?.categoryId).toBe(spanish?.id);
     expect(adios?.learned).toBe(true);
+  });
+
+  it("allows deleting the last category and removes related flashcards", () => {
+    const { categoryId } = addSampleCard("Solo", "Only card");
+    const { deleteCategory } = useFlashcardStore.getState();
+
+    expect(useFlashcardStore.getState().categories).toHaveLength(1);
+
+    deleteCategory(categoryId);
+
+    expect(useFlashcardStore.getState().categories).toHaveLength(0);
+    expect(useFlashcardStore.getState().flashcards).toHaveLength(0);
+  });
+
+  it("moves flashcards to a remaining category when one is deleted", () => {
+    const firstCategory = createCategory("Keep");
+    const secondCategory = createCategory("Remove");
+    const { addFlashcard, deleteCategory, getFlashcardById } = useFlashcardStore.getState();
+
+    addFlashcard({ front: "Moved card", back: "To default", categoryId: secondCategory });
+    const [card] = useFlashcardStore.getState().flashcards;
+
+    deleteCategory(secondCategory);
+
+    const updatedCard = getFlashcardById(card.id);
+    expect(updatedCard).toBeDefined();
+    expect(updatedCard?.categoryId).toBe(firstCategory);
+    expect(useFlashcardStore.getState().categories).toHaveLength(1);
   });
 });
