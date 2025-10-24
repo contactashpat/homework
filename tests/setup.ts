@@ -33,7 +33,7 @@ const globalTarget = globalThis as typeof globalThis & {
 };
 
 if (typeof globalTarget.window === "undefined") {
-  globalTarget.window = globalTarget;
+  globalTarget.window = globalTarget as unknown as Window & typeof globalThis;
 }
 
 if (typeof globalTarget.window.localStorage === "undefined") {

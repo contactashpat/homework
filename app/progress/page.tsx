@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { useFlashcardStore } from "../../stores/flashcardStore";
 
@@ -486,10 +487,13 @@ export default function ProgressPage() {
                           </p>
                         </div>
                         {hasImage && (
-                          <img
-                            src={card.img}
+                          <Image
+                            src={card.img as string}
                             alt={card.front}
-                            className="w-16 h-16 object-cover rounded-md ml-4"
+                            width={64}
+                            height={64}
+                            sizes="64px"
+                            className="ml-4 h-16 w-16 rounded-md object-cover"
                           />
                         )}
                       </div>
@@ -527,10 +531,13 @@ export default function ProgressPage() {
                           </p>
                         </div>
                         {hasImage && (
-                          <img
-                            src={card.img}
+                          <Image
+                            src={card.img as string}
                             alt={card.front}
-                            className="w-16 h-16 object-cover rounded-md ml-4"
+                            width={64}
+                            height={64}
+                            sizes="64px"
+                            className="ml-4 h-16 w-16 rounded-md object-cover"
                           />
                         )}
                       </div>

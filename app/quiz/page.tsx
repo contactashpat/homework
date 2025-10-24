@@ -82,7 +82,7 @@ export default function QuizPage() {
     }
     hasTriggeredConfettiRef.current = true;
 
-    let interval: ReturnType<typeof setInterval> | null = null;
+    let intervalId: number | null = null;
     let cancelled = false;
 
     const launchConfetti = async () => {
@@ -93,7 +93,7 @@ export default function QuizPage() {
       const duration = 2000;
       const animationEnd = Date.now() + duration;
 
-      interval = window.setInterval(() => {
+      intervalId = window.setInterval(() => {
         if (cancelled) {
           return;
         }
@@ -108,9 +108,9 @@ export default function QuizPage() {
             y: Math.random() - 0.2,
           },
         });
-        if (Date.now() > animationEnd && interval) {
-          clearInterval(interval);
-          interval = null;
+        if (Date.now() > animationEnd && intervalId !== null) {
+          window.clearInterval(intervalId);
+          intervalId = null;
         }
       }, 250);
     };
@@ -119,9 +119,9 @@ export default function QuizPage() {
 
     return () => {
       cancelled = true;
-      if (interval) {
-        clearInterval(interval);
-        interval = null;
+      if (intervalId !== null) {
+        window.clearInterval(intervalId);
+        intervalId = null;
       }
     };
   }, [hasPerfectScore]);
