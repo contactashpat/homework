@@ -34,12 +34,6 @@ export default function RootLayout({
               </div>
               <div className="flex space-x-4">
                 <a
-                  href="/flashcards"
-                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                >
-                  Flashcards
-                </a>
-                <a
                   href="/study"
                   className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
@@ -50,6 +44,12 @@ export default function RootLayout({
                   className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                 >
                   Quiz
+                </a>
+                <a
+                  href="/flashcards"
+                  className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+                >
+                  Flashcards
                 </a>
                 <a
                   href="/progress"
