@@ -2,7 +2,6 @@ import { Request, Response, NextFunction } from "express";
 import {
   verifyAccessToken,
   type AuthenticatedUser,
-  getServiceSecret,
 } from "../services/authService";
 
 declare module "express-serve-static-core" {
@@ -17,13 +16,6 @@ export const requireAuth = (
   next: NextFunction,
 ) => {
   const authHeader = req.get("authorization") ?? "";
-  const serviceSecret = getServiceSecret();
-
-  const serviceHeader = req.get("x-service-secret");
-  if (serviceSecret && serviceHeader && serviceSecret === serviceHeader) {
-    return next();
-  }
-
   if (!authHeader.startsWith("Bearer ")) {
     return res.status(401).json({ error: "Unauthorized" });
   }

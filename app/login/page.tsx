@@ -1,0 +1,24 @@
+import { redirect } from "next/navigation";
+import LoginForm from "./LoginForm";
+import { getCurrentUser } from "../../lib/auth/serverAuth";
+
+export default async function LoginPage() {
+  const user = await getCurrentUser();
+  if (user) {
+    redirect("/study");
+  }
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-10 dark:bg-gray-900">
+      <div className="w-full max-w-md">
+        <h1 className="text-3xl font-semibold text-gray-900 dark:text-white">
+          Sign in
+        </h1>
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          Use your account to access flashcards, quizzes, and progress.
+        </p>
+        <LoginForm />
+      </div>
+    </div>
+  );
+}

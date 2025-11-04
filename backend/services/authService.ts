@@ -222,8 +222,3 @@ export type AuthenticatedUser = {
   username: string;
   roles: string[];
 };
-
-export const getServiceSecret = (): string | null => {
-  const secret = process.env.SERVICE_API_SECRET;
-  return secret && secret.trim().length > 0 ? secret.trim() : null;
-};

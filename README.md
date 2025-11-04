@@ -28,13 +28,10 @@ app locally or in production:
 ```bash
 ACCESS_TOKEN_SECRET=change-me-access-secret
 REFRESH_TOKEN_SECRET=change-me-refresh-secret
-SERVICE_API_SECRET=internal-service-secret
 ```
 
 - `ACCESS_TOKEN_SECRET` – used to sign JWT access tokens.
 - `REFRESH_TOKEN_SECRET` – used to sign JWT refresh tokens.
-- `SERVICE_API_SECRET` – optional secret that allows the Next.js API routes to
-  call the backend without a user token.
 
 A default admin user is seeded the first time the backend starts:
 

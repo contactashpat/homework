@@ -25,17 +25,14 @@ export const buildInternalApiUrl = (path: string): string => {
   return `${base}${normalizedPath}`;
 };
 
-export const applyServiceHeaders = (
+export const withBackendAuth = (
   init: RequestInit = {},
+  accessToken?: string | null,
 ): RequestInit => {
-  const serviceSecret = process.env.SERVICE_API_SECRET;
-  if (!serviceSecret || serviceSecret.trim().length === 0) {
-    return init;
-  }
-
   const headers = new Headers(init.headers);
-  if (!headers.has("x-service-secret")) {
-    headers.set("x-service-secret", serviceSecret.trim());
+
+  if (accessToken && !headers.has("Authorization")) {
+    headers.set("Authorization", `Bearer ${accessToken}`);
   }
 
   return {

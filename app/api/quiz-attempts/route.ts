@@ -1,8 +1,15 @@
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-import { applyServiceHeaders, buildInternalApiUrl } from "../../../lib/internalApi";
+import { withBackendAuth, buildInternalApiUrl } from "../../../lib/internalApi";
+import { readAccessToken } from "../../../lib/auth/cookies";
 
 export async function GET(request: Request) {
   try {
+    const accessToken = readAccessToken(cookies());
+    if (!accessToken) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
     const { searchParams } = new URL(request.url);
     const days = searchParams.get("days");
     const url = new URL(
@@ -14,7 +21,7 @@ export async function GET(request: Request) {
 
     const response = await fetch(
       url.toString(),
-      applyServiceHeaders({ cache: "no-store" }),
+      withBackendAuth({ cache: "no-store" }, accessToken),
     );
     if (!response.ok) {
       return NextResponse.json(
@@ -37,13 +44,17 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const payload = await request.json();
+    const accessToken = readAccessToken(cookies());
+    if (!accessToken) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
     const response = await fetch(
       buildInternalApiUrl("/internal-api/quiz-attempts"),
-      applyServiceHeaders({
+      withBackendAuth({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-      }),
+      }, accessToken),
     );
 
     if (!response.ok) {
