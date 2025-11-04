@@ -6,7 +6,7 @@ export async function POST() {
   const refreshToken = readRefreshToken();
 
   if (refreshToken) {
-    await fetch(buildInternalApiUrl("/auth/logout"), {
+    await fetch(buildInternalApiUrl("/internal-api/auth/logout"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ refreshToken }),
