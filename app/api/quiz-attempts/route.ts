@@ -1,58 +1,40 @@
 import { NextResponse } from "next/server";
-import {
-  getQuizAttemptSummary,
-  recordQuizAttempt,
-} from "../../../lib/quizRepository";
-
-const MIN_RANGE_DAYS = 7;
-const MAX_RANGE_DAYS = 30;
-
-type QuizAttemptPostPayload = {
-  totalQuestions?: unknown;
-  correctAnswers?: unknown;
-  submittedAt?: unknown;
-};
-
-const clampRange = (value: number) =>
-  Math.min(Math.max(Math.floor(value), MIN_RANGE_DAYS), MAX_RANGE_DAYS);
-
-const isValidIsoDate = (value: unknown): value is string => {
-  if (typeof value !== "string") {
-    return false;
+const resolveInternalApiBase = () => {
+  if (process.env.INTERNAL_API_BASE_URL) {
+    return process.env.INTERNAL_API_BASE_URL.replace(/\/$/, "");
   }
-  const parsed = Date.parse(value);
-  return Number.isFinite(parsed);
+  if (process.env.VERCEL_URL) {
+    const origin = process.env.VERCEL_URL.startsWith("http")
+      ? process.env.VERCEL_URL
+      : `https://${process.env.VERCEL_URL}`;
+    return origin.replace(/\/$/, "");
+  }
+  const port = process.env.PORT ?? "3000";
+  return `http://127.0.0.1:${port}`;
 };
+
+const internalApiBase = resolveInternalApiBase();
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
-    const requestedDays = Number.parseInt(searchParams.get("days") ?? "", 10);
-    const days = Number.isFinite(requestedDays)
-      ? clampRange(requestedDays)
-      : MIN_RANGE_DAYS;
+    const days = searchParams.get("days");
+    const path = days
+      ? `${internalApiBase}/internal-api/quiz-attempts?days=${encodeURIComponent(
+          days,
+        )}`
+      : `${internalApiBase}/internal-api/quiz-attempts`;
 
-    const summary = getQuizAttemptSummary(days);
-    const summaryByDate = new Map(summary.map((row) => [row.date, row]));
+    const response = await fetch(path, { cache: "no-store" });
+    if (!response.ok) {
+      return NextResponse.json(
+        { error: "Failed to fetch quiz attempt summary" },
+        { status: response.status },
+      );
+    }
 
-    const today = new Date();
-    today.setUTCHours(0, 0, 0, 0);
-
-    const data = Array.from({ length: days }, (_, index) => {
-      const date = new Date(today);
-      date.setUTCDate(today.getUTCDate() - (days - 1 - index));
-      const key = date.toISOString().slice(0, 10);
-      const row = summaryByDate.get(key);
-
-      return {
-        date: key,
-        attemptCount: row?.attemptCount ?? 0,
-        totalQuestions: row?.totalQuestions ?? 0,
-        correctAnswers: row?.correctAnswers ?? 0,
-      };
-    });
-
-    return NextResponse.json({ rangeDays: days, data });
+    const payload = await response.json();
+    return NextResponse.json(payload);
   } catch (error) {
     console.error("Failed to fetch quiz attempt summary:", error);
     return NextResponse.json(
@@ -64,32 +46,20 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   try {
-    const payload = (await request.json()) as QuizAttemptPostPayload;
-    const totalQuestions = Number(payload.totalQuestions);
-    const correctAnswers = Number(payload.correctAnswers);
+    const payload = await request.json();
+    const response = await fetch(`${internalApiBase}/internal-api/quiz-attempts`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
 
-    if (
-      !Number.isInteger(totalQuestions) ||
-      totalQuestions <= 0 ||
-      !Number.isInteger(correctAnswers) ||
-      correctAnswers < 0 ||
-      correctAnswers > totalQuestions
-    ) {
+    if (!response.ok) {
+      const text = await response.text();
       return NextResponse.json(
-        { error: "Invalid quiz attempt payload" },
-        { status: 400 },
+        { error: "Failed to record quiz attempt", details: text },
+        { status: response.status },
       );
     }
-
-    const submittedAt = isValidIsoDate(payload.submittedAt)
-      ? new Date(payload.submittedAt).toISOString()
-      : new Date().toISOString();
-
-    recordQuizAttempt({
-      totalQuestions,
-      correctAnswers,
-      createdAt: submittedAt,
-    });
 
     return NextResponse.json({ status: "ok" }, { status: 201 });
   } catch (error) {

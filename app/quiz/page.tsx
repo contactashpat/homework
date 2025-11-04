@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { shallow } from "zustand/shallow";
 import { DEFAULT_QUIZ_QUESTION_COUNT } from "../../lib/quiz";
 import { useFlashcardStore } from "../../stores/flashcardStore";
@@ -16,7 +16,13 @@ const NAV_LINKS = [
 ];
 
 export default function QuizPage() {
-  const flashcards = useFlashcardStore((state) => state.flashcards);
+  const { flashcards, hasHydrated } = useFlashcardStore(
+    (state) => ({
+      flashcards: state.flashcards,
+      hasHydrated: state.hasHydrated,
+    }),
+    shallow,
+  );
 
   const hasTriggeredConfettiRef = useRef(false);
 
@@ -62,7 +68,20 @@ export default function QuizPage() {
   const currentAnswer = currentQuestion
     ? answers[currentQuestion.id] ?? null
     : null;
-  const insufficientFlashcards = flashcards.length < 4;
+  const usableFlashcardCount = useMemo(
+    () =>
+      flashcards.filter(
+        (card) =>
+          typeof card?.front === "string" &&
+          card.front.trim().length > 0 &&
+          typeof card?.back === "string" &&
+          card.back.trim().length > 0,
+      ).length,
+    [flashcards],
+  );
+
+  const insufficientFlashcards =
+    hasHydrated && usableFlashcardCount < 4;
   const isLastQuestion =
     currentQuestion != null && currentIndex === questions.length - 1;
   const score = status === "completed" ? getScore() : null;

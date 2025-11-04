@@ -5,6 +5,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "server": "nodemon backend/server.js",
     "lint": "next lint",
     "test": "vitest",
     "test:watch": "vitest watch",
@@ -15,6 +16,7 @@
   "dependencies": {
     "better-sqlite3": "^12.4.1",
     "canvas-confetti": "^1.9.3",
+    "express": "^5.1.0",
     "next": "^14.2.33",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -30,6 +32,7 @@
     "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.33",
     "jsdom": "^27.0.0",
+    "nodemon": "^3.1.10",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.18",
     "typescript": "^5.6.3",
