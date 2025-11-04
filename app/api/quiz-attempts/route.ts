@@ -1,31 +1,18 @@
 import { NextResponse } from "next/server";
-const resolveInternalApiBase = () => {
-  if (process.env.INTERNAL_API_BASE_URL) {
-    return process.env.INTERNAL_API_BASE_URL.replace(/\/$/, "");
-  }
-  if (process.env.VERCEL_URL) {
-    const origin = process.env.VERCEL_URL.startsWith("http")
-      ? process.env.VERCEL_URL
-      : `https://${process.env.VERCEL_URL}`;
-    return origin.replace(/\/$/, "");
-  }
-  const port = process.env.PORT ?? "3000";
-  return `http://127.0.0.1:${port}`;
-};
-
-const internalApiBase = resolveInternalApiBase();
+import { buildInternalApiUrl } from "../../../lib/internalApi";
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const days = searchParams.get("days");
-    const path = days
-      ? `${internalApiBase}/internal-api/quiz-attempts?days=${encodeURIComponent(
-          days,
-        )}`
-      : `${internalApiBase}/internal-api/quiz-attempts`;
+    const url = new URL(
+      buildInternalApiUrl("/internal-api/quiz-attempts"),
+    );
+    if (days) {
+      url.searchParams.set("days", days);
+    }
 
-    const response = await fetch(path, { cache: "no-store" });
+    const response = await fetch(url.toString(), { cache: "no-store" });
     if (!response.ok) {
       return NextResponse.json(
         { error: "Failed to fetch quiz attempt summary" },
@@ -47,11 +34,14 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   try {
     const payload = await request.json();
-    const response = await fetch(`${internalApiBase}/internal-api/quiz-attempts`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    const response = await fetch(
+      buildInternalApiUrl("/internal-api/quiz-attempts"),
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      },
+    );
 
     if (!response.ok) {
       const text = await response.text();

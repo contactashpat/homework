@@ -1,26 +1,11 @@
 import { NextResponse } from "next/server";
 import type { Flashcard, FlashcardCategory } from "../../../types";
+import { buildInternalApiUrl } from "../../../lib/internalApi";
 
 export const dynamic = "force-dynamic";
 
-const resolveInternalApiBase = () => {
-  if (process.env.INTERNAL_API_BASE_URL) {
-    return process.env.INTERNAL_API_BASE_URL.replace(/\/$/, "");
-  }
-  if (process.env.VERCEL_URL) {
-    const origin = process.env.VERCEL_URL.startsWith("http")
-      ? process.env.VERCEL_URL
-      : `https://${process.env.VERCEL_URL}`;
-    return origin.replace(/\/$/, "");
-  }
-  const port = process.env.PORT ?? "3000";
-  return `http://127.0.0.1:${port}`;
-};
-
-const internalApiBase = resolveInternalApiBase();
-
 export async function GET() {
-  const target = `${internalApiBase}/internal-api/collections`;
+  const target = buildInternalApiUrl("/internal-api/collections");
   const response = await fetch(target, { cache: "no-store" });
   if (!response.ok) {
     return NextResponse.json(
@@ -47,7 +32,7 @@ export async function PUT(request: Request) {
       return NextResponse.json({ error: "Invalid payload" }, { status: 400 });
     }
 
-    const target = `${internalApiBase}/internal-api/collections`;
+    const target = buildInternalApiUrl("/internal-api/collections");
     const backendResponse = await fetch(target, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
