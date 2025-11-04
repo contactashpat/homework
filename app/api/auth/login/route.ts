@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { buildInternalApiUrl } from "../../../lib/internalApi";
-import { setAuthCookies, clearAuthCookies } from "../../../lib/auth/cookies";
+import { buildInternalApiUrl } from "../../../../lib/internalApi";
+import { setAuthCookies, clearAuthCookies } from "../../../../lib/auth/cookies";
 
 export async function POST(request: Request) {
   const body = (await request.json().catch(() => ({}))) as {

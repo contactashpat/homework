@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { readAccessToken } from "../../../lib/auth/cookies";
-import { verifyAccessToken } from "../../../lib/auth/token";
+import { readAccessToken } from "../../../../lib/auth/cookies";
+import { verifyAccessToken } from "../../../../lib/auth/token";
 
 export async function GET() {
   try {
