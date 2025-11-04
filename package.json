@@ -17,6 +17,7 @@
     "bcryptjs": "^3.0.3",
     "better-sqlite3": "^12.4.1",
     "canvas-confetti": "^1.9.3",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "next": "^14.2.33",
