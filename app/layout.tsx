@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/next"
 import { StoreHydrator } from "../components/StoreHydrator";
 
 export const metadata: Metadata = {
@@ -63,7 +62,6 @@ export default function RootLayout({
           </div>
         </nav>
         {children}
-      <Analytics />
       </body>
     </html>
   );
