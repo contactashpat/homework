@@ -1,5 +1,6 @@
 import DatabaseConstructor, { Database } from "better-sqlite3";
 import { randomUUID } from "node:crypto";
+import bcrypt from "bcryptjs";
 import { existsSync, mkdirSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { tmpdir } from "node:os";
@@ -67,6 +68,30 @@ const createSchema = (db: Database) => {
     );
 
     CREATE INDEX IF NOT EXISTS idx_quiz_attempts_created_at ON quiz_attempts (created_at);
+
+    CREATE TABLE IF NOT EXISTS users (
+      id TEXT PRIMARY KEY,
+      username TEXT NOT NULL UNIQUE,
+      password_hash TEXT NOT NULL,
+      roles TEXT NOT NULL,
+      created_at TEXT NOT NULL,
+      updated_at TEXT NOT NULL
+    );
+
+    CREATE TABLE IF NOT EXISTS refresh_tokens (
+      id TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL,
+      jti TEXT NOT NULL UNIQUE,
+      token_hash TEXT NOT NULL,
+      expires_at TEXT NOT NULL,
+      revoked INTEGER NOT NULL DEFAULT 0,
+      created_at TEXT NOT NULL,
+      revoked_at TEXT,
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_refresh_tokens_user_id ON refresh_tokens (user_id);
+    CREATE INDEX IF NOT EXISTS idx_refresh_tokens_jti ON refresh_tokens (jti);
   `);
 };
 
@@ -154,6 +179,36 @@ const seedCollections = (db: Database) => {
   }
 };
 
+const seedUsers = (db: Database) => {
+  try {
+    const existingUser = db.prepare("SELECT 1 FROM users LIMIT 1").get();
+    if (existingUser) {
+      return;
+    }
+
+    const insertUser = db.prepare(
+      `INSERT INTO users (id, username, password_hash, roles, created_at, updated_at)
+       VALUES (@id, @username, @passwordHash, @roles, @createdAt, @updatedAt)`,
+    );
+
+    const defaultUser = {
+      id: randomUUID(),
+      username: "admin@example.com",
+      passwordHash: bcrypt.hashSync("admin123", 12),
+      roles: JSON.stringify(["admin"]),
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+
+    insertUser.run(defaultUser);
+    console.info(
+      "Seeded default admin user (admin@example.com / admin123). Change this in production!",
+    );
+  } catch (error) {
+    console.error("Failed to seed default users:", error);
+  }
+};
+
 export const getDb = (): Database => {
   if (cachedDb) {
     return cachedDb;
@@ -201,6 +256,7 @@ export const getDb = (): Database => {
 
   createSchema(db);
   seedCollections(db);
+  seedUsers(db);
 
   cachedDb = db;
   return db;

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { buildInternalApiUrl } from "../../../lib/internalApi";
+import { applyServiceHeaders, buildInternalApiUrl } from "../../../lib/internalApi";
 
 export async function GET(request: Request) {
   try {
@@ -12,7 +12,10 @@ export async function GET(request: Request) {
       url.searchParams.set("days", days);
     }
 
-    const response = await fetch(url.toString(), { cache: "no-store" });
+    const response = await fetch(
+      url.toString(),
+      applyServiceHeaders({ cache: "no-store" }),
+    );
     if (!response.ok) {
       return NextResponse.json(
         { error: "Failed to fetch quiz attempt summary" },
@@ -36,11 +39,11 @@ export async function POST(request: Request) {
     const payload = await request.json();
     const response = await fetch(
       buildInternalApiUrl("/internal-api/quiz-attempts"),
-      {
+      applyServiceHeaders({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
-      },
+      }),
     );
 
     if (!response.ok) {

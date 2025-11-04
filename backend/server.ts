@@ -1,6 +1,8 @@
 import express, { Request, Response, NextFunction } from "express";
 import collectionsRouter from "./routes/collections";
 import quizAttemptsRouter from "./routes/quizAttempts";
+import authRouter from "./routes/auth";
+import { requireAuth } from "./middleware/authMiddleware";
 
 const app = express();
 const port = Number.parseInt(process.env.PORT ?? "4000", 10);
@@ -19,8 +21,9 @@ app.get("/debug", (_req: Request, res: Response) => {
   });
 });
 
-app.use("/collections", collectionsRouter);
-app.use("/quiz-attempts", quizAttemptsRouter);
+app.use("/auth", authRouter);
+app.use("/collections", requireAuth, collectionsRouter);
+app.use("/quiz-attempts", requireAuth, quizAttemptsRouter);
 
 app.use((req: Request, res: Response) => {
   res.status(404).json({ error: "Not found", path: req.originalUrl });

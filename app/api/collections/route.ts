@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
 import type { Flashcard, FlashcardCategory } from "../../../types";
-import { buildInternalApiUrl } from "../../../lib/internalApi";
+import { applyServiceHeaders, buildInternalApiUrl } from "../../../lib/internalApi";
 
 export const dynamic = "force-dynamic";
 
 export async function GET() {
   const target = buildInternalApiUrl("/internal-api/collections");
-  const response = await fetch(target, { cache: "no-store" });
+  const response = await fetch(target, applyServiceHeaders({ cache: "no-store" }));
   if (!response.ok) {
     return NextResponse.json(
       { error: "Failed to fetch collections" },
@@ -33,11 +33,14 @@ export async function PUT(request: Request) {
     }
 
     const target = buildInternalApiUrl("/internal-api/collections");
-    const backendResponse = await fetch(target, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    const backendResponse = await fetch(
+      target,
+      applyServiceHeaders({
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }),
+    );
 
     if (!backendResponse.ok) {
       const text = await backendResponse.text();
