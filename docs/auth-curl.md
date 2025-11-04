@@ -48,3 +48,11 @@ curl -s -X POST "$API_ROOT/auth/logout" \
   -H "Content-Type: application/json" \
   -d '{"refreshToken":"'$REFRESH_TOKEN'"}'
 ```
+
+Update user password
+
+```
+  HASH=$(node -e "console.log(require('bcryptjs').hashSync('NewP@ssw0rd', 12))") && \
+  sqlite3 data/collections.db "UPDATE users SET password_hash='$HASH', updated_at=datetime('now')
+  WHERE username='admin@example.com';"
+```
