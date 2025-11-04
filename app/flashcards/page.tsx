@@ -1,4 +1,3 @@
-
 /*
  * Flashcards page orchestrates category management and card creation.
  * Categories must exist before cards can be added, so we keep the currently
