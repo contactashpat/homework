@@ -1,16 +1,32 @@
 import { expect, test, type Page } from "@playwright/test";
 import jwt from "jsonwebtoken";
 
-const ADMIN_USERNAME = process.env.TEST_ADMIN_USERNAME ?? "admin@example.com";
 const ACCESS_TOKEN_SECRET =
   process.env.ACCESS_TOKEN_SECRET ?? "dev-access-token-secret";
 
+const getRequiredEnv = (key: string): string => {
+  const value = process.env[key];
+  if (!value || value.trim().length === 0) {
+    throw new Error(
+      `Missing required environment variable '${key}'. Set it before running Playwright tests.`,
+    );
+  }
+  return value;
+};
+
 const loginAsAdmin = async (page: Page) => {
+  const adminUsername = getRequiredEnv("TEST_ADMIN_USERNAME");
+  const adminUserId =
+    process.env.TEST_ADMIN_USER_ID ?? "playwright-e2e-admin";
+  const roles = process.env.TEST_ADMIN_ROLES
+    ? process.env.TEST_ADMIN_ROLES.split(",").map((role) => role.trim())
+    : ["admin"];
+
   const accessToken = jwt.sign(
     {
-      sub: "playwright-e2e-admin",
-      username: ADMIN_USERNAME,
-      roles: ["admin"],
+      sub: adminUserId,
+      username: adminUsername,
+      roles,
       type: "access",
     },
     ACCESS_TOKEN_SECRET,
