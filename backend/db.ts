@@ -103,7 +103,17 @@ const ensureUsersTableColumns = (db: Database) => {
       .all() as Array<{ name?: string }>;
     const hasGoogleSub = columns.some((column) => column.name === "google_sub");
     if (!hasGoogleSub) {
-      db.exec("ALTER TABLE users ADD COLUMN google_sub TEXT UNIQUE");
+      db.exec("ALTER TABLE users ADD COLUMN google_sub TEXT");
+      const hasIndex = db
+        .prepare(
+          "SELECT 1 FROM pragma_index_list('users') WHERE name = 'idx_users_google_sub'",
+        )
+        .get();
+      if (!hasIndex) {
+        db.exec(
+          "CREATE UNIQUE INDEX IF NOT EXISTS idx_users_google_sub ON users(google_sub)",
+        );
+      }
     }
   } catch (error) {
     console.error("Failed to ensure google_sub column on users table:", error);
