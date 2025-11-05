@@ -1,10 +1,12 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { OAuth2Client } from "google-auth-library";
 import { randomUUID } from "node:crypto";
 import {
   findUserByUsername,
   findUserById,
   type UserRecord,
+  upsertGoogleUser,
 } from "../repositories/userRepository";
 import {
   createRefreshToken,
@@ -16,6 +18,7 @@ import {
 
 const ACCESS_TOKEN_TTL_SECONDS = 15 * 60; // 15 minutes
 const REFRESH_TOKEN_TTL_SECONDS = 7 * 24 * 60 * 60; // 7 days
+let googleClient: OAuth2Client | null = null;
 
 const getAccessTokenSecret = (): string => {
   const secret = process.env.ACCESS_TOKEN_SECRET;
@@ -99,6 +102,18 @@ const decodeRefreshToken = (token: string): {
     throw new Error("Invalid refresh token payload");
   }
   return { sub, username, jti, type, exp };
+};
+
+const getGoogleClient = (): OAuth2Client => {
+  if (googleClient) {
+    return googleClient;
+  }
+  const clientId = process.env.GOOGLE_CLIENT_ID;
+  if (!clientId || clientId.trim().length === 0) {
+    throw new Error("GOOGLE_CLIENT_ID is not configured");
+  }
+  googleClient = new OAuth2Client(clientId.trim());
+  return googleClient;
 };
 
 export const authenticateUser = async (
@@ -215,6 +230,37 @@ export const verifyAccessToken = (token: string): {
     username: String(username ?? ""),
     roles: Array.isArray(roles) ? (roles as string[]) : [],
   };
+};
+
+export const authenticateWithGoogle = async (idToken: string): Promise<UserRecord> => {
+  if (typeof idToken !== "string" || idToken.trim().length === 0) {
+    throw new Error("Google ID token is required");
+  }
+  const clientId = process.env.GOOGLE_CLIENT_ID;
+  if (!clientId || clientId.trim().length === 0) {
+    throw new Error("GOOGLE_CLIENT_ID is not configured");
+  }
+
+  const client = getGoogleClient();
+  const ticket = await client.verifyIdToken({
+    idToken,
+    audience: clientId.trim(),
+  });
+  const payload = ticket.getPayload();
+  if (!payload || !payload.sub || !payload.email) {
+    throw new Error("Invalid Google token payload");
+  }
+  if (payload.email_verified === false) {
+    throw new Error("Google email address is not verified");
+  }
+
+  const user = upsertGoogleUser({
+    sub: payload.sub,
+    email: payload.email.toLowerCase(),
+    passwordHash: bcrypt.hashSync(randomUUID(), 12),
+  });
+
+  return user;
 };
 
 export type AuthenticatedUser = {

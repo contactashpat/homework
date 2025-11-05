@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
-import LoginForm from "./LoginForm";
 import { getCurrentUser } from "../../lib/auth/serverAuth";
+import GoogleLoginButton from "../../components/GoogleLoginButton";
 
 const normalizeRedirect = (value: string | undefined): string => {
   if (!value || typeof value !== "string") {
@@ -35,9 +35,11 @@ export default async function LoginPage({
           Sign in
         </h1>
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-          Use your account to access flashcards, quizzes, and progress.
+          Sign in with your Google account to access flashcards, quizzes, and progress.
         </p>
-        <LoginForm redirectTo={redirectTo} />
+        <div className="mt-8 rounded-lg border border-gray-200 bg-white p-6 shadow-lg dark:border-gray-700 dark:bg-gray-800">
+          <GoogleLoginButton redirectTo={redirectTo} />
+        </div>
       </div>
     </div>
   );

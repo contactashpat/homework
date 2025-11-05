@@ -4,6 +4,7 @@ import {
   createSessionTokens,
   rotateRefreshToken,
   revokeRefreshToken,
+  authenticateWithGoogle,
 } from "../services/authService";
 
 const router = Router();
@@ -69,6 +70,30 @@ router.post("/logout", async (req: Request, res: Response) => {
     return res
       .status(200)
       .json({ status: "ok", message: "Token already invalidated" });
+  }
+});
+
+router.post("/google", async (req: Request, res: Response) => {
+  const { idToken } = req.body ?? {};
+  if (typeof idToken !== "string" || idToken.trim().length === 0) {
+    return res.status(400).json({ error: "Google ID token is required" });
+  }
+
+  try {
+    const user = await authenticateWithGoogle(idToken);
+    const tokens = await createSessionTokens(user);
+
+    return res.json({
+      user: {
+        id: user.id,
+        username: user.username,
+        roles: user.roles,
+      },
+      ...tokens,
+    });
+  } catch (error) {
+    console.error("Google authentication failed:", error);
+    return res.status(401).json({ error: "Invalid Google credentials" });
   }
 });
 

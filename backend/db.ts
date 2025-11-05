@@ -74,6 +74,7 @@ const createSchema = (db: Database) => {
       username TEXT NOT NULL UNIQUE,
       password_hash TEXT NOT NULL,
       roles TEXT NOT NULL,
+      google_sub TEXT UNIQUE,
       created_at TEXT NOT NULL,
       updated_at TEXT NOT NULL
     );
@@ -93,6 +94,20 @@ const createSchema = (db: Database) => {
     CREATE INDEX IF NOT EXISTS idx_refresh_tokens_user_id ON refresh_tokens (user_id);
     CREATE INDEX IF NOT EXISTS idx_refresh_tokens_jti ON refresh_tokens (jti);
   `);
+};
+
+const ensureUsersTableColumns = (db: Database) => {
+  try {
+    const columns = db
+      .prepare("PRAGMA table_info(users)")
+      .all() as Array<{ name?: string }>;
+    const hasGoogleSub = columns.some((column) => column.name === "google_sub");
+    if (!hasGoogleSub) {
+      db.exec("ALTER TABLE users ADD COLUMN google_sub TEXT UNIQUE");
+    }
+  } catch (error) {
+    console.error("Failed to ensure google_sub column on users table:", error);
+  }
 };
 
 const isValidString = (value: unknown): value is string =>
@@ -255,6 +270,7 @@ export const getDb = (): Database => {
   db.exec("PRAGMA foreign_keys = ON;");
 
   createSchema(db);
+  ensureUsersTableColumns(db);
   seedCollections(db);
   seedUsers(db);
 
