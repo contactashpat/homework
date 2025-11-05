@@ -19,6 +19,7 @@ import {
 const ACCESS_TOKEN_TTL_SECONDS = 15 * 60; // 15 minutes
 const REFRESH_TOKEN_TTL_SECONDS = 7 * 24 * 60 * 60; // 7 days
 let googleClient: OAuth2Client | null = null;
+let googleAudiences: string[] | null = null;
 
 const getAccessTokenSecret = (): string => {
   const secret = process.env.ACCESS_TOKEN_SECRET;
@@ -104,15 +105,31 @@ const decodeRefreshToken = (token: string): {
   return { sub, username, jti, type, exp };
 };
 
+const getGoogleAudience = (): string[] => {
+  if (googleAudiences) {
+    return googleAudiences;
+  }
+  const raw = process.env.GOOGLE_CLIENT_ID;
+  if (!raw || raw.trim().length === 0) {
+    throw new Error("GOOGLE_CLIENT_ID is not configured");
+  }
+  const audiences = raw
+    .split(",")
+    .map((value) => value.trim())
+    .filter((value) => value.length > 0);
+  if (audiences.length === 0) {
+    throw new Error("GOOGLE_CLIENT_ID must include at least one client id");
+  }
+  googleAudiences = audiences;
+  return googleAudiences;
+};
+
 const getGoogleClient = (): OAuth2Client => {
   if (googleClient) {
     return googleClient;
   }
-  const clientId = process.env.GOOGLE_CLIENT_ID;
-  if (!clientId || clientId.trim().length === 0) {
-    throw new Error("GOOGLE_CLIENT_ID is not configured");
-  }
-  googleClient = new OAuth2Client(clientId.trim());
+  const [primary] = getGoogleAudience();
+  googleClient = new OAuth2Client(primary);
   return googleClient;
 };
 
@@ -236,15 +253,11 @@ export const authenticateWithGoogle = async (idToken: string): Promise<UserRecor
   if (typeof idToken !== "string" || idToken.trim().length === 0) {
     throw new Error("Google ID token is required");
   }
-  const clientId = process.env.GOOGLE_CLIENT_ID;
-  if (!clientId || clientId.trim().length === 0) {
-    throw new Error("GOOGLE_CLIENT_ID is not configured");
-  }
 
   const client = getGoogleClient();
   const ticket = await client.verifyIdToken({
     idToken,
-    audience: clientId.trim(),
+    audience: getGoogleAudience(),
   });
   const payload = ticket.getPayload();
   if (!payload || !payload.sub || !payload.email) {
