@@ -2,7 +2,11 @@
 
 import { useState } from "react";
 
-const LoginForm = () => {
+type LoginFormProps = {
+  redirectTo?: string;
+};
+
+const LoginForm = ({ redirectTo = "/study" }: LoginFormProps) => {
   const [username, setUsername] = useState("admin@example.com");
   const [password, setPassword] = useState("admin123");
   const [error, setError] = useState<string | null>(null);
@@ -27,7 +31,7 @@ const LoginForm = () => {
         return;
       }
 
-      window.location.href = "/study";
+      window.location.href = redirectTo;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Login failed");
       setPending(false);

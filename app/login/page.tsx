@@ -2,11 +2,31 @@ import { redirect } from "next/navigation";
 import LoginForm from "./LoginForm";
 import { getCurrentUser } from "../../lib/auth/serverAuth";
 
-export default async function LoginPage() {
+const normalizeRedirect = (value: string | undefined): string => {
+  if (!value || typeof value !== "string") {
+    return "/study";
+  }
+  if (!value.startsWith("/")) {
+    return "/study";
+  }
+  // Prevent redirecting back to login to avoid loops
+  if (value.startsWith("/login")) {
+    return "/study";
+  }
+  return value;
+};
+
+export default async function LoginPage({
+  searchParams,
+}: {
+  searchParams?: { redirect?: string };
+}) {
   const user = await getCurrentUser();
   if (user) {
     redirect("/study");
   }
+
+  const redirectTo = normalizeRedirect(searchParams?.redirect);
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-10 dark:bg-gray-900">
@@ -17,7 +37,7 @@ export default async function LoginPage() {
         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
           Use your account to access flashcards, quizzes, and progress.
         </p>
-        <LoginForm />
+        <LoginForm redirectTo={redirectTo} />
       </div>
     </div>
   );

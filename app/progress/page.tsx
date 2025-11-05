@@ -19,45 +19,44 @@ type QuizSummary = {
 };
 
 export default function ProgressPage() {
-  const [stats, setStats] = useState({
-    total: 0,
-    learned: 0,
-    unlearned: 0,
-    progress: 0,
-    learnedPercentage: 0,
-    unlearnedPercentage: 0,
-  });
   const [quizRange, setQuizRange] = useState(7);
   const [quizStats, setQuizStats] = useState<QuizDailyStat[]>([]);
   const [quizLoading, setQuizLoading] = useState(false);
   const [quizError, setQuizError] = useState<string | null>(null);
 
-  const flashcards = useFlashcardStore((state) => state.flashcards);
-  const learnedFlashcards = useFlashcardStore((state) =>
-    state.getLearnedFlashcards(),
+  const { flashcards, getLearnedFlashcards, getUnlearnedFlashcards } =
+    useFlashcardStore((state) => ({
+      flashcards: state.flashcards,
+      getLearnedFlashcards: state.getLearnedFlashcards,
+      getUnlearnedFlashcards: state.getUnlearnedFlashcards,
+    }));
+
+  const learnedFlashcards = useMemo(
+    () => getLearnedFlashcards(),
+    [getLearnedFlashcards, flashcards],
   );
-  const unlearnedFlashcards = useFlashcardStore((state) =>
-    state.getUnlearnedFlashcards(),
+  const unlearnedFlashcards = useMemo(
+    () => getUnlearnedFlashcards(),
+    [getUnlearnedFlashcards, flashcards],
   );
 
-  useEffect(() => {
+  const stats = useMemo(() => {
     const total = flashcards.length;
     const learned = learnedFlashcards.length;
     const unlearned = unlearnedFlashcards.length;
-    const progress = total > 0 ? Math.round((learned / total) * 100) : 0;
     const learnedPercentage =
       total > 0 ? Math.round((learned / total) * 100) : 0;
     const unlearnedPercentage =
       total > 0 ? Math.round((unlearned / total) * 100) : 0;
 
-    setStats({
+    return {
       total,
       learned,
       unlearned,
-      progress,
+      progress: learnedPercentage,
       learnedPercentage,
       unlearnedPercentage,
-    });
+    };
   }, [flashcards, learnedFlashcards, unlearnedFlashcards]);
 
   useEffect(() => {
