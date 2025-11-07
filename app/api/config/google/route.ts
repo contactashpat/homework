@@ -2,10 +2,10 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 import { NextResponse } from "next/server";
 
+const env = globalThis?.process?.env ?? {};
+
 const resolveGoogleClientId = (): string | null => {
-  const raw =
-    process.env["NEXT_PUBLIC_GOOGLE_CLIENT_ID"] ??
-    process.env["GOOGLE_CLIENT_ID"];
+  const raw = env["NEXT_PUBLIC_GOOGLE_CLIENT_ID"] ?? env["GOOGLE_CLIENT_ID"];
   if (!raw) {
     return null;
   }
